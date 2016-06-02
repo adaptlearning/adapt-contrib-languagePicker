@@ -1,0 +1,40 @@
+// To go on in config
+
+"_languagePicker": {
+    "_isEnabled": true,
+    "displayTitle": "Please select a language",
+    "body": "This course is available in the following languages",
+    "_languages": [
+        {
+            "_language": "en",
+            "_direction": "ltr",
+            "displayName": "English",
+            "warningTitle": "Change language?",
+            "warningMessage": "Changing the language will reset course progress.<br><br>Would you like to proceed?",
+            "_buttons": {
+                "yes": "Yes",
+                "no": "No"
+            }
+        },
+        {
+            "_language": "de",
+            "_direction": "ltr",
+            "displayName": "Deutsch",
+            "warningTitle": "Sprache ändern?",
+            "warningMessage": "Ändern der Sprache wird den Fortschritt des Kurses zurücksetzen.<br><br>Möchte Sie fortfahren?",
+            "_buttons": {
+                "yes": "Ja",
+                "no": "Nein"
+            }
+        }
+    ],
+    "_accessibility": {
+        "_accessibilityToggleTextOn": "Turn accessibility on?",
+        "_accessibilityToggleTextOff": "Turn accessibility off?",
+        "_accessibilityInstructions": {
+            "touch": "Usage instructions. Use swipe right for next. Use swipe left for previous. Use a double tap to select. Use a two finger slide up to go to the top of the page.",
+            "notouch": "Usage instructions. Use tab for next. Use shift tab for previous. Use enter to select. Use escape to go to the top of the page.",
+            "ipad": "Usage instructions for touchscreens. Use swipe right for next. Use swipe left for previous. Use a double tap to select. Use a two finger slide up to go to the top of the page. Usage instructions for keyboard access. Use right for next. Use left for previous. Use up and down together to select."
+        }
+    }
+}

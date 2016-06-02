@@ -1,0 +1,19 @@
+<div class="languagepicker-inner">
+  <div class="languagepicker-title">
+    <div class="languagepicker-title-inner" role="heading" tabindex="0">
+      {{{ displayTitle }}}
+    </div>
+  </div>
+  <div class="languagepicker-body">
+    <div class="languagepicker-body-inner">
+      {{{a11y_text body }}}
+    </div>
+  </div>
+  <div class="languagepicker-languages">
+    {{#each _languages}}
+        <button class="languagepicker-language {{_language}}" value="{{_language}}">
+          {{{ displayName }}}
+        </button>
+    {{/each}}
+  </div>
+</div>

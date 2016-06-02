@@ -1,0 +1,9 @@
+<div class="languagepicker">
+  <div class="languagepicker-inner">
+    {{#each _languages}}
+      <div class="languagepicker-language drawer-item {{_language}}">
+        <button class="base drawer-item-open" data-language="{{_language}}">{{displayName}}</button>
+      </div>
+    {{/each}}
+  </div>
+</div>

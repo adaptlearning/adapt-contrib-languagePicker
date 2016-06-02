@@ -1,0 +1,17 @@
+{
+    "name": "adapt-contrib-pageLevelProgress",
+    "version": "1.0.0",
+    "framework": "^2.0.0",
+    "homepage": "https://github.com/lc-thomasberger/adapt-languagePicker",
+    "issues": "https://github.com/adaptlearning/adapt_framework/issues",
+    "displayName": "Langauge Picker",
+    "extension": "languagePicker",
+    "description": "An extension to select a Language",
+    "main": "/js/adapt-languagePicker.js",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-extension"
+    ],
+    "license": "GPLv3",
+    "targetAttribute": "_languages"
+}
