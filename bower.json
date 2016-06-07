@@ -4,7 +4,7 @@
     "framework": "^2.0.0",
     "homepage": "https://github.com/lc-thomasberger/adapt-languagePicker",
     "issues": "https://github.com/adaptlearning/adapt_framework/issues",
-    "displayName": "Langauge Picker",
+    "displayName": "Language Picker",
     "extension": "languagePicker",
     "description": "An extension to select a Language",
     "main": "/js/adapt-languagePicker.js",

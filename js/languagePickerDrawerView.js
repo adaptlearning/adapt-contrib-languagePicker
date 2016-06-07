@@ -23,9 +23,9 @@ define([
     },
     
     onButtonClick: function (event) {
-      var newLanguge = $(event.target).attr('data-language');
-      this.model.set('newLanguge', newLanguge);
-      var data = this.model.getLanguageDetails(newLanguge);
+      var newLanguage = $(event.target).attr('data-language');
+      this.model.set('newLanguage', newLanguage);
+      var data = this.model.getLanguageDetails(newLanguage);
       
       var promptObject = {
         title: data.warningTitle,
@@ -56,7 +56,7 @@ define([
           Adapt.once('popup:opened', function() {
             //move popup close focus to #focuser
             $.a11y.state.focusStack.pop();
-            $.a11y.state.focusStack.push($("#focuser"));  
+            $.a11y.state.focusStack.push($("#focuser"));
           });
 
           Adapt.trigger('notify:prompt', promptObject);
@@ -68,8 +68,8 @@ define([
     
     onDoChangeLanguage: function () {
       // set default languge
-      var newLanguge = this.model.get('newLanguge');
-      this.model.setDefaultLanguage(newLanguge);
+      var newLanguage = this.model.get('newLanguage');
+      this.model.setDefaultLanguage(newLanguage);
       // reset progress
       // this.model.resetCourseProgress();
       // reload course Data
