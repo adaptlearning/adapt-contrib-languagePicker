@@ -54,89 +54,20 @@ define([
     },
     
     reloadCourseData: function () {
-      var language = Adapt.config.get('_defaultLanguage');
-      var courseFolder = "course/" + language +"/";
-      
       Adapt.on('adaptCollection:dataLoaded courseModel:dataLoaded', this.checkDataIsLoaded);
-      
-      Adapt.course = new CourseModel(null, {url:courseFolder + "course.json", reset:true});
-      
-      Adapt.contentObjects = new AdaptCollection(null, {
-          model: ContentObjectModel,
-          url: courseFolder +"contentObjects.json"
-      });
-      
-      Adapt.articles = new AdaptCollection(null, {
-          model: ArticleModel,
-          url: courseFolder + "articles.json"
-      });
-      
-      Adapt.blocks = new AdaptCollection(null, {
-          model: BlockModel,
-          url: courseFolder + "blocks.json"
-      });
-
-      Adapt.components = new AdaptCollection(null, {
-          model: function(json) {
-              //use view+model object
-              var ViewModelObject = Adapt.componentStore[json._component];
-
-              if(!ViewModelObject) {
-                  throw new Error(json._component + ' component not found. Is it installed and included?');
-              }
-
-              //if model defined for component use component model
-              if (ViewModelObject.model) {
-                  return new ViewModelObject.model(json);
-              }
-
-              var View = ViewModelObject.view || ViewModelObject;
-              //if question type use question model
-              if (View._isQuestionType) {
-                  return new QuestionModel(json);
-              }
-
-              //otherwise use component model
-              return new ComponentModel(json);
-          },
-          url: courseFolder + "components.json"
-      });
-      
+      Adapt.loadCourseData();
     },
     
     checkDataIsLoaded: function () {
-      if (Adapt.contentObjects.models.length > 0 && Adapt.articles.models.length > 0 && Adapt.blocks.models.length > 0 && Adapt.components.models.length > 0) {
-        
-        // setup Models
-        Adapt.contentObjects.each(function (model) {
-          model.setupModel();
-        });
-        Adapt.articles.each(function (model) {
-          model.setupModel();
-        });
-        Adapt.blocks.each(function (model) {
-          model.setupModel();
-        });
-        Adapt.components.each(function (model) {
-          model.setupModel();
-        });
-        
-        Adapt.resetMapping();
-        Adapt.setupMapping();
-        
-        // mapAdaptIdsToObjects
-        Adapt.contentObjects._byAdaptID = Adapt.contentObjects.groupBy("_id");
-        Adapt.articles._byAdaptID = Adapt.articles.groupBy("_id");
-        Adapt.blocks._byAdaptID = Adapt.blocks.groupBy("_id");
-        Adapt.components._byAdaptID = Adapt.components.groupBy("_id");
-        
-        Adapt.trigger('app:dataReady'); // required for Assesment to call register
-        // trigger event to reset session in adapt-stateful-session
-        Adapt.trigger('app:resetSession');
-        
-        // navigate home
-        Backbone.history.navigate('#/', {trigger: true, replace: true});
+      if (!(Adapt.contentObjects.models.length > 0 && Adapt.articles.models.length > 0 && Adapt.blocks.models.length > 0 && Adapt.components.models.length > 0)) {
+        return;        
       }
+
+      Adapt.trigger('app:resetSession');
+      
+      _.defer(function() {
+        Backbone.history.navigate('#/', {trigger: true, replace: true});
+      });
     }
     
   });
