@@ -28,6 +28,7 @@ define([
       var data = this.model.getLanguageDetails(newLanguage);
       
       var promptObject = {
+        _classes: "dir-ltr",
         title: data.warningTitle,
         body: data.warningMessage,
         _prompts:[
