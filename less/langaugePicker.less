@@ -60,8 +60,18 @@ body {
 	Drawer
 */
 .drawer-holder .languagepicker {
-	.languagepicker-language {
-		button {
+	.languagepicker-inner {
+
+		width: 100%;
+
+		.languagepicker-language {
+
+			.dir-rtl {
+				button {
+					direction: rtl;
+					text-align: inherit;
+				}
+			}
 		}
 	}
 }
