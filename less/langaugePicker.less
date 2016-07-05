@@ -75,3 +75,26 @@ body {
 		}
 	}
 }
+
+/*
+	Notify
+*/
+.notify-popup.notify-type-prompt {
+		&.dir-rtl {
+		
+			direction: rtl;
+			text-align: inherit;
+
+			.notify-popup-icon {
+				right: inherit;
+				left: 0;
+			}
+			
+			.notify-popup-title,
+			.notify-popup-body {
+				padding-left: 60px;
+				padding-right: inherit;
+			}
+
+	}
+}

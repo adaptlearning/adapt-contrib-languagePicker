@@ -43,6 +43,9 @@ define([
         _showIcon: true
       }
 
+      if (data._direction === 'rtl') {
+        promptObject._classes = "dir-rtl";
+      }
       
       //keep active element incase the user cancels - usually navigation bar icon
       this.$finishFocus = $.a11y.state.focusStack.pop();
