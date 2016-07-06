@@ -60,8 +60,10 @@ define([
     
     checkDataIsLoaded: function () {
       if (!(Adapt.contentObjects.models.length > 0 && Adapt.articles.models.length > 0 && Adapt.blocks.models.length > 0 && Adapt.components.models.length > 0)) {
-        return;        
+        return;
       }
+
+      Adapt.mapAdaptIdsToObjects();
 
       Adapt.trigger('app:resetSession');
       
