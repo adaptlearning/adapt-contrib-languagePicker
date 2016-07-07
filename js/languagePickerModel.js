@@ -23,9 +23,11 @@ define([
     
     initialize: function () {
       this.listenTo(Adapt.config, 'change:_defaultLanguage', this.onConfigChange);
-      
+ 
       this.set('_defaultLanguage', Adapt.config.get('_defaultLanguage'));
       this.set('_defaultDirection', Adapt.config.get('_defaultDirection'));
+
+      this.markLanguageAsSelected(Adapt.config.get('_defaultLanguage'));
     },
 
     getLanguageDetails: function (language) {
@@ -42,11 +44,11 @@ define([
 
       Adapt.config.set('_defaultLanguage', language);
       Adapt.config.set('_defaultDirection', direction);
-
+      
       if (storedLanguage !== language || !storedLanguage) {
         Adapt.offlineStorage.set("lang", language);
       }
-
+      
       $('html').attr('lang', language);
       if (direction === 'rtl') {
         $('html').removeClass('dir-ltr').addClass('dir-rtl');
@@ -57,6 +59,7 @@ define([
     
     onConfigChange: function (model, value, options) {
       this.set('_defaultLanguage', value);
+      this.markLanguageAsSelected(value);
     },
     
     reloadCourseData: function () {
@@ -64,9 +67,23 @@ define([
       Adapt.loadCourseData();
     },
     
+    markLanguageAsSelected: function(language) {
+      var languages = this.get('_languages');
+
+      for (var i = 0; i < languages.length; i++) {
+        if (languages[i]._language === language) {
+          languages[i]._isSelected = true;
+        } else {
+          languages[i]._isSelected = false;
+        }
+      }
+
+      this.set('_languages', languages)
+    },
+
     checkDataIsLoaded: function () {
       if (!(Adapt.contentObjects.models.length > 0 && Adapt.articles.models.length > 0 && Adapt.blocks.models.length > 0 && Adapt.components.models.length > 0)) {
-        return;
+        return;        
       }
 
       Adapt.mapAdaptIdsToObjects();
