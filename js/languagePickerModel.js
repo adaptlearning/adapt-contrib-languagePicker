@@ -38,9 +38,15 @@ define([
     setDefaultLanguage: function (language) {
       var langData = this.getLanguageDetails(language);
       var direction = langData._direction;
+      var storedLanguage = Adapt.offlineStorage.get('lang');
+
       Adapt.config.set('_defaultLanguage', language);
       Adapt.config.set('_defaultDirection', direction);
-      Adapt.offlineStorage.set("lang", language);
+
+      if (storedLanguage !== language || !storedLanguage) {
+        Adapt.offlineStorage.set("lang", language);
+      }
+
       $('html').attr('lang', language);
       if (direction === 'rtl') {
         $('html').removeClass('dir-ltr').addClass('dir-rtl');
