@@ -47,12 +47,12 @@
                 },
                 "_languages": {
                   "type": "array",
-                  "required": false,
-                  "title": "Language Items",
+                  "required": true,
+                  "title": "Languages",
                   "items": {
                     "type": "object",
-                    "required": false,
-                    "title": "Items",
+                    "required": true,
+                    "title": "Language",
                     "properties": {
                       "_language": {
                         "type": "string",
@@ -68,7 +68,7 @@
                         "required": true,
                         "default": "en",
                         "title": "Text direction",
-                        "enum": ["ltr", "rtl"],
+                        "inputType": {"type": "Select", "options": ["ltr", "rtl"]},
                         "validators": ["required"],
                         "help": ""
                       },
