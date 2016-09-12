@@ -88,7 +88,7 @@ define([
 
       Adapt.mapAdaptIdsToObjects();
 
-      Adapt.trigger('spoor:resetSession');
+      Adapt.trigger('languagePicker:languageChange');
       
       _.defer(function() {
         Backbone.history.navigate('#/', {trigger: true, replace: true});
