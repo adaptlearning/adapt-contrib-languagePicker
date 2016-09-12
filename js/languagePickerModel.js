@@ -78,7 +78,7 @@ define([
         }
       }
 
-      this.set('_languages', languages)
+      this.set('_languages', languages);
     },
 
     checkDataIsLoaded: function () {
@@ -88,7 +88,7 @@ define([
 
       Adapt.mapAdaptIdsToObjects();
 
-      Adapt.trigger('app:resetSession');
+      Adapt.trigger('spoor:resetSession');
       
       _.defer(function() {
         Backbone.history.navigate('#/', {trigger: true, replace: true});
