@@ -33,7 +33,7 @@ define([
     getLanguageDetails: function (language) {
       var _languages = this.get('_languages');
       return _.find(_languages, function (item) {
-        return item._language == language
+        return (item._language == language);
       });
     },
 

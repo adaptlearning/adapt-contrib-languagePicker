@@ -34,7 +34,7 @@ define([
         _prompts:[
           {
             promptText: data._buttons.yes,
-            _callbackEvent: "languagepicker:changelanguage:yes",
+            _callbackEvent: "languagepicker:changelanguage:yes"
           },
           {
             promptText: data._buttons.no,
@@ -42,7 +42,7 @@ define([
           }
         ],
         _showIcon: true
-      }
+      };
 
       if (data._direction === 'rtl') {
         promptObject._classes = "dir-rtl";
@@ -66,8 +66,8 @@ define([
           Adapt.trigger('notify:prompt', promptObject);
         }, 250);
       });
+
       Adapt.trigger('drawer:closeDrawer');
-      
     },
     
     onDoChangeLanguage: function () {

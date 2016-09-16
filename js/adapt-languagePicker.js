@@ -22,6 +22,7 @@ define([
       Adapt.on('router:menu', setupNavigationView);
       
       // wait for spoor to initialize on the configModel:dataLoaded event
+      //TODO see if this _.defer can be removed once https://github.com/adaptlearning/adapt_framework/pull/1113 is in 
       _.defer(onSpoorInitialized);
   }
 
