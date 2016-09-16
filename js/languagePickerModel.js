@@ -1,14 +1,7 @@
 define([
-    'coreJS/adapt',
-    'backbone',
-    'coreJS/adaptCollection',
-    'coreModels/courseModel',
-    'coreModels/contentObjectModel',
-    'coreModels/articleModel',
-    'coreModels/blockModel',
-    'coreModels/componentModel',
-    'coreModels/questionModel'
-], function (Adapt, Backbone, AdaptCollection, CourseModel, ContentObjectModel, ArticleModel, BlockModel, ComponentModel, QuestionModel) {
+    'core/js/adapt',
+    'backbone'
+], function (Adapt, Backbone) {
   
   var LanguagePickerModel = Backbone.Model.extend({
     

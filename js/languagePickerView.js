@@ -1,5 +1,5 @@
 define([
-  'coreJS/adapt',
+  'core/js/adapt',
   './accessibilityView'
 ], function(Adapt, accessibilityView) {
   

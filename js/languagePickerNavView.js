@@ -1,5 +1,5 @@
 define([
-  'coreJS/adapt',
+  'core/js/adapt',
   'backbone',
   './languagePickerDrawerView'
 ], function(Adapt, Backbone, LanguagePickerDrawerView) {
