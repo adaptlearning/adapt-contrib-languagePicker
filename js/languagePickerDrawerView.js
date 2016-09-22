@@ -74,8 +74,7 @@ define([
       // set default languge
       var newLanguage = this.model.get('newLanguage');
       this.model.setDefaultLanguage(newLanguage);
-      // reset progress
-      // this.model.resetCourseProgress();
+      
       // reload course Data
       this.model.reloadCourseData();
       
