@@ -59,6 +59,20 @@ The following attributes are set within *config.json*.
 
 >>>**no** (string): Label for button that cancels the switch languages dialog.   
 
+>**_accessibility** (object):  The accessibility attribute group stores the text of labels employed with [Adapt's accessibility feature](https://github.com/adaptlearning/adapt_framework/wiki/Accessibility). It contains values for **_accessibilityToggleTextOn**, **_accessibilityToggleTextOff**, and **_accessibilityInstructions**.  
+
+>>**_accessibilityToggleTextOn** (string): Label to confirm the learner's intent to enable the accessibility feature.  
+
+>>**_accessibilityToggleTextOff** (string): Label to confirm the learner's intent to disable the accessibility feature.  
+
+>>**_accessibilityInstructions** (object):  The accessibilityInstructions attribute group stores the text of navigation instructions for various types of devices when [Adapt's accessibility feature](https://github.com/adaptlearning/adapt_framework/wiki/Accessibility) is enabled. It contains values for **touch**, **notouch**, and **ipad**.  
+
+>>>**touch** (string): Instruction text for navigating by gestures.  
+
+>>>**notouch** (string): Instruction text for navigating with the keyboard.  
+
+>>>**ipad** (string): Instruction text for navigating on iPads both by gestures and with the keyboard.
+
 <div float align=right><a href="#top">Back to Top</a></div>
 
 
