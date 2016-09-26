@@ -1,10 +1,16 @@
 # adapt-contrib-languagePicker  
 
-<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/languagePicker01.gif" alt="" align="right">  **Language Picker** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).  
+**Language Picker** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).  
 
-**Language Picker** is intended to be used with courses that provide content in more than one language. Prior to entering the course, the learner is presented with a group of buttons. Each button is labelled with a language. Clicking a language button loads content in the chosen language. Language Picker may configured to allow the learner to switch languages while in the course.
+**Language Picker** is intended to be used with courses that provide content in more than one language. Prior to entering the course, the learner is presented with a group of buttons. Each button is labelled with a language. Clicking a language button loads content in the chosen language.  
+
+Language Picker may be configured to allow the learner to switch languages while the course is in progress. For this configuration, an icon is added to the navigation bar. Clicking the icon reveals the Language Picker in the [Drawer](https://github.com/adaptlearning/adapt_framework/wiki/Core-modules#drawer).
+
+<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/languagePicker02.png" alt="">  
 
 [Visit the **languagePicker** wiki](https://github.com/adaptlearning/adapt-contrib-languagePicker/wiki) for more information about its functionality and for explanations of key properties.
+
+<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/languagePicker01.gif" alt="" align="right">  
 
 ##Installation
 
