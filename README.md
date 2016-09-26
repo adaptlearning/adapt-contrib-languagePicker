@@ -1,6 +1,6 @@
 # adapt-contrib-languagePicker  
 
-**Language Picker** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).  
+**Language Picker** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework). It is not yet compatible with the Adapt Authoring Tool.   
 
 **Language Picker** is intended to be used with courses that provide content in more than one language. Prior to entering the course, the learner is presented with a group of buttons. Each button is labelled with a language. Clicking a language button loads content in the chosen language.  
 
@@ -14,7 +14,7 @@ Language Picker may be configured to allow the learner to switch languages while
 
 ##Installation
 
-As one of Adapt's *[core extensions](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#extensions),* **Language Picker** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation) and the [installation of the Adapt authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-Adapt-Origin).
+As one of Adapt's *[core extensions](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#extensions),* **Language Picker** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation).
 
 * If **Language Picker** has been uninstalled from the Adapt framework, it may be reinstalled.
 With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:  
@@ -26,14 +26,11 @@ With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run 
     `adapt install`  
     (This second method will reinstall all plug-ins listed in *adapt.json*.)  
 
-* If **Language Picker** has been uninstalled from the Adapt authoring tool, it may be reinstalled using the [Plug-in Manager](https://github.com/adaptlearning/adapt_authoring/wiki/Plugin-Manager).  
 <div float align=right><a href="#top">Back to Top</a></div>
 
 ## Settings Overview
 
 **Language Picker** is configured in *config.json* with the attributes that follow. The attributes are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-languagePicker/blob/master/example.json).
-
-Visit the [**Language Picker** wiki](https://github.com/adaptlearning/adapt-contrib-languagePicker/wiki) for more information about how these attributes appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki). 
 
 ### Attributes
 
@@ -85,10 +82,13 @@ The following attributes are set within *config.json*.
 
 ## Limitations
  
-**Language Picker** only works if [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) is enabled and the course is being presented in a learning management system (LMS). 
+- **Language Picker** only works if [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) is enabled and the course is being presented in a learning management system (LMS). 
 >**Note:** **Language Picker** will work without an LMS if run via scorm_test_harness as explained in https://github.com/adaptlearning/adapt-contrib-spoor#client-local-storage--fake-lms--adapt-lms-behaviour-testing. However, this is intended only for development, not for production.
 
-Switching languages will reset course progress in the LMS. 
+- Switching languages will reset course progress in the LMS. 
+
+
+- Language Picker is not yet compatible with the Adapt Authoring Tool.
 
 ----------------------------
 **Version number:**  1.0.0   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
