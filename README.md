@@ -38,7 +38,7 @@ The following attributes are set within *config.json*.
 
 **_languagePicker** (object): The languagePicker object that contains values for **_isEnabled**, **displayTitle**, **body**, and **_languages**.
 
->**_isEnabled** (boolean): Turns on and off the **Language Picker** extension. Acceptable values are `true` and `false`.
+>**_isEnabled** (boolean): Turns the **Language Picker** extension on and off. Acceptable values are `true` and `false`.
 
 >**displayTitle** (string): Header text. For example, "Please select a language."
 
@@ -82,17 +82,15 @@ The following attributes are set within *config.json*.
 
 ## Limitations
  
-- **Language Picker** only works if [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) is enabled and the course is being presented in a learning management system (LMS). 
->**Note:** **Language Picker** will work without an LMS if run via scorm_test_harness as explained in https://github.com/adaptlearning/adapt-contrib-spoor#client-local-storage--fake-lms--adapt-lms-behaviour-testing. However, this is intended only for development, not for production.
+- If [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) is disabled, **Language Picker** will not remember the learner's language choice from the previous session. 
 
 - Switching languages will reset course progress in the LMS. 
-
 
 - Language Picker is not yet compatible with the Adapt Authoring Tool.
 
 ----------------------------
 **Version number:**  1.0.0   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
-**Framework versions:**  ^2.0     
+**Framework versions:**  ^2.0.13     
 **Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-bookmarking/graphs/contributors)    
 **Accessibility support:** WAI AA   
 **RTL support:** yes  
