@@ -36,12 +36,14 @@ define([
       this.destroyAccessibility();
 
       var userLanguage = $(event.target).val();
-      // save language code in spoor
-      // set config default language
-      this.model.setDefaultLanguage(userLanguage);
 
-      // continue loading course
-      Adapt.trigger('configModel:loadCourseData');
+      if (userLanguage !== Adapt.config.get('_defaultLanguage')) {
+        // set config default language
+        this.model.setDefaultLanguage(userLanguage);
+      } else {
+        // continue loading course
+        Adapt.trigger('configModel:loadCourseData');
+      }
     },
 
 
