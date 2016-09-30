@@ -11,7 +11,8 @@ define([
       "body": "",
       "_languages": [],
       "_defaultLanguage": "en",
-      "_defaultDirection": "ltr"
+      "_defaultDirection": "ltr",
+      "_showOnCourseLoad": true
     },
     
     initialize: function () {

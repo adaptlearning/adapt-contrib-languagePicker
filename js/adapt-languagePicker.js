@@ -57,6 +57,14 @@ define([
   }
 
   function showLanguagePickerView () {
+
+    if (languagePickerModel.get('_showOnCourseLoad') === false) {
+      languagePickerModel.setDefaultLanguage(languagePickerModel.get('_defaultLanguage'));
+      loadLanguage();
+      return;
+    }
+
+
     var languagePickerView = new LanguagePickerView({
       model: languagePickerModel
     });
