@@ -31,7 +31,7 @@ define([
     if(Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
       this.onOfflineStorageReady();
     } else {
-      Adapt.once('offlineStorage:ready', onOfflineStorageReady());
+      Adapt.once('offlineStorage:ready', onOfflineStorageReady);
     }
   }
 
