@@ -29,7 +29,7 @@ define([
     Adapt.on('router:menu', setupNavigationView);
       
     if(Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
-      this.onOfflineStorageReady();
+      onOfflineStorageReady();
     } else {
       Adapt.once('offlineStorage:ready', onOfflineStorageReady);
     }
