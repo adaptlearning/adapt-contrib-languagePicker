@@ -34,16 +34,7 @@ define([
     
     onLanguageClick: function (event) {
       this.destroyAccessibility();
-
-      var userLanguage = $(event.target).val();
-
-      if (userLanguage !== Adapt.config.get('_defaultLanguage')) {
-        // set config default language
-        this.model.setDefaultLanguage(userLanguage);
-      } else {
-        // continue loading course
-        Adapt.trigger('configModel:loadCourseData');
-      }
+      this.model.setLanguage($(event.target).val());
     },
 
 

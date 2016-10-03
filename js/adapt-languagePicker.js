@@ -42,8 +42,7 @@ define([
   function onOfflineStorageReady() {
     var previousLanguage = Adapt.offlineStorage.get("lang");
     if (previousLanguage) {
-      languagePickerModel.setDefaultLanguage(previousLanguage);
-      loadLanguage();
+      _.defer(function() { languagePickerModel.setLanguage(previousLanguage); });
     } else {
       showLanguagePickerView();
     }

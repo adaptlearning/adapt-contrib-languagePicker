@@ -9,18 +9,11 @@ define([
       "_isEnabled": false,
       "displayTitle": "",
       "body": "",
-      "_languages": [],
-      "_defaultLanguage": "en",
-      "_defaultDirection": "ltr"
+      "_languages": []
     },
     
     initialize: function () {
-      this.listenTo(Adapt.config, 'change:_defaultLanguage', this.onConfigChange);
- 
-      this.set('_defaultLanguage', Adapt.config.get('_defaultLanguage'));
-      this.set('_defaultDirection', Adapt.config.get('_defaultDirection'));
-
-      this.markLanguageAsSelected(Adapt.config.get('_defaultLanguage'));
+      this.listenTo(Adapt.config, 'change:_activeLanguage', this.onConfigChange);
     },
 
     getLanguageDetails: function (language) {
@@ -30,15 +23,14 @@ define([
       });
     },
 
-    setDefaultLanguage: function (language) {
+    setLanguage: function (language) {
       Adapt.config.set({
-        '_defaultLanguage': language,
+        '_activeLanguage': language,
         '_defaultDirection': this.getLanguageDetails(language)._direction
       });
     },
     
     onConfigChange: function (model, value, options) {
-      this.set('_defaultLanguage', value);
       this.markLanguageAsSelected(value);
     },
     
