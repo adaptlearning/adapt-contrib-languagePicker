@@ -48,13 +48,6 @@ define([
     }
   }
 
-  /**
-   * Triggers the event that tells Adapt to load the rest of the .json
-   */
-  function loadLanguage () {
-      Adapt.trigger('configModel:loadCourseData');
-  }
-
   function showLanguagePickerView () {
     var languagePickerView = new LanguagePickerView({
       model: languagePickerModel
