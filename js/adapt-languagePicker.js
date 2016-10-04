@@ -40,20 +40,13 @@ define([
    * If it was, load it. If it wasn't, show the language picker
    */
   function onOfflineStorageReady() {
-    var previousLanguage = Adapt.offlineStorage.get("lang");
-    if (previousLanguage) {
-      languagePickerModel.setDefaultLanguage(previousLanguage);
-      loadLanguage();
+    var storedLanguage = Adapt.offlineStorage.get("lang");
+
+    if (storedLanguage) {
+      languagePickerModel.setLanguage(storedLanguage);
     } else {
       showLanguagePickerView();
     }
-  }
-
-  /**
-   * Triggers the event that tells Adapt to load the rest of the .json
-   */
-  function loadLanguage () {
-      Adapt.trigger('configModel:loadCourseData');
   }
 
   function showLanguagePickerView () {

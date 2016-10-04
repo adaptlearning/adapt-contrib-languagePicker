@@ -34,14 +34,7 @@ define([
     
     onLanguageClick: function (event) {
       this.destroyAccessibility();
-
-      var userLanguage = $(event.target).val();
-      // save language code in spoor
-      // set config default language
-      this.model.setDefaultLanguage(userLanguage);
-
-      // continue loading course
-      Adapt.trigger('configModel:loadCourseData');
+      this.model.setLanguage($(event.target).val());
     },
 
 
