@@ -43,7 +43,7 @@ define([
     var storedLanguage = Adapt.offlineStorage.get("lang");
 
     if (storedLanguage) {
-      _.defer(function() { languagePickerModel.setLanguage(storedLanguage); });
+      languagePickerModel.setLanguage(storedLanguage);
     } else {
       showLanguagePickerView();
     }
