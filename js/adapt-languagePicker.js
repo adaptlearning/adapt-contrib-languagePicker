@@ -40,9 +40,10 @@ define([
    * If it was, load it. If it wasn't, show the language picker
    */
   function onOfflineStorageReady() {
-    var previousLanguage = Adapt.offlineStorage.get("lang");
-    if (previousLanguage) {
-      _.defer(function() { languagePickerModel.setLanguage(previousLanguage); });
+    var storedLanguage = Adapt.offlineStorage.get("lang");
+
+    if (storedLanguage) {
+      _.defer(function() { languagePickerModel.setLanguage(storedLanguage); });
     } else {
       showLanguagePickerView();
     }

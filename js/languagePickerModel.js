@@ -46,7 +46,7 @@ define([
       }
 
       this.set('_languages', languages);
-    },
+    }
     
   });
   
