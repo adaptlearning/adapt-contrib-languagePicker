@@ -18,10 +18,6 @@ define([
       this.listenTo(Adapt, 'remove', this.remove);
     },
     
-    render: function () {
-      this.$el.html(this.model.get('_defaultLanguage'));
-    },
-    
     onClick: function (event) {
       Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({model: this.model}).$el, false);
     }

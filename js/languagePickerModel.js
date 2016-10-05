@@ -9,19 +9,14 @@ define([
       "_isEnabled": false,
       "displayTitle": "",
       "body": "",
-      "_languages": [],
       "_defaultLanguage": "en",
       "_defaultDirection": "ltr",
-      "_showOnCourseLoad": true
+      "_showOnCourseLoad": true,
+      "_languages": []
     },
     
     initialize: function () {
-      this.listenTo(Adapt.config, 'change:_defaultLanguage', this.onConfigChange);
- 
-      this.set('_defaultLanguage', Adapt.config.get('_defaultLanguage'));
-      this.set('_defaultDirection', Adapt.config.get('_defaultDirection'));
-
-      this.markLanguageAsSelected(Adapt.config.get('_defaultLanguage'));
+      this.listenTo(Adapt.config, 'change:_activeLanguage', this.onConfigChange);
     },
 
     getLanguageDetails: function (language) {
@@ -31,34 +26,15 @@ define([
       });
     },
 
-    setDefaultLanguage: function (language) {
-      var langData = this.getLanguageDetails(language);
-      var direction = langData._direction;
-      var storedLanguage = Adapt.offlineStorage.get('lang');
-
-      Adapt.config.set('_defaultLanguage', language);
-      Adapt.config.set('_defaultDirection', direction);
-      
-      if (storedLanguage !== language || !storedLanguage) {
-        Adapt.offlineStorage.set("lang", language);
-      }
-      
-      $('html').attr('lang', language);
-      if (direction === 'rtl') {
-        $('html').removeClass('dir-ltr').addClass('dir-rtl');
-      } else {
-        $('html').removeClass('dir-rtl').addClass('dir-ltr');
-      }
+    setLanguage: function (language) {
+      Adapt.config.set({
+        '_activeLanguage': language,
+        '_defaultDirection': this.getLanguageDetails(language)._direction
+      });
     },
     
     onConfigChange: function (model, value, options) {
-      this.set('_defaultLanguage', value);
       this.markLanguageAsSelected(value);
-    },
-    
-    reloadCourseData: function () {
-      Adapt.on('adaptCollection:dataLoaded courseModel:dataLoaded', this.checkDataIsLoaded);
-      Adapt.loadCourseData();
     },
     
     markLanguageAsSelected: function(language) {
@@ -73,20 +49,6 @@ define([
       }
 
       this.set('_languages', languages);
-    },
-
-    checkDataIsLoaded: function () {
-      if (!(Adapt.contentObjects.models.length > 0 && Adapt.articles.models.length > 0 && Adapt.blocks.models.length > 0 && Adapt.components.models.length > 0)) {
-        return;        
-      }
-
-      Adapt.mapAdaptIdsToObjects();
-
-      Adapt.trigger('languagePicker:languageChange');
-      
-      _.defer(function() {
-        Backbone.history.navigate('#/', {trigger: true, replace: true});
-      });
     }
     
   });

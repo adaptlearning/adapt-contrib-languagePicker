@@ -29,7 +29,7 @@ define([
     Adapt.on('router:menu', setupNavigationView);
       
     if(Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
-      this.onOfflineStorageReady();
+      onOfflineStorageReady();
     } else {
       Adapt.once('offlineStorage:ready', onOfflineStorageReady);
     }
@@ -40,30 +40,20 @@ define([
    * If it was, load it. If it wasn't, show the language picker
    */
   function onOfflineStorageReady() {
-    var previousLanguage = Adapt.offlineStorage.get("lang");
-    if (previousLanguage) {
-      languagePickerModel.setDefaultLanguage(previousLanguage);
+    var storedLanguage = Adapt.offlineStorage.get("lang");
+
+    if (storedLanguage) {
+      languagePickerModel.setLanguage(storedLanguage);
+    } else if (languagePickerModel.get('_showOnCourseLoad') === false) {
+      languagePickerModel.setDefaultLanguage(languagePickerModel.get('_defaultLanguage'));
       loadLanguage();
+      return;
     } else {
       showLanguagePickerView();
     }
   }
 
-  /**
-   * Triggers the event that tells Adapt to load the rest of the .json
-   */
-  function loadLanguage () {
-      Adapt.trigger('configModel:loadCourseData');
-  }
-
   function showLanguagePickerView () {
-
-    if (languagePickerModel.get('_showOnCourseLoad') === false) {
-      languagePickerModel.setDefaultLanguage(languagePickerModel.get('_defaultLanguage'));
-      loadLanguage();
-      return;
-    }
-
 
     var languagePickerView = new LanguagePickerView({
       model: languagePickerModel

@@ -66,11 +66,11 @@
                       "_language": {
                         "type": "string",
                         "required": true,
-                        "default": "en",
+                        "default": "",
                         "title": "Language Code",
                         "inputType": "Text",
                         "validators": ["required"],
-                        "help": "This text must match the name of the language-specific folder located in the course root"
+                        "help": "This text must match the name of the language-specific folder located in the course root, e.g. en, fr, es"
                       },
                       "_direction": {
                         "type": "string",
@@ -84,11 +84,11 @@
                       "displayName": {
                         "type": "string",
                         "required": true,
-                        "default": "en",
+                        "default": "",
                         "title": "Language Name",
                         "inputType": "Text",
                         "validators": ["required"],
-                        "help": ""
+                        "help": "A user friendly name for the language, e.g. English, Français, Español"
                       },
                       "warningTitle": {
                         "type": "string",
@@ -106,7 +106,7 @@
                         "title": "Confirm Message",
                         "inputType": "Text",
                         "validators": ["required"],
-                        "help": "This text appears as the body of the dialog confirming the learner's intent to change languages"
+                        "help": "This text appears as the body of the dialog confirming the learner's intent to change languages.  Note: the warning message should indicate that any progress will be lost when the language is switched."
                       },
                       "_buttons": {
                         "type": "object",
