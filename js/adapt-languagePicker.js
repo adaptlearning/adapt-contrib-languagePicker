@@ -44,6 +44,8 @@ define([
 
         if (storedLanguage) {
             languagePickerModel.setLanguage(storedLanguage);
+        } else if (languagePickerModel.get('_showOnCourseLoad') === false) {
+            languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
         } else {
             showLanguagePickerView();
         }
