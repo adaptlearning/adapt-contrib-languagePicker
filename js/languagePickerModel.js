@@ -9,8 +9,6 @@ define([
       "_isEnabled": false,
       "displayTitle": "",
       "body": "",
-      "_defaultLanguage": "en",
-      "_defaultDirection": "ltr",
       "_showOnCourseLoad": true,
       "_languages": []
     },
