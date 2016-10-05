@@ -132,7 +132,7 @@
                   "required": false,
                   "title": "Accessibility",
                   "properties": {
-                    "_accessibilityToggleTextOn": {
+                    "accessibilityToggleTextOn": {
                       "type": "string",
                       "required": true,
                       "default": "Turn accessibility on?",
@@ -141,7 +141,7 @@
                       "validators": ["required"],
                       "help": ""
                     },
-                    "_accessibilityToggleTextOff": {
+                    "accessibilityToggleTextOff": {
                       "type": "string",
                       "required": true,
                       "default": "Turn accessibility off?",
