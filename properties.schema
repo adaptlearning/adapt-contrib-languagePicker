@@ -38,20 +38,20 @@
                 },
                 "displayTitle": {
                   "type": "string",
-                  "required": true,
+                  "required": false,
                   "default": "",
                   "title": "Language Picker Title",
                   "inputType": "Text",
-                  "validators": ["required"],
+                  "validators": [],
                   "help": "Header text for the Language Picker"
                 },
                 "body": {
                   "type": "string",
-                  "required": true,
+                  "required": false,
                   "default": "",
                   "title": "Language Picker Body text",
                   "inputType": "Text",
-                  "validators": ["required"],
+                  "validators": [],
                   "help": "Introductory or explanatory text for the Language Picker"
                 },
                 "_showOnCourseLoad": {
