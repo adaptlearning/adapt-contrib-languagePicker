@@ -40,6 +40,8 @@ The following attributes are set within *config.json*.
 
 >**_isEnabled** (boolean): Turns the **Language Picker** extension on and off. Acceptable values are `true` and `false`.
 
+>**title** (string): Browser window title text. For example, "Language selection". 
+
 >**displayTitle** (string): Header text. For example, "Please select a language."
 
 >**body** (string): Introductory or explanatory text. For example, "Welcome to ACME Learning. This course is available in several languages. Please make a selection. "

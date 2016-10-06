@@ -23,6 +23,8 @@ define([
             var template = Handlebars.templates[this.constructor.template];
             this.$el.html(template(data));
             
+            document.title = this.model.get('title') || "";
+            
             _.defer(_.bind(function () {
                 this.postRender();
             }, this));

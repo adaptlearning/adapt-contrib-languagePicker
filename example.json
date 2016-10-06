@@ -2,8 +2,9 @@
 
 "_languagePicker": {
     "_isEnabled": true,
+    "title": "Language selection",
     "displayTitle": "Please select a language",
-    "body": "This course is available in the following languages",
+    "body": "This course is available in the following languages:",
     "_showOnCourseLoad": true,
     "_languages": [
         {
