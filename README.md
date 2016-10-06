@@ -64,9 +64,9 @@ The following attributes are set within *config.json*.
 
 >**_accessibility** (object):  The accessibility attribute group stores the text of labels employed with [Adapt's accessibility feature](https://github.com/adaptlearning/adapt_framework/wiki/Accessibility). It contains values for **_accessibilityToggleTextOn**, **_accessibilityToggleTextOff**, and **_accessibilityInstructions**.  
 
->>**_accessibilityToggleTextOn** (string): Label to confirm the learner's intent to enable the accessibility feature.  
+>>**accessibilityToggleTextOn** (string): Label to confirm the learner's intent to enable the accessibility feature.  
 
->>**_accessibilityToggleTextOff** (string): Label to confirm the learner's intent to disable the accessibility feature.  
+>>**accessibilityToggleTextOff** (string): Label to confirm the learner's intent to disable the accessibility feature.  
 
 >>**_accessibilityInstructions** (object):  The accessibilityInstructions attribute group stores the text of navigation instructions for various types of devices when [Adapt's accessibility feature](https://github.com/adaptlearning/adapt_framework/wiki/Accessibility) is enabled. It contains values for **touch**, **notouch**, and **ipad**.  
 
