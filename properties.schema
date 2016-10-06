@@ -54,6 +54,15 @@
                   "validators": ["required"],
                   "help": "Introductory or explanatory text for the Language Picker"
                 },
+                "_showOnCourseLoad": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Show on course load",
+                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "validators": [],
+                  "help": "If set to 'false', language picker will not be displayed on course load"
+                },
                 "_languages": {
                   "type": "array",
                   "required": true,
