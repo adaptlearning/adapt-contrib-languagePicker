@@ -27,6 +27,15 @@
                   "validators": [],
                   "help": "If set to 'true', a Language Picker will be displayed."
                 },
+                "title": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Browser Window Title",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "Text to be shown in the browser's title bar when the language picker is displayed."
+                },
                 "displayTitle": {
                   "type": "string",
                   "required": true,
