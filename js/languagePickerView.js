@@ -46,6 +46,9 @@ define([
             this.accessibilityView = new accessibilityView({
                 model:this.model
             });
+            
+            // we need to re-render if accessibility gets switched on
+            this.listenTo(this.accessibilityView, 'accessibility:toggle', this.render);
         },
 
         destroyAccessibility: function() {
