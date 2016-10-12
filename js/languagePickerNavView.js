@@ -10,11 +10,7 @@ define([
         
         className: function () {
             var classNames = 'languagepicker-icon base icon';
-            var customClass = 'icon-language-2';
-
-            if (this.model.has('_languagePickerIconClass') && this.model.get('_languagePickerIconClass') !== '') {
-                customClass = this.model.get('_languagePickerIconClass');
-            }
+            var customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
 
             return classNames + ' ' + customClass;
         },
