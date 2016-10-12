@@ -48,6 +48,8 @@ The following attributes are set within *config.json*.
 
 >**_showOnCourseLoad** (boolean): Determines whether the language picker will be displayed on course load. If set to false, the course will load with the default language selected and the user will need to use the icon in the navigation bar to change languages.
 
+>**_languagePickerIconClass** (string): The class defined here will define the icon of the language-picker in the navigation bar. The vanilla theme supports the following class-names by default: "icon-globe", "icon-language-1", "icon-language-2". The default value for this attribute is "icon-language-2".    
+
 >**_languages** (object):  The languages attribute group contains properties related to the available languages.   It contains values for **_language**, **_direction**, **displayName**, **warningTitle**, **warningMessage**, and **_buttons**.  
 
 >>**_language** (string): This text must match the name of the language-specific folder located in the course root, for example, "en" from *course/en*. It is used as the value for the HTML `lang` attribute. It is highly recommended that codes for web languages be used. Reference a source such as the [IANA Language Subtag Registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). 
