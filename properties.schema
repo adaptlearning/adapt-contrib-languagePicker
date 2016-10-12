@@ -63,6 +63,15 @@
                   "validators": [],
                   "help": "If set to 'false', language picker will not be displayed on course load"
                 },
+                "_languagePickerIconClass": {
+                  "type": "string",
+                  "required": false,
+                  "default": "icon-language-2",
+                  "title": "Class to customise Language Picker icon in the navbar.",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "Your default options here are: icon-globe, icon-language-1, icon-language-2"
+                },
                 "_languages": {
                   "type": "array",
                   "required": true,
