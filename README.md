@@ -90,6 +90,8 @@ The following attributes are set within *config.json*.
 
 - Switching languages will reset course progress in the LMS. 
 
+- Switching languages during an [**Assessment**](https://github.com/adaptlearning/adapt-contrib-assessment) will reset assessment attempts.  
+
 - Language Picker is not yet compatible with the Adapt Authoring Tool.
 
 ----------------------------
