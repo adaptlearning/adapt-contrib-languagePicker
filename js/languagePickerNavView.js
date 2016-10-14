@@ -8,7 +8,12 @@ define([
         
         tagName: 'button',
         
-        className: 'languagepicker-icon base icon icon-language',
+        className: function () {
+            var classNames = 'languagepicker-icon base icon';
+            var customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
+
+            return classNames + ' ' + customClass;
+        },
         
         events: {
             'click': 'onClick'

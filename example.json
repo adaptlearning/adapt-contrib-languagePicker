@@ -6,6 +6,8 @@
     "displayTitle": "Please select a language",
     "body": "This course is available in the following languages:",
     "_showOnCourseLoad": true,
+    "_comment": "default class names are: icon-globe, icon-language-1, icon-language-2",
+    "_languagePickerIconClass": "icon-language-2",
     "_languages": [
         {
             "_language": "en",
