@@ -95,7 +95,7 @@ The following attributes are set within *config.json*.
 - Language Picker is not yet compatible with the Adapt Authoring Tool.
 
 ## Dependencies
-As well as requiring [**Adapt Framework**](https://github.com/adaptlearning/adapt_framework) v2.0.14 (or better) you will need v2.0.13 (or better) of the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension if you need your course to be SCORM conformant.
+As well as requiring [**Adapt Framework**](https://github.com/adaptlearning/adapt_framework) v2.0.14 (or better) you will need v2.0.4 (or better) of the [**Vanilla theme**](https://github.com/adaptlearning/adapt-contrib-vanilla) and v2.0.13 (or better) of the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension if you need your course to be SCORM conformant.
 
 ----------------------------
 **Version number:**  1.0.0   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
