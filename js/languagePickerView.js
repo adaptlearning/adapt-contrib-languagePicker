@@ -13,7 +13,7 @@ define([
         
         initialize: function () {
             this.initializeAccessibility();
-
+            $("html").addClass("in-languagepicker");
             this.listenTo(Adapt, 'remove', this.remove);
             this.render();
         },
@@ -39,10 +39,7 @@ define([
             this.model.setLanguage($(event.target).val());
         },
 
-
         initializeAccessibility: function() {
-            $("html").addClass("in-languagepicker");
-
             this.accessibilityView = new accessibilityView({
                 model:this.model
             });
@@ -52,9 +49,13 @@ define([
         },
 
         destroyAccessibility: function() {
+            this.accessibilityView.remove();
+        },
+
+        remove: function() {
             $("html").removeClass("in-languagepicker");
 
-            this.accessibilityView.remove();
+            Backbone.View.prototype.remove.apply(this, arguments);
         }
         
     }, {
