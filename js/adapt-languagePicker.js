@@ -63,7 +63,7 @@ define([
         var languagePickerNavView = new LanguagePickerNavView({
             model: languagePickerModel,
             attributes:  {
-                "aria-label": Adapt.course.get('_globals')._accessibility._ariaLabels.languagePicker
+                "aria-label": Adapt.course.get('_globals')._extensions._languagePicker.navigationBarLabel
             }
         });
         
