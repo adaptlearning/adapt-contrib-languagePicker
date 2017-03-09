@@ -61,7 +61,10 @@ define([
     
     function setupNavigationView () {
         var languagePickerNavView = new LanguagePickerNavView({
-            model: languagePickerModel
+            model: languagePickerModel,
+            attributes:  {
+                "aria-label": Adapt.course.get('_globals')._extensions._languagePicker.navigationBarLabel
+            }
         });
         
         languagePickerNavView.$el.appendTo('.navigation-inner');

@@ -1,4 +1,4 @@
-// To go on in config
+// To go in config.json
 
 "_languagePicker": {
     "_isEnabled": true,
@@ -41,4 +41,9 @@
             "ipad": "Usage instructions for touchscreens. Use swipe right for next. Use swipe left for previous. Use a double tap to select. Use a two finger slide up to go to the top of the page. Usage instructions for keyboard access. Use right for next. Use left for previous. Use up and down together to select."
         }
     }
+}
+
+// to be added to the _extensions object in course.json
+"_languagePicker": {
+    "navigationBarLabel" : "Select course language"
 }
