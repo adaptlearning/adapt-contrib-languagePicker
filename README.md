@@ -98,7 +98,7 @@ The following attributes are set within *config.json*.
 As well as requiring [**Adapt Framework**](https://github.com/adaptlearning/adapt_framework) v2.0.14 (or better) you will need v2.0.4 (or better) of the [**Vanilla theme**](https://github.com/adaptlearning/adapt-contrib-vanilla) and, if you need your course to be SCORM conformant, v2.0.13 (or better) of the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension.
 
 ----------------------------
-**Version number:**  1.0.2   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
+**Version number:**  1.0.3   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
 **Framework versions:**  ^2.0.14     
 **Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-bookmarking/graphs/contributors)    
 **Accessibility support:** WAI AA   
