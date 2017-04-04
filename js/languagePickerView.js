@@ -22,7 +22,8 @@ define([
             var data = this.model.toJSON();
             var template = Handlebars.templates[this.constructor.template];
             this.$el.html(template(data));
-            
+            this.$el.addClass(data._classes);
+
             document.title = this.model.get('title') || "";
             
             _.defer(_.bind(function () {

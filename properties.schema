@@ -80,6 +80,15 @@
                   "validators": [],
                   "help": "Your default options here are: icon-globe, icon-language-1, icon-language-2"
                 },
+                "_classes": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Classes",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": ""
+                },
                 "_languages": {
                   "type": "array",
                   "required": true,
