@@ -6,7 +6,7 @@
 
 **Language Picker** allows the learner to switch languages while the course is in progress. Clicking the icon in the navigation bar reveals the Language Picker in the [Drawer](https://github.com/adaptlearning/adapt_framework/wiki/Core-modules#drawer).
 
-[Visit the **languagePicker** wiki](https://github.com/adaptlearning/adapt-contrib-languagePicker/wiki) for more information about its functionality and for explanations of key properties.
+[Visit the **Course Localisation** wiki](https://github.com/adaptlearning/adapt_framework/wiki/Course-Localisation) for more information about its functionality and for explanations of key properties.
 
 <img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/language-picker.gif" alt="" align="center">  
 
