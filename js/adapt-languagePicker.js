@@ -61,7 +61,7 @@ define([
     
     function setupNavigationView () {
         var courseGlobals = Adapt.course.get('_globals')._extensions;
-        var navigationBarLabel = 'Select course language';
+        var navigationBarLabel = '';
         if (_.has(courseGlobals, '_languagePicker')) {
             navigationBarLabel = courseGlobals._languagePicker.navigationBarLabel;
         }
