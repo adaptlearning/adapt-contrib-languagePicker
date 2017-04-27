@@ -60,10 +60,16 @@ define([
     }
     
     function setupNavigationView () {
+        var courseGlobals = Adapt.course.get('_globals')._extensions;
+        var navigationBarLabel = 'Select course language';
+        if (_.has(courseGlobals, '_languagePicker')) {
+            navigationBarLabel = courseGlobals._languagePicker.navigationBarLabel;
+        }
+
         var languagePickerNavView = new LanguagePickerNavView({
             model: languagePickerModel,
             attributes:  {
-                "aria-label": Adapt.course.get('_globals')._extensions._languagePicker.navigationBarLabel
+                "aria-label": navigationBarLabel
             }
         });
         
