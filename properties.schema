@@ -31,9 +31,9 @@
                   "required": true,
                   "default": false,
                   "title": "Is enabled",
-                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "inputType": "Checkbox",
                   "validators": [],
-                  "help": "If set to 'true', a Language Picker will be displayed."
+                  "help": "Controls whether the Language Picker extension is enabled or disabled."
                 },
                 "title": {
                   "type": "string",
@@ -67,9 +67,9 @@
                   "required": true,
                   "default": true,
                   "title": "Show on course load",
-                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "inputType": "Checkbox",
                   "validators": [],
-                  "help": "If set to 'false', language picker will not be displayed on course load"
+                  "help": "Controls whether the Language Picker should be displayed on course load or not."
                 },
                 "_languagePickerIconClass": {
                   "type": "string",
