@@ -60,10 +60,20 @@ define([
     }
     
     function setupNavigationView () {
+        /* 
+         * On the framework this isn't an issue, but courses built in the authoring tool before the ARIA label 
+         * was added will break unless the extension is removed then added again.
+         */
+        var courseGlobals = Adapt.course.get('_globals')._extensions;
+        var navigationBarLabel = '';
+        if (courseGlobals._languagePicker) {
+            navigationBarLabel = courseGlobals._languagePicker.navigationBarLabel;
+        }
+
         var languagePickerNavView = new LanguagePickerNavView({
             model: languagePickerModel,
             attributes:  {
-                "aria-label": Adapt.course.get('_globals')._extensions._languagePicker.navigationBarLabel
+                "aria-label": navigationBarLabel
             }
         });
         
