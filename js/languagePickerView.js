@@ -41,10 +41,6 @@ define([
         },
 
         initializeAccessibility: function() {
-            /*this.accessibilityView = new accessibilityView({
-                model:this.model
-            });*/
-
             this.navigationView = new NavigationView({model:this.model});
             
             // we need to re-render if accessibility gets switched on
