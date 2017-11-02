@@ -2,7 +2,7 @@
   <div class="languagepicker-inner">
      {{#each _languages}}
         <div class="languagepicker-language drawer-item {{#if _isSelected}}selected{{/if}} {{_language}} {{#equals _direction "rtl"}}dir-rtl{{/equals}}">
-          <button class="base drawer-item-open" data-language="{{_language}}" {{#if _isSelected}}disabled{{/if}}>{{displayName}}</button>
+          <button class="base drawer-item-open" data-language="{{_language}}" {{#if _isSelected}}disabled{{/if}}>{{{displayName}}}</button>
         </div>
      {{/each}}
   </div>
