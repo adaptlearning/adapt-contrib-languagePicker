@@ -2,7 +2,7 @@
     "name": "adapt-contrib-languagePicker",
     "repository": "git://github.com/adaptlearning/adapt-contrib-languagePicker.git",
     "framework": ">=2.0.14",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "homepage": "https://github.com/adaptlearning/adapt-contrib-languagePicker",
     "issues": "https://github.com/adaptlearning/adapt_framework/issues",
     "displayName": "Language Picker",
