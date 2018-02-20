@@ -227,6 +227,22 @@
                           "help": ""
                         }
                       }
+                    },
+                    "_ariaLabels": {
+                      "type": "object",
+                      "required": false,
+                      "title": "Aria labels",
+                      "properties": {
+                        "navigation": {
+                          "type": "string",
+                          "required": true,
+                          "default": "A short description of the course navigation bar.",
+                          "title": "Navigation",
+                          "inputType": "Text",
+                          "validators": ["required"],
+                          "help": ""
+                        }
+                      }
                     }
                   }
                 }

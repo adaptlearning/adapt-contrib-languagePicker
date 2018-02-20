@@ -11,8 +11,6 @@ define([
         },
 
         initialize: function() {
-            this.setupHelpers();
-
             this.setupUsageInstructions();
 
             if(Adapt.offlineStorage.ready) {
@@ -43,7 +41,7 @@ define([
 
                 var toggleText = isActive ? offLabel : onLabel;
 
-                this.$el.html(toggleText).attr('aria-label', $.a11y_normalize(toggleText));
+                this.$el.attr('aria-label', $.a11y_normalize(toggleText));
 
                 if (isActive) {
                     $("html").addClass('accessibility');
@@ -70,19 +68,6 @@ define([
             this.render();
 
             this.trigger('accessibility:toggle');
-        },
-
-        setupHelpers: function() {
-            var config = Adapt.config.get("_accessibility");
-
-            Handlebars.registerHelper('a11y_text', function(text) {
-                //ALLOW ENABLE/DISABLE OF a11y_text HELPER
-                if (config && config._isTextProcessorEnabled === false) {
-                    return text;
-                } else {
-                    return $.a11y_text(text);
-                }
-            });
         },
 
         configureAccessibility: function() {
