@@ -81,7 +81,6 @@ define([
             if (isActive) {
 
                 _.extend($.a11y.options, {
-                    isTabbableTextEnabled: true,
                     isUserInputControlEnabled: true,
                     isFocusControlEnabled: true,
                     isFocusLimited: true,
@@ -95,7 +94,6 @@ define([
                 });
             } else {
                 _.extend($.a11y.options, {
-                    isTabbableTextEnabled: false,
                     isUserInputControlEnabled: true,
                     isFocusControlEnabled: true,
                     isFocusLimited: false,

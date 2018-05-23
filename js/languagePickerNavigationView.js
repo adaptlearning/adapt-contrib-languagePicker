@@ -45,7 +45,7 @@ define([
             var config = Adapt.config.get("_accessibility");
 
             Handlebars.registerHelper('a11y_aria_label', function(text) {
-                return '<div class="aria-label prevent-default" role="region">'+text+'</div>';
+                return '<div class="aria-label prevent-default">'+text+'</div>';
             });
         },
 
