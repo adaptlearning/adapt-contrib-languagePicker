@@ -44,17 +44,8 @@ define([
         setupHelpers: function() {
             var config = Adapt.config.get("_accessibility");
 
-            Handlebars.registerHelper('a11y_text', function(text) {
-                //ALLOW ENABLE/DISABLE OF a11y_text HELPER
-                if (config && config._isTextProcessorEnabled === false) {
-                    return text;
-                } else {
-                    return $.a11y_text(text);
-                }
-            });
-
             Handlebars.registerHelper('a11y_aria_label', function(text) {
-                return '<div class="aria-label prevent-default" tabindex="0" role="region">'+text+'</div>';
+                return '<div class="aria-label prevent-default" role="region">'+text+'</div>';
             });
         },
 
@@ -86,7 +77,7 @@ define([
 
         onA11yToggle:function() {
             // listen once because if a11y active on launch instructions will already be setup
-            
+
             if (Adapt.accessibility.isActive()) {
                 this.setupUsageInstructions();
             }
