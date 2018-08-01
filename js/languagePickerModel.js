@@ -1,17 +1,16 @@
 define([
-        'core/js/adapt',
-        'backbone'
-], function (Adapt, Backbone) {
-    
+        'core/js/adapt'
+], function (Adapt) {
+
     var LanguagePickerModel = Backbone.Model.extend({
-        
+
         defaults: {
             "_isEnabled": false,
             "displayTitle": "",
             "body": "",
             "_languages": []
         },
-        
+
         initialize: function () {
             this.listenTo(Adapt.config, 'change:_activeLanguage', this.onConfigChange);
         },
@@ -29,11 +28,11 @@ define([
                 '_defaultDirection': this.getLanguageDetails(language)._direction
             });
         },
-        
+
         onConfigChange: function (model, value, options) {
             this.markLanguageAsSelected(value);
         },
-        
+
         markLanguageAsSelected: function(language) {
             var languages = this.get('_languages');
 
@@ -47,9 +46,9 @@ define([
 
             this.set('_languages', languages);
         }
-        
+
     });
-    
+
     return LanguagePickerModel;
-    
+
 });
