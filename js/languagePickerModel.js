@@ -21,7 +21,7 @@ define([
         
         initialize: function () {
             this.listenTo(Adapt.config, 'change:_activeLanguage', this.onConfigChange);
-            if (this.get("_restoreStateOnLangaugeChange")) {
+            if (this.get("_restoreStateOnLanguageChange")) {
                 this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
             }
         },
@@ -115,7 +115,7 @@ define([
         },
 
         setTrackedData: function() {
-            if (this.get("_restoreStateOnLangaugeChange")) {
+            if (this.get("_restoreStateOnLanguageChange")) {
                 this.listenToOnce(Adapt, "menuView:ready", this.restoreLocation);
                 this.trackedData = this.getTrackableState();
             }
