@@ -48,7 +48,7 @@ The following attributes are set within *config.json*.
 
 >**_languagePickerIconClass** (string): The class defined here will define the icon of the language-picker in the navigation bar. The vanilla theme supports the following class-names by default: "icon-globe", "icon-language-1", "icon-language-2". The default value for this attribute is "icon-language-2".    
 
->**_restoreStateOnLangaugeChange**(boolean): Determines whether the language picker will be restore state of course on language switch. If set to false, the course will load with the default course states.
+>**_restoreStateOnLanguageChange**(boolean): Determines whether the language picker will be restore state of course on language switch. If set to false, the course will load with the default course states.
 
 >**_languages** (object):  The languages attribute group contains properties related to the available languages.   It contains values for **_language**, **_direction**, **displayName**, **warningTitle**, **warningMessage**, and **_buttons**. 
 
