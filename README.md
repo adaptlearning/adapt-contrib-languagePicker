@@ -50,6 +50,8 @@ The following attributes are set within *config.json*.
 
 >**_restoreStateOnLangaugeChange**(boolean): Determines whether the language picker will be restore state of course on language switch. If set to false, the course will load with the default course states.
 
+>**_languages** (object):  The languages attribute group contains properties related to the available languages.   It contains values for **_language**, **_direction**, **displayName**, **warningTitle**, **warningMessage**, and **_buttons**. 
+
 >>**_language** (string): This text must match the name of the language-specific folder located in the course root, for example, "en" from *course/en*. It is used as the value for the HTML `lang` attribute. It is highly recommended that codes for web languages be used. Reference a source such as the [IANA Language Subtag Registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). 
 
 >>**_direction** (string): Specifies the value of the HTML `dir` attribute and, consequently, the base direction of text. Acceptable values are `"rtl"` (right-to-left) and `"ltr"` (left-to-right). 
