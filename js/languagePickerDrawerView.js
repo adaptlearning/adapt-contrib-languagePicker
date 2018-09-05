@@ -71,9 +71,10 @@ define([
         },
         
         onDoChangeLanguage: function () {
-            // set default languge
+            // set default language
             var newLanguage = this.model.get('newLanguage');
             this.model.setLanguage(newLanguage);
+            this.model.setTrackedData();
             this.remove();
         },
         
