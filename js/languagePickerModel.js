@@ -21,7 +21,7 @@ define([
         
         initialize: function () {
             this.listenTo(Adapt.config, 'change:_activeLanguage', this.onConfigChange);
-            if (this.get("_restoreStateOnLanguageChange")) {
+            if (this.get('_restoreStateOnLanguageChange')) {
                 this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
             }
         },
@@ -67,10 +67,9 @@ define([
         },
         
         restoreLocation: function() {
+            if (!Adapt.mapById(this.locationId)) return;
             _.defer(function() {
-                if (this.locationId !== "undefined" && this.locationId) {
-                    Adapt.navigateToElement('.' + this.locationId);
-                }
+                Adapt.navigateToElement('.' + this.locationId);
             }.bind(this));
         },
 
@@ -81,12 +80,15 @@ define([
 
             if (this.isTrackedDataEmpty()) return;
 
-            if (this.trackedData.components) {
-                _.each(this.trackedData.components, this.setTrackableState);
+            var components = this.trackedData.components;
+            var blocks = this.trackedData.blocks;
+
+            if (components) {
+                components.forEach(this.setTrackableState);
             }
 
-            if (this.trackedData.blocks) {
-                _.each(this.trackedData.blocks, this.setTrackableState);
+            if (blocks) {
+                blocks.forEach(this.setTrackableState);
             }
         },
 
@@ -98,25 +100,25 @@ define([
         },
 
         getTrackableState: function() {
-            var components = _.map(Adapt.components.models, function(model) {
-                if (model.get('_isComplete')) {
-                    return model.getTrackableState();
-                }
-            });
-            var blocks = _.map(Adapt.blocks.models, function(model) {
-                if (model.get('_isComplete')) {
-                    return model.getTrackableState();
-                }
-            });
+            var components = this.getState(Adapt.components.models);
+            var blocks = this.getState(Adapt.blocks.models);
             return {
                 "components": _.compact(components),
                 "blocks": _.compact(blocks)
             };
         },
 
+        getState: function(models) {
+            return models.map(function(model) {
+                if (model.get('_isComplete')) {
+                    return model.getTrackableState();
+                }
+            });
+        },
+
         setTrackedData: function() {
-            if (this.get("_restoreStateOnLanguageChange")) {
-                this.listenToOnce(Adapt, "menuView:ready", this.restoreLocation);
+            if (this.get('_restoreStateOnLanguageChange')) {
+                this.listenToOnce(Adapt, 'menuView:ready', this.restoreLocation);
                 this.trackedData = this.getTrackableState();
             }
         },
