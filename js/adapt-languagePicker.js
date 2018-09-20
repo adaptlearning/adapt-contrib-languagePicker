@@ -1,10 +1,9 @@
 define([
     'core/js/adapt',
-    'backbone',
     './languagePickerView',
     './languagePickerNavView',
     './languagePickerModel'
-], function(Adapt, Backbone, LanguagePickerView, LanguagePickerNavView, LanguagePickerModel) {
+], function(Adapt, LanguagePickerView, LanguagePickerNavView, LanguagePickerModel) {
 
     var languagePickerModel;
 
@@ -20,14 +19,14 @@ define([
     function onConfigLoaded() {
         if (!Adapt.config.has('_languagePicker')) return;
         if (!Adapt.config.get('_languagePicker')._isEnabled) return;
-    
+
         Adapt.config.set("_canLoadData", false);
 
         languagePickerModel = new LanguagePickerModel(Adapt.config.get('_languagePicker'));
-        
+
         Adapt.on('router:page', setupNavigationView);
         Adapt.on('router:menu', setupNavigationView);
-            
+
         if(Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
             onOfflineStorageReady();
         } else {
@@ -55,13 +54,13 @@ define([
         var languagePickerView = new LanguagePickerView({
             model: languagePickerModel
         });
-        
+
         languagePickerView.$el.appendTo('#wrapper');
     }
-    
+
     function setupNavigationView () {
-        /* 
-         * On the framework this isn't an issue, but courses built in the authoring tool before the ARIA label 
+        /*
+         * On the framework this isn't an issue, but courses built in the authoring tool before the ARIA label
          * was added will break unless the extension is removed then added again.
          */
         var courseGlobals = Adapt.course.get('_globals')._extensions;
@@ -76,8 +75,8 @@ define([
                 "aria-label": navigationBarLabel
             }
         });
-        
+
         languagePickerNavView.$el.appendTo('.navigation-inner');
     }
-    
+
 });
