@@ -1,7 +1,6 @@
 define([
-        'core/js/adapt',
-        'backbone'
-], function (Adapt, Backbone) {
+        'core/js/adapt'
+], function (Adapt) {
     
     var LanguagePickerModel = Backbone.Model.extend({
         
