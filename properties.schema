@@ -88,6 +88,15 @@
                   "validators": [],
                   "help": "Your default options here are: icon-globe, icon-language-1, icon-language-2"
                 },
+                "_restoreStateOnLanguageChange": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": true,
+                  "title": "Restore course state.",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Restore course state on language switch."
+                },
                 "_classes": {
                   "type": "string",
                   "required": false,
