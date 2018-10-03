@@ -67,9 +67,7 @@ define([
 
         restoreLocation: function() {
             if (!Adapt.mapById(this.locationId)) return;
-            _.defer(function() {
-                Adapt.navigateToElement('.' + this.locationId);
-            }.bind(this));
+            _.defer(Adapt.navigateToElement, '.' + this.locationId);
         },
 
         /**
@@ -79,15 +77,12 @@ define([
 
             if (this.isTrackedDataEmpty()) return;
 
-            var components = this.trackedData.components;
-            var blocks = this.trackedData.blocks;
-
-            if (components) {
-                components.forEach(this.setTrackableState);
+            if (this.trackedData.components) {
+                this.trackedData.components.forEach(this.setTrackableState);
             }
 
-            if (blocks) {
-                blocks.forEach(this.setTrackableState);
+            if (this.trackedData.blocks) {
+                this.trackedData.blocks.forEach(this.setTrackableState);
             }
         },
 
