@@ -20,9 +20,7 @@ define([
 
         initialize: function () {
             this.listenTo(Adapt.config, 'change:_activeLanguage', this.onConfigChange);
-            if (this.get('_restoreStateOnLanguageChange')) {
-                this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
-            }
+            this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
         },
 
         getLanguageDetails: function (language) {
