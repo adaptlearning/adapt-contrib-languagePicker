@@ -91,11 +91,11 @@
                 "_restoreStateOnLanguageChange": {
                   "type": "boolean",
                   "required": true,
-                  "default": true,
-                  "title": "Restore course state.",
+                  "default": false,
+                  "title": "Restore course state on language change",
                   "inputType": "Checkbox",
                   "validators": [],
-                  "help": "Restore course state on language switch."
+                  "help": "Determines whether or not the language picker will try to restore the 'state' of the course when the user changes language. It is advised that you only enable this setting if all course languages have exactly the same structure; if they do not, some loss of tracking data will occur. If this setting is disabled, tracking data will be cleared when the user switches language - the 'Confirm Message' should be used to warn the user of this."
                 },
                 "_classes": {
                   "type": "string",
