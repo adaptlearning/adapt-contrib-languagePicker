@@ -58,6 +58,9 @@ define([
         },
 
        onDataLoaded: function() {
+            if (!this.get('_restoreStateOnLanguageChange')) {
+                return;
+            }
             _.defer(function() {
                 this.locationId = Adapt.offlineStorage.get('location') || null;
                 this.restoreState();
