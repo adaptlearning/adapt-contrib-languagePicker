@@ -7,7 +7,7 @@
     "issues": "https://github.com/adaptlearning/adapt_framework/issues",
     "displayName": "Language Picker",
     "extension": "languagePicker",
-    "description": "An extension to select a Language",
+    "description": "Learners can open the course in their prefered language.",
     "main": "/js/adapt-languagePicker.js",
     "keywords": [
         "adapt-plugin",
