@@ -48,6 +48,8 @@ The following attributes are set within *config.json*.
 
 >**_languagePickerIconClass** (string): The class defined here will define the icon of the language-picker in the navigation bar. The vanilla theme supports the following class-names by default: "icon-globe", "icon-language-1", "icon-language-2". The default value for this attribute is "icon-language-2".    
 
+>**_restoreStateOnLanguageChange**(boolean): Determines whether or not the language picker will try to restore the 'state' of the course when the user changes language. It is advised that you only set this to true if all course languages have exactly the same structure; if they do not, some loss of tracking data will occur. If set to false, all tracking data will be cleared when the user switches language - the warningMessage (see below) should be used to warn the user of this.
+
 >**_languages** (object):  The languages attribute group contains properties related to the available languages.   It contains values for **_language**, **_direction**, **displayName**, **warningTitle**, **warningMessage**, and **_buttons**.  
 
 >>**_language** (string): This text must match the name of the language-specific folder located in the course root, for example, "en" from *course/en*. It is used as the value for the HTML `lang` attribute. It is highly recommended that codes for web languages be used. Reference a source such as the [IANA Language Subtag Registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). 
@@ -95,7 +97,7 @@ The following attributes are set within *config.json*.
 - Language Picker is not yet compatible with the Adapt Authoring Tool.
 
 ## Dependencies
-As well as requiring [**Adapt Framework**](https://github.com/adaptlearning/adapt_framework) v3 (or better) you will need v2.0.4 (or better) of the [**Vanilla theme**](https://github.com/adaptlearning/adapt-contrib-vanilla) and, if you need your course to be SCORM conformant, v2.0.13 (or better) of the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension.
+As well as requiring [**Adapt Framework**](https://github.com/adaptlearning/adapt_framework) v3+ (or better) you will need v2.0.4 (or better) of the [**Vanilla theme**](https://github.com/adaptlearning/adapt-contrib-vanilla) and, if you need your course to be SCORM conformant, v2.0.13 (or better) of the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension.
 
 ----------------------------
 **Version number:**  2.0.0  <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
