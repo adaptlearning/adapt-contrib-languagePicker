@@ -39,11 +39,7 @@ define([
 
         markLanguageAsSelected: function(model, language) {
             this.get('_languages').forEach(function(item){
-                if (item._language === language) {
-                    item._isSelected = true;
-                    return;
-                }
-                item._isSelected = false;
+                item._isSelected = (item._language === language);
             });
         },
 
