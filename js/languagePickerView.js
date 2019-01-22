@@ -13,7 +13,7 @@ define([
 
         initialize: function () {
             this.initializeNavigation();
-            $("html").addClass("in-languagepicker");
+            $('html').addClass('in-languagepicker');
             this.listenTo(Adapt, 'remove', this.remove);
             this.render();
         },
@@ -26,9 +26,7 @@ define([
 
             document.title = this.model.get('title') || "";
 
-            _.defer(_.bind(function () {
-                this.postRender();
-            }, this));
+            _.defer(this.postRender.bind(this));
         },
 
         postRender: function () {
@@ -49,7 +47,7 @@ define([
         },
 
         remove: function() {
-            $("html").removeClass("in-languagepicker");
+            $('html').removeClass('in-languagepicker');
 
             Backbone.View.prototype.remove.apply(this, arguments);
         }

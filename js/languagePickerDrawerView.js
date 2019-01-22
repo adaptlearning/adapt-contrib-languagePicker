@@ -9,9 +9,11 @@ define([
         },
 
         initialize: function () {
-            this.listenTo(Adapt, 'remove', this.remove);
-            this.listenTo(Adapt, 'languagepicker:changelanguage:yes', this.onDoChangeLanguage);
-            this.listenTo(Adapt, 'languagepicker:changelanguage:no', this.onDontChangeLanguage);
+            this.listenTo(Adapt, {
+                remove: this.remove,
+                'languagepicker:changelanguage:yes': this.onDoChangeLanguage,
+                'languagepicker:changelanguage:no': this.onDontChangeLanguage
+            });
             this.render();
         },
 
@@ -27,30 +29,30 @@ define([
             var data = this.model.getLanguageDetails(newLanguage);
 
             var promptObject = {
-                _classes: "dir-ltr",
+                _classes: 'dir-ltr',
                 title: data.warningTitle,
                 body: data.warningMessage,
                 _prompts:[
                     {
                         promptText: data._buttons.yes,
-                        _callbackEvent: "languagepicker:changelanguage:yes"
+                        _callbackEvent: 'languagepicker:changelanguage:yes'
                     },
                     {
                         promptText: data._buttons.no,
-                        _callbackEvent: "languagepicker:changelanguage:no"
+                        _callbackEvent: 'languagepicker:changelanguage:no'
                     }
                 ],
                 _showIcon: true
             };
 
             if (data._direction === 'rtl') {
-                promptObject._classes = "dir-rtl";
+                promptObject._classes = 'dir-rtl';
             }
 
             //keep active element incase the user cancels - usually navigation bar icon
             this.$finishFocus = $.a11y.state.focusStack.pop();
             //move drawer close focus to #focuser
-            $.a11y.state.focusStack.push($("#focuser"));
+            $.a11y.state.focusStack.push($('#focuser'));
 
             Adapt.once('drawer:closed', function() {
                 //wait for drawer to fully close
@@ -59,7 +61,7 @@ define([
                     Adapt.once('popup:opened', function() {
                         //move popup close focus to #focuser
                         $.a11y.state.focusStack.pop();
-                        $.a11y.state.focusStack.push($("#focuser"));
+                        $.a11y.state.focusStack.push($('#focuser'));
                     });
 
                     Adapt.trigger('notify:prompt', promptObject);
@@ -81,10 +83,10 @@ define([
             this.remove();
 
             //wait for notify to close fully
-            _.delay(_.bind(function(){
+            _.delay(function(){
                 //focus on navigation bar icon
                 this.$finishFocus.a11y_focus();
-            }, this), 500);
+            }.bind(this), 500);
 
         }
 

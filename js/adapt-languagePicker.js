@@ -20,12 +20,11 @@ define([
         if (!Adapt.config.has('_languagePicker')) return;
         if (!Adapt.config.get('_languagePicker')._isEnabled) return;
 
-        Adapt.config.set("_canLoadData", false);
+        Adapt.config.set('_canLoadData', false);
 
         languagePickerModel = new LanguagePickerModel(Adapt.config.get('_languagePicker'));
 
-        Adapt.on('router:page', setupNavigationView);
-        Adapt.on('router:menu', setupNavigationView);
+        Adapt.on('router:menu router:page', setupNavigationView);
 
         if(Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
             onOfflineStorageReady();
@@ -39,7 +38,7 @@ define([
      * If it was, load it. If it wasn't, show the language picker
      */
     function onOfflineStorageReady() {
-        var storedLanguage = Adapt.offlineStorage.get("lang");
+        var storedLanguage = Adapt.offlineStorage.get('lang');
 
         if (storedLanguage) {
             languagePickerModel.setLanguage(storedLanguage);
@@ -72,7 +71,7 @@ define([
         var languagePickerNavView = new LanguagePickerNavView({
             model: languagePickerModel,
             attributes:  {
-                "aria-label": navigationBarLabel
+                'aria-label': navigationBarLabel
             }
         });
 

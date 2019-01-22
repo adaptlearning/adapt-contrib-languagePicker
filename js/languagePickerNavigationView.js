@@ -4,14 +4,14 @@ define([
 
     var NavigationView = Backbone.View.extend({
 
-        className: "navigation",
+        className: 'navigation',
 
         attributes: {
-            role: "navigation"
+            role: 'navigation'
         },
 
         initialize: function() {
-            this.template = "languagePickerNavigation";
+            this.template = 'languagePickerNavigation';
             this.setupHelpers();
             this.preRender();
         },
@@ -23,16 +23,14 @@ define([
 
         render: function() {
             var template = Handlebars.templates[this.template];
-            this.$el.html(template(
-                {
-                    _config: this.model.get("_accessibility"),
-                    _accessibility: Adapt.config.get("_accessibility")
-                }
-            )).insertBefore('#app');
+            this.$el.html(template({
+                _config: this.model.get('_accessibility'),
+                _accessibility: Adapt.config.get('_accessibility')
+            })).insertBefore('#app');
 
-            _.defer(_.bind(function() {
+            _.defer(function() {
                 Adapt.trigger('navigationView:postRender', this);
-            }, this));
+            }.bind(this));
 
             return this;
         },

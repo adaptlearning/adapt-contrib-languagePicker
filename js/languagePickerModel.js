@@ -5,28 +5,28 @@ define([
     var LanguagePickerModel = Backbone.Model.extend({
 
         defaults: {
-            "_isEnabled": false,
-            "displayTitle": "",
-            "body": "",
-            "_languages": []
+            _isEnabled: false,
+            displayTitle: '',
+            body: '',
+            _languages: []
         },
 
         trackedData: {
-            "components": [],
-            "blocks": []
+            components: [],
+            blocks: []
         },
 
         locationId: null,
 
         initialize: function () {
-            this.listenTo(Adapt.config, 'change:_activeLanguage', this.onConfigChange);
+            this.listenTo(Adapt.config, 'change:_activeLanguage', this.markLanguageAsSelected);
             this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
         },
 
         getLanguageDetails: function (language) {
             var _languages = this.get('_languages');
             return _.find(_languages, function (item) {
-                return (item._language == language);
+                return (item._language === language);
             });
         },
 
@@ -37,22 +37,10 @@ define([
             });
         },
 
-        onConfigChange: function (model, value, options) {
-            this.markLanguageAsSelected(value);
-        },
-
-        markLanguageAsSelected: function(language) {
-            var languages = this.get('_languages');
-
-            for (var i = 0; i < languages.length; i++) {
-                if (languages[i]._language === language) {
-                    languages[i]._isSelected = true;
-                } else {
-                    languages[i]._isSelected = false;
-                }
-            }
-
-            this.set('_languages', languages);
+        markLanguageAsSelected: function(model, language) {
+            this.get('_languages').forEach(function(item){
+                item._isSelected = (item._language === language);
+            });
         },
 
        onDataLoaded: function() {
@@ -89,8 +77,8 @@ define([
 
         isTrackedDataEmpty: function() {
             return _.isEqual(this.trackedData, {
-                "components": [],
-                "blocks": []
+                components: [],
+                blocks: []
             });
         },
 
@@ -98,8 +86,8 @@ define([
             var components = this.getState(Adapt.components.models);
             var blocks = this.getState(Adapt.blocks.models);
             return {
-                "components": _.compact(components),
-                "blocks": _.compact(blocks)
+                components: _.compact(components),
+                blocks: _.compact(blocks)
             };
         },
 
