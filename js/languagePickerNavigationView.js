@@ -23,12 +23,10 @@ define([
 
         render: function() {
             var template = Handlebars.templates[this.template];
-            this.$el.html(template(
-                {
-                    _config: this.model.get('_accessibility'),
-                    _accessibility: Adapt.config.get('_accessibility')
-                }
-            )).insertBefore('#app');
+            this.$el.html(template({
+                _config: this.model.get('_accessibility'),
+                _accessibility: Adapt.config.get('_accessibility')
+            })).insertBefore('#app');
 
             _.defer(function() {
                 Adapt.trigger('navigationView:postRender', this);
