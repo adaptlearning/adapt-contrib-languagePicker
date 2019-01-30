@@ -1,33 +1,33 @@
 define([
-    'core/js/adapt',
-    './languagePickerDrawerView'
+  'core/js/adapt',
+  './languagePickerDrawerView'
 ], function(Adapt, LanguagePickerDrawerView) {
 
-    var LanguagePickerNavView = Backbone.View.extend({
+  var LanguagePickerNavView = Backbone.View.extend({
 
-        tagName: 'button',
+    tagName: 'button',
 
-        className: function () {
-            var classNames = 'languagepicker-icon base icon';
-            var customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
+    className: function () {
+      var classNames = 'languagepicker-icon base icon';
+      var customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
 
-            return classNames + ' ' + customClass;
-        },
+      return classNames + ' ' + customClass;
+    },
 
-        events: {
-            'click': 'onClick'
-        },
+    events: {
+      'click': 'onClick'
+    },
 
-        initialize: function () {
-            this.listenTo(Adapt, 'remove', this.remove);
-        },
+    initialize: function () {
+      this.listenTo(Adapt, 'remove', this.remove);
+    },
 
-        onClick: function (event) {
-            Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({model: this.model}).$el, false);
-        }
+    onClick: function (event) {
+      Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({model: this.model}).$el, false);
+    }
 
-    });
+  });
 
-    return LanguagePickerNavView;
+  return LanguagePickerNavView;
 
 });
