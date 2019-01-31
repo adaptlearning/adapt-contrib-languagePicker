@@ -75,7 +75,7 @@ define([
       }
     });
 
-    languagePickerNavView.$el.appendTo('.navigation-inner');
+    languagePickerNavView.$el.appendTo('.nav__inner');
   }
 
 });

@@ -6,7 +6,7 @@ define([
   var LanguagePickerView = Backbone.View.extend({
 
     events: {
-      'click .languagepicker-languages button': 'onLanguageClick'
+      'click .js-languagepicker-btn-click': 'onLanguageClick'
     },
 
     className: 'languagepicker',
@@ -30,7 +30,7 @@ define([
     },
 
     postRender: function () {
-      $('.loading').hide();
+      $('.js-loading').hide();
     },
 
     onLanguageClick: function (event) {

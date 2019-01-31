@@ -5,7 +5,7 @@ define([
   var LanguagePickerDrawerView = Backbone.View.extend({
 
     events: {
-      'click button': 'onButtonClick'
+      'click .js-languagepicker-item-btn': 'onButtonClick'
     },
 
     initialize: function () {
@@ -29,7 +29,7 @@ define([
       var data = this.model.getLanguageDetails(newLanguage);
 
       var promptObject = {
-        _classes: 'dir-ltr',
+        _classes: 'is-ltr',
         title: data.warningTitle,
         body: data.warningMessage,
         _prompts:[
@@ -46,7 +46,7 @@ define([
       };
 
       if (data._direction === 'rtl') {
-        promptObject._classes = 'dir-rtl';
+        promptObject._classes = 'is-rtl';
       }
 
       //keep active element incase the user cancels - usually navigation bar icon

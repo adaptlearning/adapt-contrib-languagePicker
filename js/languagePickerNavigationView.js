@@ -4,7 +4,7 @@ define([
 
   var NavigationView = Backbone.View.extend({
 
-    className: 'navigation',
+    className: 'nav',
 
     attributes: {
       role: 'navigation'
