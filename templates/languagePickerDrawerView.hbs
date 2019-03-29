@@ -3,10 +3,10 @@
 <div class="languagepicker">
   {{a11y_aria_label _globals._extensions._languagePicker.languageSelector}}
   <div class="languagepicker-inner" role="list">
-     {{#each _languages}}
-        <div class="languagepicker-language drawer-item {{#if _isSelected}}selected{{/if}} {{_language}} {{#equals _direction "rtl"}}dir-rtl{{/equals}}" role="listitem">
-          <button class="base drawer-item-open" data-language="{{_language}}" {{#if _isSelected}}disabled{{/if}}>{{{compile displayName}}}</button>
-        </div>
-     {{/each}}
+   {{#each _languages}}
+    <div class="languagepicker-language drawer-item {{#if _isSelected}}selected{{/if}} {{_language}} {{#equals _direction "rtl"}}dir-rtl{{/equals}}" role="listitem">
+      <button class="base drawer-item-open" data-language="{{_language}}" {{#if _isSelected}}disabled{{/if}}>{{{compile displayName}}}</button>
+    </div>
+   {{/each}}
   </div>
 </div>

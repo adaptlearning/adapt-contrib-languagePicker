@@ -1,61 +1,61 @@
 define([
-    'core/js/adapt',
-    './languagePickerNavigationView'
+  'core/js/adapt',
+  './languagePickerNavigationView'
 ], function(Adapt, NavigationView) {
 
-    var LanguagePickerView = Backbone.View.extend({
+  var LanguagePickerView = Backbone.View.extend({
 
-        events: {
-            'click .languagepicker-languages button': 'onLanguageClick'
-        },
+    events: {
+      'click .languagepicker-languages button': 'onLanguageClick'
+    },
 
-        className: 'languagepicker',
+    className: 'languagepicker',
 
-        initialize: function () {
-            this.initializeNavigation();
-            $('html').addClass('in-languagepicker');
-            this.listenTo(Adapt, 'remove', this.remove);
-            this.render();
-        },
+    initialize: function () {
+      this.initializeNavigation();
+      $('html').addClass('in-languagepicker');
+      this.listenTo(Adapt, 'remove', this.remove);
+      this.render();
+    },
 
-        render: function () {
-            var data = this.model.toJSON();
-            var template = Handlebars.templates[this.constructor.template];
-            this.$el.html(template(data));
-            this.$el.addClass(data._classes);
+    render: function () {
+      var data = this.model.toJSON();
+      var template = Handlebars.templates[this.constructor.template];
+      this.$el.html(template(data));
+      this.$el.addClass(data._classes);
 
-            document.title = this.model.get('title') || "";
+      document.title = this.model.get('title') || "";
 
-            _.defer(this.postRender.bind(this));
-        },
+      _.defer(this.postRender.bind(this));
+    },
 
-        postRender: function () {
-            $('.loading').hide();
-        },
+    postRender: function () {
+      $('.loading').hide();
+    },
 
-        onLanguageClick: function (event) {
-            this.destroyNavigation();
-            this.model.setLanguage($(event.target).val());
-        },
+    onLanguageClick: function (event) {
+      this.destroyNavigation();
+      this.model.setLanguage($(event.target).val());
+    },
 
-        initializeNavigation: function() {
-            this.navigationView = new NavigationView({model:this.model});
-        },
+    initializeNavigation: function() {
+      this.navigationView = new NavigationView({model:this.model});
+    },
 
-        destroyNavigation: function() {
-            this.navigationView.remove();
-        },
+    destroyNavigation: function() {
+      this.navigationView.remove();
+    },
 
-        remove: function() {
-            $('html').removeClass('in-languagepicker');
+    remove: function() {
+      $('html').removeClass('in-languagepicker');
 
-            Backbone.View.prototype.remove.apply(this, arguments);
-        }
+      Backbone.View.prototype.remove.apply(this, arguments);
+    }
 
-    }, {
-        template: 'languagePickerView'
-    });
+  }, {
+    template: 'languagePickerView'
+  });
 
-    return LanguagePickerView;
+  return LanguagePickerView;
 
 });

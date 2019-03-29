@@ -1,19 +1,19 @@
 <div class="languagepicker-inner">
-    <div class="languagepicker-title">
-        <div class="languagepicker-title-inner" role="heading" aria-level="1">
-            {{{compile displayTitle}}}
-        </div>
+  <div class="languagepicker-title">
+    <div class="languagepicker-title-inner" role="heading" aria-level="1">
+      {{{compile displayTitle}}}
     </div>
-    <div class="languagepicker-body">
-        <div class="languagepicker-body-inner">
-            {{{compile body}}}
-        </div>
+  </div>
+  <div class="languagepicker-body">
+    <div class="languagepicker-body-inner">
+      {{{compile body}}}
     </div>
-    <div class="languagepicker-languages">
-        {{#each _languages}}
-            <button class="languagepicker-language {{_language}}" role="link" value="{{_language}}">
-                {{{compile displayName}}}
-            </button>
-        {{/each}}
-    </div>
+  </div>
+  <div class="languagepicker-languages">
+    {{#each _languages}}
+      <button class="languagepicker-language {{_language}}" role="link" value="{{_language}}">
+        {{{compile displayName}}}
+      </button>
+    {{/each}}
+  </div>
 </div>
