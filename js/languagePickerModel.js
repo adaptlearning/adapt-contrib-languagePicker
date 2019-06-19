@@ -56,7 +56,9 @@ define([
 
     restoreLocation: function() {
       if (!Adapt.mapById(this.locationId)) return;
-      _.defer(Adapt.navigateToElement, '.' + this.locationId);
+      _.defer(function() {
+        Adapt.navigateToElement('.' + this.locationId);
+      }.bind(this));
     },
 
     /**
