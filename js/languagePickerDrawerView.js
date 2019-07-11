@@ -24,7 +24,7 @@ define([
     },
 
     onButtonClick: function (event) {
-      var newLanguage = $(event.target).attr('data-language');
+      var newLanguage = $(event.currentTarget).attr('data-language');
       this.model.set('newLanguage', newLanguage);
       var data = this.model.getLanguageDetails(newLanguage);
 
