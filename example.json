@@ -1,4 +1,4 @@
-// To go in config.json
+    // To go in config.json
     "_languagePicker": {
         "_isEnabled": true,
         "title": "Language selection",
