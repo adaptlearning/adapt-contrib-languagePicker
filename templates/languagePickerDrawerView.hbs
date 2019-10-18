@@ -1,7 +1,7 @@
 {{! make the _globals object in course.json available to this template}}
 {{import_globals}}
 <div class="languagepicker">
-  {{a11y_aria_label _globals._extensions._languagePicker.languageSelector}}
+  {{{a11y_aria_label _globals._extensions._languagePicker.languageSelector}}}
   <div class="languagepicker-inner" role="list">
      {{#each _languages}}
         <div class="languagepicker-language drawer-item {{#if _isSelected}}selected{{/if}} {{_language}} {{#equals _direction "rtl"}}dir-rtl{{/equals}}" role="listitem">
