@@ -52,7 +52,7 @@ define([
             //keep active element incase the user cancels - usually navigation bar icon
             //move drawer close focus to #focuser
             if ($.a11y) {
-                // old a11y API
+                // old a11y API (Framework v4.3.0 and earlier)
                 this.$finishFocus = $.a11y.state.focusStack.pop();
                 $.a11y.state.focusStack.push($('#focuser'));
             } else {
