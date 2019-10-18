@@ -67,7 +67,7 @@ define([
                     Adapt.once('popup:opened', function() {
                         //move popup close focus to #focuser
                         if ($.a11y) {
-                            // old a11y API
+                            // old a11y API (Framework v4.3.0 and earlier)
                             $.a11y.state.focusStack.pop();
                             $.a11y.state.focusStack.push($('#focuser'));
                             return;
