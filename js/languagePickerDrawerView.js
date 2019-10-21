@@ -50,9 +50,15 @@ define([
             }
 
             //keep active element incase the user cancels - usually navigation bar icon
-            this.$finishFocus = $.a11y.state.focusStack.pop();
             //move drawer close focus to #focuser
-            $.a11y.state.focusStack.push($('#focuser'));
+            if ($.a11y) {
+                // old a11y API (Framework v4.3.0 and earlier)
+                this.$finishFocus = $.a11y.state.focusStack.pop();
+                $.a11y.state.focusStack.push($('#focuser'));
+            } else {
+                this.$finishFocus = Adapt.a11y._popup._focusStack.pop();
+                Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
+            }
 
             Adapt.once('drawer:closed', function() {
                 //wait for drawer to fully close
@@ -60,8 +66,14 @@ define([
                     //show yes/no popup
                     Adapt.once('popup:opened', function() {
                         //move popup close focus to #focuser
-                        $.a11y.state.focusStack.pop();
-                        $.a11y.state.focusStack.push($('#focuser'));
+                        if ($.a11y) {
+                            // old a11y API (Framework v4.3.0 and earlier)
+                            $.a11y.state.focusStack.pop();
+                            $.a11y.state.focusStack.push($('#focuser'));
+                            return;
+                        }
+                        Adapt.a11y._popup._focusStack.pop();
+                        Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
                     });
 
                     Adapt.trigger('notify:prompt', promptObject);
