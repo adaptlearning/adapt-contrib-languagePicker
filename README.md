@@ -83,19 +83,13 @@ The following attributes are set within *config.json*.
 <div float align=right><a href="#top">Back to Top</a></div>
 
 
-
 ## Limitations
  
 - If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is disabled (or not installed), **Language Picker** will not remember the learner's language choice from the previous session. 
 
-- Switching languages will reset course progress in the LMS. 
-
 - Switching languages during an [**Assessment**](https://github.com/adaptlearning/adapt-contrib-assessment) will reset assessment attempts.  
 
 - Language Picker is not yet compatible with the Adapt Authoring Tool.
-
-## Dependencies
-As well as requiring [**Adapt Framework**](https://github.com/adaptlearning/adapt_framework) v3 (or better) you will need v2.0.4 (or better) of the [**Vanilla theme**](https://github.com/adaptlearning/adapt-contrib-vanilla) and, if you need your course to be SCORM conformant, v2.0.13 (or better) of the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension.
 
 ----------------------------
 **Version number:**  2.0.1  <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a> 
