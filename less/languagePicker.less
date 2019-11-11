@@ -1,113 +1,53 @@
-// overwrite from base less
-// required for changing text-direction during the course
-body {
-	.dir-rtl & {
-    	direction: rtl;
- 	}
-	.dir-ltr & {
-    	direction: ltr;;
-	}
-}
-
+// --------------------------------------------------
+// Language Picker standalone page
+// --------------------------------------------------
 .languagepicker {
-	.languagepicker-inner {
-		
-		.responsive-layout;
-		
-		.languagepicker-title {
-			margin: 0 1%;
-			padding: @menu-title-padding-top 0px @menu-title-padding-bottom;
-			.languagepicker-title-inner {
-				font-size: (@font-size*3);
-				line-height: (@font-size*3 + 10px);
-			}
-		}
-		.languagepicker-body {
-			margin: 0 1%;
-			padding: @menu-body-padding-top 0px;
-			.languagepicker-body-inner {
-			}
-		}
-		.languagepicker-languages {
-			.languagepicker-language {
-				margin: (@button-margin-top*0.5) 1% (@button-margin-bottom*0.5);
-				width: 48%;
-				float: left;
-				@media all and (max-width:(@device-width-small - 1px)) {
-					width: 98%;
-				}
-			}
-		}
-	}
+  &__inner {
+    .l-container-responsive(@device-width-large);
+  }
 }
+// --------------------------------------------------
 
-/*
-	Icon in Navigationbar
-*/
-.navigation {
-	.navigation-inner {
-		.languagepicker-icon {
-			float: right;
-
-			.dir-rtl & {
-				float: left;
-			}
-		}
-	}
+// --------------------------------------------------
+// Language Picker drawer
+// --------------------------------------------------
+.languagepicker-drawer {
+  &__item.is-rtl {
+    direction: rtl;
+  }
 }
+// --------------------------------------------------
 
-/*
-	Drawer
-*/
-.drawer-holder .languagepicker {
-	.languagepicker-inner {
-
-		width: 100%;
-
-		.languagepicker-language {
-
-			.dir-rtl {
-				button {
-					direction: rtl;
-					text-align: inherit;
-				}
-			}
-		}
-	}
+// --------------------------------------------------
+// Nav button styling
+// --------------------------------------------------
+.nav {
+  &__languagepicker-btn {
+    .u-float-right();
+  }
 }
+// --------------------------------------------------
 
-/*
-	Notify
-*/
-.notify .notify-popup.notify-type-prompt {
-	text-align: inherit;
-	
-	&.dir-rtl {
-		direction: rtl;
+// --------------------------------------------------
+// Notify direction amends
+// --------------------------------------------------
+.notify {
+  &__popup.is-ltr {
+    direction: ltr;
+  }
 
-		.notify-popup-icon {
-			right: inherit;
-			left: 0;
-		}
-			
-		.notify-popup-title,
-		.notify-popup-body {
-			padding-left: 60px;
-			padding-right: inherit;
-		}
-	}
-	&.dir-ltr {
-		direction: ltr;
+  &__popup.is-ltr .notify__icon {
+    left: inherit;
+    right: 0;
+  }
 
-		.notify-popup-icon {
-			right: 0;
-			left: inherit;
-		}
-			
-		.notify-popup-title,
-		.notify-popup-body {
-			padding-left: inherit;
-			padding-right: 60px;
-		}
-	}
+  &__popup.is-rtl {
+    direction: rtl;
+  }
+
+  &__popup.is-rtl .notify__icon {
+    right: inherit;
+    left: 0;
+  }
 }
+// --------------------------------------------------
