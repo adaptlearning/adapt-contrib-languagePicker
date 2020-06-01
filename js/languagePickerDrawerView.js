@@ -29,7 +29,7 @@ define([
       var data = this.model.getLanguageDetails(newLanguage);
 
       var promptObject = {
-        _classes: 'is-ltr',
+        _classes: 'is-ltr is-lang-' + newLanguage,
         title: data.warningTitle,
         body: data.warningMessage,
         _prompts:[
