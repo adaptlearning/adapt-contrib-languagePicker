@@ -29,7 +29,8 @@ define([
       var data = this.model.getLanguageDetails(newLanguage);
 
       var promptObject = {
-        _classes: 'is-ltr',
+        _attributes: { lang: newLanguage },
+        _classes: `is-lang-${newLanguage} ${data._direction === 'rtl' ? 'is-rtl' : 'is-ltr'}`,
         title: data.warningTitle,
         body: data.warningMessage,
         _prompts:[
@@ -44,10 +45,6 @@ define([
         ],
         _showIcon: true
       };
-
-      if (data._direction === 'rtl') {
-        promptObject._classes = 'is-rtl';
-      }
 
       //keep active element incase the user cancels - usually navigation bar icon
       //move drawer close focus to #focuser
