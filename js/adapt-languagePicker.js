@@ -26,7 +26,7 @@ define([
 
     Adapt.on('router:menu router:page', setupNavigationView);
 
-    if (Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
+    if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
       onOfflineStorageReady();
       return;
     }
@@ -74,7 +74,7 @@ define([
 
     var languagePickerNavView = new LanguagePickerNavView({
       model: languagePickerModel,
-      attributes:  {
+      attributes: {
         'aria-label': navigationBarLabel
       }
     });

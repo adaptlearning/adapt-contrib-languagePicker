@@ -41,7 +41,7 @@ define([
       });
     },
 
-   onDataLoaded: function() {
+    onDataLoaded: function() {
       if (!this.get('_restoreStateOnLanguageChange')) {
         return;
       }

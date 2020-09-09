@@ -23,7 +23,7 @@ define([
     },
 
     onClick: function (event) {
-      Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({model: this.model}).$el, false);
+      Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({ model: this.model }).$el, false);
     }
 
   });

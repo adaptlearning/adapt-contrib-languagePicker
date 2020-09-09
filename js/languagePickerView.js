@@ -39,7 +39,7 @@ define([
     },
 
     initializeNavigation: function() {
-      this.navigationView = new NavigationView({model: this.model});
+      this.navigationView = new NavigationView({ model: this.model });
     },
 
     destroyNavigation: function() {

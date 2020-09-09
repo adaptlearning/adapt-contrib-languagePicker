@@ -33,7 +33,7 @@ define([
         _classes: `is-lang-${newLanguage} ${data._direction === 'rtl' ? 'is-rtl' : 'is-ltr'}`,
         title: data.warningTitle,
         body: data.warningMessage,
-        _prompts:[
+        _prompts: [
           {
             promptText: data._buttons.yes,
             _callbackEvent: 'languagepicker:changelanguage:yes'
@@ -46,20 +46,20 @@ define([
         _showIcon: true
       };
 
-      //keep active element incase the user cancels - usually navigation bar icon
-      //move drawer close focus to #focuser
+      // keep active element incase the user cancels - usually navigation bar icon
+      // move drawer close focus to #focuser
       this.$finishFocus = Adapt.a11y._popup._focusStack.pop();
       Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
 
       Adapt.once('drawer:closed', () => {
-        //wait for drawer to fully close
+        // wait for drawer to fully close
         _.delay(() => {
           Adapt.once('popup:opened', () => {
-            //move popup close focus to #focuser
+            // move popup close focus to #focuser
             Adapt.a11y._popup._focusStack.pop();
             Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
           });
-          //show yes/no popup
+          // show yes/no popup
           Adapt.notify.prompt(promptObject);
         }, 250);
       });
