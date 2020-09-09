@@ -24,7 +24,7 @@ define([
       this.$el.html(template(data));
       this.$el.addClass(data._classes);
 
-      document.title = this.model.get('title') || "";
+      document.title = this.model.get('title') || '';
 
       _.defer(this.postRender.bind(this));
     },
@@ -39,7 +39,7 @@ define([
     },
 
     initializeNavigation: function() {
-      this.navigationView = new NavigationView({model:this.model});
+      this.navigationView = new NavigationView({model: this.model});
     },
 
     destroyNavigation: function() {

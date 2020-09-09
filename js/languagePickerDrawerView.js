@@ -48,32 +48,19 @@ define([
 
       //keep active element incase the user cancels - usually navigation bar icon
       //move drawer close focus to #focuser
-      if ($.a11y) {
-        // old a11y API (Framework v4.3.0 and earlier)
-        this.$finishFocus = $.a11y.state.focusStack.pop();
-        $.a11y.state.focusStack.push($('#focuser'));
-      } else {
-        this.$finishFocus = Adapt.a11y._popup._focusStack.pop();
-        Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
-      }
+      this.$finishFocus = Adapt.a11y._popup._focusStack.pop();
+      Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
 
-      Adapt.once('drawer:closed', function() {
+      Adapt.once('drawer:closed', () => {
         //wait for drawer to fully close
-        _.delay(function(){
-          //show yes/no popup
-          Adapt.once('popup:opened', function() {
+        _.delay(() => {
+          Adapt.once('popup:opened', () => {
             //move popup close focus to #focuser
-            if ($.a11y) {
-              // old a11y API (Framework v4.3.0 and earlier)
-              $.a11y.state.focusStack.pop();
-              $.a11y.state.focusStack.push($('#focuser'));
-              return;
-            }
             Adapt.a11y._popup._focusStack.pop();
             Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
           });
-
-          Adapt.trigger('notify:prompt', promptObject);
+          //show yes/no popup
+          Adapt.notify.prompt(promptObject);
         }, 250);
       });
 
@@ -81,21 +68,23 @@ define([
     },
 
     onDoChangeLanguage: function () {
-      // set default language
       var newLanguage = this.model.get('newLanguage');
       this.model.setTrackedData();
       this.model.setLanguage(newLanguage);
       this.remove();
     },
 
+    /**
+     * If the learner selects 'no' in the 'confirm language change' prompt,
+     * wait for notify to close completely then send focus to the
+     * navigation bar icon
+     */
     onDontChangeLanguage: function () {
       this.remove();
 
-      // wait for notify to close fully
-      _.delay(function(){
-        // focus on navigation bar icon
-        this.$finishFocus.a11y_focus();
-      }.bind(this), 500);
+      _.delay(() => {
+        Adapt.a11y.focusFirst(this.$finishFocus);
+      }, 500);
 
     }
 

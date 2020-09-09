@@ -28,9 +28,9 @@ define([
 
     if (Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
       onOfflineStorageReady();
-    } else {
-      Adapt.once('offlineStorage:ready', onOfflineStorageReady);
+      return;
     }
+    Adapt.once('offlineStorage:ready', onOfflineStorageReady);
   }
 
   /**
@@ -42,11 +42,15 @@ define([
 
     if (storedLanguage) {
       languagePickerModel.setLanguage(storedLanguage);
-    } else if (languagePickerModel.get('_showOnCourseLoad') === false) {
-      languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
-    } else {
-      showLanguagePickerView();
+      return;
     }
+
+    if (languagePickerModel.get('_showOnCourseLoad') === false) {
+      languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
+      return;
+    }
+
+    showLanguagePickerView();
   }
 
   function showLanguagePickerView () {
