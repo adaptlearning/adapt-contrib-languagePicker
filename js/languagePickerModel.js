@@ -25,20 +25,18 @@ define([
 
     getLanguageDetails: function (language) {
       var _languages = this.get('_languages');
-      return _.find(_languages, function (item) {
-        return (item._language === language);
-      });
+      return _.find(_languages, item => item._language === language);
     },
 
     setLanguage: function (language) {
       Adapt.config.set({
-        '_activeLanguage': language,
-        '_defaultDirection': this.getLanguageDetails(language)._direction
+        _activeLanguage: language,
+        _defaultDirection: this.getLanguageDetails(language)._direction
       });
     },
 
     markLanguageAsSelected: function(model, language) {
-      this.get('_languages').forEach(function(item){
+      this.get('_languages').forEach(item => {
         item._isSelected = (item._language === language);
       });
     },
@@ -47,18 +45,17 @@ define([
       if (!this.get('_restoreStateOnLanguageChange')) {
         return;
       }
-      _.defer(function() {
+      _.defer(() => {
         this.locationId = Adapt.offlineStorage.get('location') || null;
         this.restoreState();
-      }.bind(this));
+      });
 
     },
 
     restoreLocation: function() {
       if (!Adapt.findById(this.locationId)) return;
-      _.defer(function() {
-        Adapt.navigateToElement('.' + this.locationId);
-      }.bind(this));
+
+      _.defer(() => Adapt.navigateToElement('.' + this.locationId));
     },
 
     /**
@@ -94,7 +91,7 @@ define([
     },
 
     getState: function(models) {
-      return models.map(function(model) {
+      return models.map(model => {
         if (model.get('_isComplete')) {
           return model.getTrackableState();
         }
@@ -102,20 +99,21 @@ define([
     },
 
     setTrackedData: function() {
-      if (this.get('_restoreStateOnLanguageChange')) {
-        this.listenToOnce(Adapt, 'menuView:ready', this.restoreLocation);
-        this.trackedData = this.getTrackableState();
+      if (!this.get('_restoreStateOnLanguageChange')) {
+        return;
       }
+      this.listenToOnce(Adapt, 'menuView:ready', this.restoreLocation);
+      this.trackedData = this.getTrackableState();
     },
 
     setTrackableState: function(stateObject) {
       var restoreModel = Adapt.findById(stateObject._id);
-
-      if (restoreModel) {
-        restoreModel.setTrackableState(stateObject);
-      } else {
+      if (!restoreModel) {
         Adapt.log.warn('LanguagePicker unable to restore state for: ' + stateObject._id);
+        return;
       }
+
+      restoreModel.setTrackableState(stateObject);
     }
 
   });

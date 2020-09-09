@@ -57,11 +57,11 @@ define([
         Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
       }
 
-      Adapt.once('drawer:closed', function() {
+      Adapt.once('drawer:closed', () => {
         //wait for drawer to fully close
-        _.delay(function(){
+        _.delay(() => {
           //show yes/no popup
-          Adapt.once('popup:opened', function() {
+          Adapt.once('popup:opened', () => {
             //move popup close focus to #focuser
             if ($.a11y) {
               // old a11y API (Framework v4.3.0 and earlier)
@@ -92,10 +92,10 @@ define([
       this.remove();
 
       // wait for notify to close fully
-      _.delay(function(){
+      _.delay(() => {
         // focus on navigation bar icon
         this.$finishFocus.a11y_focus();
-      }.bind(this), 500);
+      }, 500);
 
     }
 
