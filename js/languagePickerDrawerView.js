@@ -82,9 +82,7 @@ define([
     onDontChangeLanguage: function () {
       this.remove();
 
-      _.delay(() => {
-        Adapt.a11y.focusFirst(this.$finishFocus);
-      }, 500);
+      _.delay(() => Adapt.a11y.focusFirst(this.$finishFocus), 500);
 
     }
 
