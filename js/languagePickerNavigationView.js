@@ -28,16 +28,14 @@ define([
         _accessibility: Adapt.config.get('_accessibility')
       })).insertBefore('#app');
 
-      _.defer(function() {
-        Adapt.trigger('navigationView:postRender', this);
-      }.bind(this));
+      _.defer(() => Adapt.trigger('navigationView:postRender', this));
 
       return this;
     },
 
     setupHelpers: function() {
       Handlebars.registerHelper('a11y_aria_label', function(text) {
-        return '<div class="aria-label">'+text+'</div>';
+        return `<div class="aria-label">${text}</div>`;
       });
     }
 

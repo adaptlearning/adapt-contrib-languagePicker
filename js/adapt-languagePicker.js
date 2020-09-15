@@ -26,11 +26,11 @@ define([
 
     Adapt.on('router:menu router:page', setupNavigationView);
 
-    if (Adapt.offlineStorage.ready) {// on the offchance that it may already be ready...
+    if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
       onOfflineStorageReady();
-    } else {
-      Adapt.once('offlineStorage:ready', onOfflineStorageReady);
+      return;
     }
+    Adapt.once('offlineStorage:ready', onOfflineStorageReady);
   }
 
   /**
@@ -42,11 +42,15 @@ define([
 
     if (storedLanguage) {
       languagePickerModel.setLanguage(storedLanguage);
-    } else if (languagePickerModel.get('_showOnCourseLoad') === false) {
-      languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
-    } else {
-      showLanguagePickerView();
+      return;
     }
+
+    if (languagePickerModel.get('_showOnCourseLoad') === false) {
+      languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
+      return;
+    }
+
+    showLanguagePickerView();
   }
 
   function showLanguagePickerView () {
@@ -70,7 +74,7 @@ define([
 
     var languagePickerNavView = new LanguagePickerNavView({
       model: languagePickerModel,
-      attributes:  {
+      attributes: {
         'aria-label': navigationBarLabel
       }
     });
