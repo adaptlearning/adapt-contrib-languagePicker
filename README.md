@@ -59,7 +59,7 @@ Defines which icon will be displayed in the navigation bar. The [vanilla theme](
 Determines whether or not the language picker will try to restore the 'state' of the course when the user changes language. It is advised that you only set this to `true` if all course languages have exactly the same structure; if they do not, some loss of tracking data will occur. If set to `false`, all tracking data will be cleared when the user switches language - the warningMessage (see below) should be used to warn the user of this. The default value is `false`.
 
 #### \_languages (array):
-The languages array contains properties related to the available languages. Each entry in the array should be an object, containing the following settings:
+The languages array contains the list of the available languages and the various settings associated with each. Each entry in the array should be an object, containing the following settings:
 
 ##### \_language** (string):
 This text must match the name of the language-specific folder located in the course root, for example, `"en"` from *course/en*. It is used as the value for the HTML `lang` attribute. It is highly recommended that codes for web languages be used. Reference a source such as the [IANA Language Subtag Registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). 
