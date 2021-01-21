@@ -35,7 +35,8 @@ define([
 
     onLanguageClick: function (event) {
       this.destroyNavigation();
-      this.model.setLanguage($(event.target).val());
+      const lang = event.currentTarget.value;
+      this.model.setLanguage(lang);
     },
 
     initializeNavigation: function() {
