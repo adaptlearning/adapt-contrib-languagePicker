@@ -37,7 +37,7 @@ The following attributes are set within *config.json*.
 ### \_languagePicker** (object):
 The languagePicker object that contains values for `_isEnabled`, `title`, `displayTitle`, `body`, `_showOnCourseLoad`, `_languagePickerIconClass` and `_restoreStateOnLanguageChange` settings and the `_languages` array.
 
-#### _isEnabled (boolean):
+#### \_isEnabled (boolean):
 Enables/disables this extension. The default value is `false`. Set this to `true` to enable this extension.
 
 #### title (string):
