@@ -30,6 +30,18 @@
                     "yes": "Ja",
                     "no": "Nein"
                 }
+            },
+            {
+                "_language": "fr",
+                "_direction": "ltr",
+                "_isDisabled": true,
+                "displayName": "Français (bientôt disponible)",
+                "warningTitle": "Modifier la langue?",
+                "warningMessage": "La modification de la langue va réinitialiser la progression du cours.<br><br>Souhaitez-vous continuer?",
+                "_buttons": {
+                    "yes": "Oui",
+                    "no": "Non"
+                }
             }
         ]
     }

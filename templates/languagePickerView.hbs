@@ -20,7 +20,7 @@
     <div class="languagepicker__languages-inner">
 
       {{#each _languages}}
-      <button class="btn-text languagepicker__language-btn is-{{_language}} js-languagepicker-btn-click" value="{{_language}}">
+      <button class="btn-text languagepicker__language-btn is-{{_language}} js-languagepicker-btn-click{{#if _isDisabled}} is-disabled{{/if}}" value="{{_language}}"{{#if _isDisabled}} aria-disabled="true" tabindex="-1"{{/if}}>
         {{{compile displayName}}}
       </button>
       {{/each}}
