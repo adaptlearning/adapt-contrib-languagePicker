@@ -15,14 +15,20 @@
 As one of Adapt's *[core extensions](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#extensions),* **Language Picker** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation).
 
 * If **Language Picker** has been uninstalled from the Adapt framework, it may be reinstalled.
-With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:  
-`adapt install adapt-contrib-languagePicker`
+With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:
+    ```console
+    adapt install adapt-contrib-languagePicker
+    ```
 
-    Alternatively, this extension can also be installed by adding the following line of code to the *adapt.json* file:  
-    `"adapt-contrib-languagePicker": "*"`  
-    Then running the command:  
-    `adapt install`  
-    (This second method will reinstall all plug-ins listed in *adapt.json*.)  
+    Alternatively, this extension can also be installed by adding the following line of code to the *adapt.json* file:
+    ```json
+    "adapt-contrib-languagePicker": "*"
+    ```
+    Then running the command:
+    ```console
+    adapt install
+    ```
+    (This second method will reinstall all plug-ins listed in *adapt.json*.)
 
 <div float align=right><a href="#top">Back to Top</a></div>
 
@@ -62,10 +68,13 @@ Determines whether or not the language picker will try to restore the 'state' of
 The languages array contains the list of the available languages and the various settings associated with each. Each entry in the array should be an object, containing the following settings:
 
 ##### \_language (string):
-This text must match the name of the language-specific folder located in the course root, for example, `"en"` from *course/en*. It is used as the value for the HTML `lang` attribute. It is highly recommended that codes for web languages be used. Reference a source such as the [IANA Language Subtag Registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry). 
+This text must match the name of the language-specific folder located in the course root, for example, `"en"` from *course/en*. It is used as the value for the HTML `lang` attribute. It is highly recommended that codes for web languages be used. Reference a source such as the [IANA Language Subtag Registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
 
-##### \_direction (string): 
+##### \_direction (string):
 Specifies the value of the HTML `dir` attribute and, consequently, the base direction of text. Acceptable values are `"rtl"` (right-to-left) and `"ltr"` (left-to-right). The default value is `"ltr"`.
+
+##### \_isDisabled (boolean):
+Setting this to `true` allows the language to be shown in the list but in a 'disabled' state (so it cannot be selected). This can be useful in situations where localisation into a particular language has not yet been completed. The default value is `false`.
 
 ##### displayName (string):
 The display name of the language. This value is used as the button label.
@@ -88,15 +97,15 @@ Label for the button that cancels the switch languages dialog.
 <div float align=right><a href="#top">Back to Top</a></div>
 
 ## Limitations
- 
-- If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is disabled (or not installed), **Language Picker** will not remember the learner's language choice from the previous session. 
-
-- Switching languages during an [**Assessment**](https://github.com/adaptlearning/adapt-contrib-assessment) will reset assessment attempts.  
-
+- If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is disabled (or not installed), **Language Picker** will not remember the learner's language choice from the previous session.
+- Switching languages during an [**Assessment**](https://github.com/adaptlearning/adapt-contrib-assessment) will reset assessment attempts.
 - Language Picker is not yet compatible with the Adapt Authoring Tool.
 
+## Notes
+If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is enabled and the course is being run from an <abbr title='Learning Management System'>LMS</abbr> that has support for the `cmi.student_preference.language` data model element, the spoor extension will record the learner's choice of language to that data model element. Note that this is for reporting purposes only: as support for that data model element is not mandatory in SCORM 1.2 it cannot be relied upon for saving/restoring the learner's choice of language - the `cmi.suspend_data` data model element will be used for that, even when `cmi.student_preference.language` is available.
+
 ----------------------------
-**Version number:**  4.1.2  <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
+**Version number:**  4.2.0  <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
 **Framework versions:**  5.6+  
 **Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-bookmarking/graphs/contributors)  
 **Accessibility support:** WAI AA  

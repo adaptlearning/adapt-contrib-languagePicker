@@ -133,6 +133,15 @@
                         "validators": ["required"],
                         "help": ""
                       },
+                      "_isDisabled": {
+                        "type": "boolean",
+                        "required": true,
+                        "default": false,
+                        "title": "Is disabled",
+                        "inputType": "Checkbox",
+                        "validators": [],
+                        "help": "Allows you to disable selection of this language. This can be useful in situations where localisation into a particular language has not yet been completed."
+                      },
                       "displayName": {
                         "type": "string",
                         "required": true,
