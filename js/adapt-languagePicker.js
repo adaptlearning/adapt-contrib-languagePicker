@@ -38,11 +38,17 @@ define([
    * If it was, load it. If it wasn't, show the language picker
    */
   function onOfflineStorageReady() {
-    const urlParams = new URLSearchParams(window.location.search);
+    var search = window.location.search.substring(1);
+    var queries = search.split('&');
 
-    if (urlParams.has('_activeLanguage')) {
-      Adapt.offlineStorage.set('_activeLanguage', urlParams.get('_activeLanguage'));
-    }
+    queries.forEach(function (query) {
+      var pair = query.split('=');
+
+      if (decodeURIComponent(pair[0]) !== 'lang') return;
+
+      var language = decodeURIComponent(pair[1]);
+      Adapt.offlineStorage.set('_activeLanguage', language);
+    });
 
     var storedLanguage = Adapt.offlineStorage.get('_activeLanguage');
 
