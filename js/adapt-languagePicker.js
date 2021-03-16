@@ -48,9 +48,10 @@ define([
 
       var language = decodeURIComponent(pair[1]);
       Adapt.offlineStorage.set('_activeLanguage', language);
+      Adapt.offlineStorage.set('lang', language);
     });
 
-    var storedLanguage = Adapt.offlineStorage.get('_activeLanguage');
+    var storedLanguage = Adapt.offlineStorage.get('lang');
 
     if (storedLanguage) {
       languagePickerModel.setLanguage(storedLanguage);
