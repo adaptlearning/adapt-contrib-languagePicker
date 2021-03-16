@@ -40,11 +40,11 @@ define([
   function onOfflineStorageReady() {
     const urlParams = new URLSearchParams(window.location.search);
 
-    if (urlParams.has('lang')) {
-      Adapt.offlineStorage.set("lang", urlParams.get('lang'));
+    if (urlParams.has('_activeLanguage')) {
+      Adapt.offlineStorage.set('_activeLanguage', urlParams.get('_activeLanguage'));
     }
 
-    var storedLanguage = Adapt.offlineStorage.get('lang');
+    var storedLanguage = Adapt.offlineStorage.get('_activeLanguage');
 
     if (storedLanguage) {
       languagePickerModel.setLanguage(storedLanguage);
