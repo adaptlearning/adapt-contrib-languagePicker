@@ -38,10 +38,10 @@ define([
    * If it was, load it. If it wasn't, show the language picker
    */
   function onOfflineStorageReady() {
-    const urlParams = new URLSearchParams(queryString);
+    const urlParams = new URLSearchParams(window.location.search);
 
     if (urlParams.has('lang')) {
-      Adapt.offlineStorage.set(lang, urlParams.get('lang'));
+      Adapt.offlineStorage.set("lang", urlParams.get('lang'));
     }
 
     var storedLanguage = Adapt.offlineStorage.get('lang');
