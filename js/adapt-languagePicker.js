@@ -34,21 +34,28 @@ define([
   }
 
   /**
+   * Parse the incoming search queries for a 'lang' parameter value to return
+   */
+  function getLanguageFromURL() {
+    const search = window.location.search.substring(1);
+    const queries = search.split('&');
+
+    queries.forEach((query) => {
+      const pair = query.split('=');
+
+      if (decodeURIComponent(pair[0]) !== 'lang') return;
+
+      return decodeURIComponent(pair[1]);
+    });
+  }
+
+  /**
    * Once offline storage is ready, check to see if a language was previously selected by the user
    * If it was, load it. If it wasn't, show the language picker
    */
   function onOfflineStorageReady() {
-    var search = window.location.search.substring(1);
-    var queries = search.split('&');
-
-    queries.forEach(function (query) {
-      var pair = query.split('=');
-
-      if (decodeURIComponent(pair[0]) !== 'lang') return;
-
-      var language = decodeURIComponent(pair[1]);
-      Adapt.offlineStorage.set('lang', language);
-    });
+    const language = getLanguageFromURL();
+    if (language) Adapt.offlineStorage.set('lang', language);
 
     var storedLanguage = Adapt.offlineStorage.get('lang');
 
