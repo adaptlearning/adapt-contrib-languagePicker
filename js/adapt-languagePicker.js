@@ -47,7 +47,6 @@ define([
       if (decodeURIComponent(pair[0]) !== 'lang') return;
 
       var language = decodeURIComponent(pair[1]);
-      Adapt.offlineStorage.set('_activeLanguage', language);
       Adapt.offlineStorage.set('lang', language);
     });
 
