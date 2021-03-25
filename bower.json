@@ -4,7 +4,7 @@
     "type":"git",
     "url": "git://github.com/adaptlearning/adapt-contrib-languagePicker.git"
   },
-  "version": "4.2.0-alpha.2",
+  "version": "c",
   "framework": ">=5.6",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-languagePicker",
   "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
