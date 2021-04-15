@@ -53,6 +53,8 @@ define([
     },
 
     restoreLocation: function() {
+      this.stopListening(Adapt, 'pageView:ready menuView:ready');
+
       if (!Adapt.findById(this.locationId)) return;
 
       _.defer(() => Adapt.navigateToElement('.' + this.locationId));
@@ -102,7 +104,7 @@ define([
       if (!this.get('_restoreStateOnLanguageChange')) {
         return;
       }
-      this.listenToOnce(Adapt, 'menuView:ready', this.restoreLocation);
+      this.listenTo(Adapt, 'pageView:ready menuView:ready', this.restoreLocation);
       this.trackedData = this.getTrackableState();
     },
 
