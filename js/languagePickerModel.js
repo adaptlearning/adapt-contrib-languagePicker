@@ -102,7 +102,7 @@ define([
       if (!this.get('_restoreStateOnLanguageChange')) {
         return;
       }
-      this.listenToOnce(Adapt, 'menuView:ready', this.restoreLocation);
+      this.listenToOnce(Adapt, 'contentObjectView:ready', this.restoreLocation);
       this.trackedData = this.getTrackableState();
     },
 
