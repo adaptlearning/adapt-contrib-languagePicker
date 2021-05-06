@@ -10,9 +10,7 @@ define([
 
     initialize: function () {
       this.listenTo(Adapt, {
-        remove: this.remove,
-        'languagepicker:changelanguage:yes': this.onDoChangeLanguage,
-        'languagepicker:changelanguage:no': this.onDontChangeLanguage
+        remove: this.remove
       });
       this.render();
     },
@@ -54,17 +52,24 @@ define([
       Adapt.once('drawer:closed', () => {
         // wait for drawer to fully close
         _.delay(() => {
-          Adapt.once('popup:opened', () => {
-            // move popup close focus to #focuser
-            Adapt.a11y._popup._focusStack.pop();
-            Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
+          this.listenToOnce(Adapt, {
+            'popup:opened': this.onPopupOpened,
+            'languagepicker:changelanguage:yes': this.onDoChangeLanguage,
+            'languagepicker:changelanguage:no notify:cancelled': this.onDontChangeLanguage
           });
+
           // show yes/no popup
           Adapt.notify.prompt(promptObject);
         }, 250);
       });
 
       Adapt.trigger('drawer:closeDrawer');
+    },
+
+    onPopupOpened: function () {
+      // move popup close focus to #focuser
+      Adapt.a11y._popup._focusStack.pop();
+      Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
     },
 
     onDoChangeLanguage: function () {
@@ -83,7 +88,6 @@ define([
       this.remove();
 
       _.delay(() => Adapt.a11y.focusFirst(this.$finishFocus), 500);
-
     }
 
   }, {
