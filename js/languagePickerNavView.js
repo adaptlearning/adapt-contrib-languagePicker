@@ -8,10 +8,10 @@ define([
     tagName: 'button',
 
     className: function () {
-      var classNames = 'btn-icon nav__btn nav__languagepicker-btn js-languagepicker-nav-btn icon';
-      var customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
+      const classNames = 'btn-icon nav__btn nav__languagepicker-btn js-languagepicker-nav-btn icon';
+      const customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
 
-      return classNames + ' ' + customClass;
+      return `${classNames} ${customClass}`;
     },
 
     events: {

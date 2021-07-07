@@ -19,8 +19,8 @@ define([
     },
 
     render: function () {
-      var data = this.model.toJSON();
-      var template = Handlebars.templates[this.constructor.template];
+      const data = this.model.toJSON();
+      const template = Handlebars.templates[this.constructor.template];
       this.$el.html(template(data));
       this.$el.addClass(data._classes);
 

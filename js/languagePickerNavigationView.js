@@ -22,7 +22,7 @@ define([
     },
 
     render: function() {
-      var template = Handlebars.templates[this.template];
+      const template = Handlebars.templates[this.template];
       this.$el.html(template({
         _config: this.model.get('_accessibility'),
         _accessibility: Adapt.config.get('_accessibility')

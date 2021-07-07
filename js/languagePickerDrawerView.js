@@ -18,17 +18,17 @@ define([
     },
 
     render: function () {
-      var data = this.model.toJSON();
-      var template = Handlebars.templates[this.constructor.template];
+      const data = this.model.toJSON();
+      const template = Handlebars.templates[this.constructor.template];
       this.$el.html(template(data));
     },
 
     onButtonClick: function (event) {
-      var newLanguage = $(event.currentTarget).attr('data-language');
+      const newLanguage = $(event.currentTarget).attr('data-language');
       this.model.set('newLanguage', newLanguage);
-      var data = this.model.getLanguageDetails(newLanguage);
+      const data = this.model.getLanguageDetails(newLanguage);
 
-      var promptObject = {
+      const promptObject = {
         _attributes: { lang: newLanguage },
         _classes: `is-lang-${newLanguage} ${data._direction === 'rtl' ? 'is-rtl' : 'is-ltr'}`,
         title: data.warningTitle,
@@ -68,7 +68,7 @@ define([
     },
 
     onDoChangeLanguage: function () {
-      var newLanguage = this.model.get('newLanguage');
+      const newLanguage = this.model.get('newLanguage');
       this.model.setTrackedData();
       this.model.setLanguage(newLanguage);
       this.remove();

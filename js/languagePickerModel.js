@@ -24,7 +24,7 @@ define([
     },
 
     getLanguageDetails: function (language) {
-      var _languages = this.get('_languages');
+      const _languages = this.get('_languages');
       return _.find(_languages, item => item._language === language);
     },
 
@@ -82,11 +82,11 @@ define([
     },
 
     getTrackableState: function() {
-      var components = this.getState(Adapt.components.models);
-      var blocks = this.getState(Adapt.blocks.models);
+      const components = _.compact(this.getState(Adapt.components.models));
+      const blocks = _.compact(this.getState(Adapt.blocks.models));
       return {
-        components: _.compact(components),
-        blocks: _.compact(blocks)
+        components,
+        blocks
       };
     },
 
@@ -107,7 +107,7 @@ define([
     },
 
     setTrackableState: function(stateObject) {
-      var restoreModel = Adapt.findById(stateObject._id);
+      const restoreModel = Adapt.findById(stateObject._id);
       if (!restoreModel) {
         Adapt.log.warn('LanguagePicker unable to restore state for: ' + stateObject._id);
         return;
