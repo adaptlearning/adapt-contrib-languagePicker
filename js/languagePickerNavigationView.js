@@ -1,50 +1,44 @@
-define([
-  'core/js/adapt'
-], function(Adapt) {
+import Adapt from 'core/js/adapt';
 
-  class NavigationView extends Backbone.View {
+export default class NavigationView extends Backbone.View {
 
-    className() {
-      return 'nav';
-    }
+  className() {
+    return 'nav';
+  }
 
-    attributes() {
-      return {
-        role: 'navigation'
-      };
-    }
+  attributes() {
+    return {
+      role: 'navigation'
+    };
+  }
 
-    initialize() {
-      this.template = 'languagePickerNavigation';
-      this.setupHelpers();
-      this.preRender();
-    }
+  initialize() {
+    this.template = 'languagePickerNavigation';
+    this.setupHelpers();
+    this.preRender();
+  }
 
-    preRender() {
-      Adapt.trigger('navigationView:preRender', this);
-      this.render();
-    }
+  preRender() {
+    Adapt.trigger('navigationView:preRender', this);
+    this.render();
+  }
 
-    render() {
-      const template = Handlebars.templates[this.template];
-      this.$el.html(template({
-        _config: this.model.get('_accessibility'),
-        _accessibility: Adapt.config.get('_accessibility')
-      })).insertBefore('#app');
+  render() {
+    const template = Handlebars.templates[this.template];
+    this.$el.html(template({
+      _config: this.model.get('_accessibility'),
+      _accessibility: Adapt.config.get('_accessibility')
+    })).insertBefore('#app');
 
-      _.defer(() => Adapt.trigger('navigationView:postRender', this));
+    _.defer(() => Adapt.trigger('navigationView:postRender', this));
 
-      return this;
-    }
+    return this;
+  }
 
-    setupHelpers() {
-      Handlebars.registerHelper('a11y_aria_label', function(text) {
-        return `<div class="aria-label">${text}</div>`;
-      });
-    }
+  setupHelpers() {
+    Handlebars.registerHelper('a11y_aria_label', text => {
+      return `<div class="aria-label">${text}</div>`;
+    });
+  }
 
-  };
-
-  return NavigationView;
-
-});
+}
