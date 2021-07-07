@@ -2,46 +2,52 @@ define([
   'core/js/adapt'
 ], function (Adapt) {
 
-  var LanguagePickerModel = Backbone.Model.extend({
+  class LanguagePickerModel extends Backbone.Model {
 
-    defaults: {
-      _isEnabled: false,
-      displayTitle: '',
-      body: '',
-      _languages: []
-    },
+    defaults() {
+      return {
+        _isEnabled: false,
+        displayTitle: '',
+        body: '',
+        _languages: []
+      };
+    }
 
-    trackedData: {
-      components: [],
-      blocks: []
-    },
+    trackedData() {
+      return {
+        components: [],
+        blocks: []
+      };
+    }
 
-    locationId: null,
+    locationId() {
+      return null;
+    }
 
-    initialize: function () {
+    initialize() {
       this.listenTo(Adapt.config, 'change:_activeLanguage', this.markLanguageAsSelected);
       this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
-    },
+    }
 
-    getLanguageDetails: function (language) {
+    getLanguageDetails(language) {
       const _languages = this.get('_languages');
       return _.find(_languages, item => item._language === language);
-    },
+    }
 
-    setLanguage: function (language) {
+    setLanguage(language) {
       Adapt.config.set({
         _activeLanguage: language,
         _defaultDirection: this.getLanguageDetails(language)._direction
       });
-    },
+    }
 
-    markLanguageAsSelected: function(model, language) {
+    markLanguageAsSelected(model, language) {
       this.get('_languages').forEach(item => {
         item._isSelected = (item._language === language);
       });
-    },
+    }
 
-    onDataLoaded: function() {
+    onDataLoaded() {
       if (!this.get('_restoreStateOnLanguageChange')) {
         return;
       }
@@ -49,19 +55,18 @@ define([
         this.locationId = Adapt.offlineStorage.get('location') || null;
         this.restoreState();
       });
+    }
 
-    },
-
-    restoreLocation: function() {
+    restoreLocation() {
       if (!Adapt.findById(this.locationId)) return;
 
       _.defer(() => Adapt.navigateToElement('.' + this.locationId));
-    },
+    }
 
     /**
      * Restore course progress on language change.
      */
-    restoreState: function() {
+    restoreState() {
 
       if (this.isTrackedDataEmpty()) return;
 
@@ -72,41 +77,41 @@ define([
       if (this.trackedData.blocks) {
         this.trackedData.blocks.forEach(this.setTrackableState);
       }
-    },
+    }
 
-    isTrackedDataEmpty: function() {
+    isTrackedDataEmpty() {
       return _.isEqual(this.trackedData, {
         components: [],
         blocks: []
       });
-    },
+    }
 
-    getTrackableState: function() {
+    getTrackableState() {
       const components = _.compact(this.getState(Adapt.components.models));
       const blocks = _.compact(this.getState(Adapt.blocks.models));
       return {
         components,
         blocks
       };
-    },
+    }
 
-    getState: function(models) {
+    getState(models) {
       return models.map(model => {
         if (model.get('_isComplete')) {
           return model.getTrackableState();
         }
       });
-    },
+    }
 
-    setTrackedData: function() {
+    setTrackedData() {
       if (!this.get('_restoreStateOnLanguageChange')) {
         return;
       }
       this.listenToOnce(Adapt, 'contentObjectView:ready', this.restoreLocation);
       this.trackedData = this.getTrackableState();
-    },
+    }
 
-    setTrackableState: function(stateObject) {
+    setTrackableState(stateObject) {
       const restoreModel = Adapt.findById(stateObject._id);
       if (!restoreModel) {
         Adapt.log.warn('LanguagePicker unable to restore state for: ' + stateObject._id);
@@ -115,8 +120,7 @@ define([
 
       restoreModel.setTrackableState(stateObject);
     }
-
-  });
+  };
 
   return LanguagePickerModel;
 

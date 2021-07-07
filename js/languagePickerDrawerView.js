@@ -2,28 +2,34 @@ define([
   'core/js/adapt'
 ], function(Adapt) {
 
-  var LanguagePickerDrawerView = Backbone.View.extend({
+  class LanguagePickerDrawerView extends Backbone.View {
+    
+    get template() {
+      return 'languagePickerDrawerView';
+    }
 
-    events: {
-      'click .js-languagepicker-item-btn': 'onButtonClick'
-    },
+    events() {
+      return {
+        'click .js-languagepicker-item-btn': 'onButtonClick'
+      };
+    }
 
-    initialize: function () {
+    initialize() {
       this.listenTo(Adapt, {
         remove: this.remove,
         'languagepicker:changelanguage:yes': this.onDoChangeLanguage,
         'languagepicker:changelanguage:no': this.onDontChangeLanguage
       });
       this.render();
-    },
+    }
 
-    render: function () {
+    render() {
       const data = this.model.toJSON();
-      const template = Handlebars.templates[this.constructor.template];
+      const template = Handlebars.templates[this.template];
       this.$el.html(template(data));
-    },
+    }
 
-    onButtonClick: function (event) {
+    onButtonClick(event) {
       const newLanguage = $(event.currentTarget).attr('data-language');
       this.model.set('newLanguage', newLanguage);
       const data = this.model.getLanguageDetails(newLanguage);
@@ -65,30 +71,28 @@ define([
       });
 
       Adapt.trigger('drawer:closeDrawer');
-    },
+    }
 
-    onDoChangeLanguage: function () {
+    onDoChangeLanguage() {
       const newLanguage = this.model.get('newLanguage');
       this.model.setTrackedData();
       this.model.setLanguage(newLanguage);
       this.remove();
-    },
+    }
 
     /**
      * If the learner selects 'no' in the 'confirm language change' prompt,
      * wait for notify to close completely then send focus to the
      * navigation bar icon
      */
-    onDontChangeLanguage: function () {
+    onDontChangeLanguage() {
       this.remove();
 
       _.delay(() => Adapt.a11y.focusFirst(this.$finishFocus), 500);
 
     }
 
-  }, {
-    template: 'languagePickerDrawerView'
-  });
+  };
 
   return LanguagePickerDrawerView;
 

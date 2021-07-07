@@ -3,59 +3,65 @@ define([
   './languagePickerNavigationView'
 ], function(Adapt, NavigationView) {
 
-  var LanguagePickerView = Backbone.View.extend({
+  class LanguagePickerView extends Backbone.View {
+    
+    get template() {
+      return 'languagePickerView';
+    }
 
-    events: {
-      'click .js-languagepicker-btn-click': 'onLanguageClick'
-    },
+    events() {
+      return {
+        'click .js-languagepicker-btn-click': 'onLanguageClick'
+      };
+    }
 
-    className: 'languagepicker',
+    className(){
+      return 'languagepicker';
+    }
 
-    initialize: function () {
+    initialize() {
       this.initializeNavigation();
       $('html').addClass('in-languagepicker');
       this.listenTo(Adapt, 'remove', this.remove);
       this.render();
-    },
+    }
 
-    render: function () {
+    render() {
       const data = this.model.toJSON();
-      const template = Handlebars.templates[this.constructor.template];
+      const template = Handlebars.templates[this.template];
       this.$el.html(template(data));
       this.$el.addClass(data._classes);
 
       document.title = this.model.get('title') || '';
 
       _.defer(this.postRender.bind(this));
-    },
+    }
 
-    postRender: function () {
+    postRender() {
       $('.js-loading').hide();
-    },
+    }
 
-    onLanguageClick: function (event) {
+    onLanguageClick(event) {
       this.destroyNavigation();
       const lang = event.currentTarget.value;
       this.model.setLanguage(lang);
-    },
+    }
 
-    initializeNavigation: function() {
+    initializeNavigation() {
       this.navigationView = new NavigationView({ model: this.model });
-    },
+    }
 
-    destroyNavigation: function() {
+    destroyNavigation() {
       this.navigationView.remove();
-    },
+    }
 
-    remove: function() {
+    remove() {
       $('html').removeClass('in-languagepicker');
 
       Backbone.View.prototype.remove.apply(this, arguments);
     }
 
-  }, {
-    template: 'languagePickerView'
-  });
+  };
 
   return LanguagePickerView;
 

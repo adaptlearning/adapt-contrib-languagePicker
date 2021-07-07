@@ -2,26 +2,30 @@ define([
   'core/js/adapt'
 ], function(Adapt) {
 
-  var NavigationView = Backbone.View.extend({
+  class NavigationView extends Backbone.View {
 
-    className: 'nav',
+    className() {
+      return 'nav';
+    }
 
-    attributes: {
-      role: 'navigation'
-    },
+    attributes() {
+      return {
+        role: 'navigation'
+      };
+    }
 
-    initialize: function() {
+    initialize() {
       this.template = 'languagePickerNavigation';
       this.setupHelpers();
       this.preRender();
-    },
+    }
 
-    preRender: function() {
+    preRender() {
       Adapt.trigger('navigationView:preRender', this);
       this.render();
-    },
+    }
 
-    render: function() {
+    render() {
       const template = Handlebars.templates[this.template];
       this.$el.html(template({
         _config: this.model.get('_accessibility'),
@@ -31,15 +35,15 @@ define([
       _.defer(() => Adapt.trigger('navigationView:postRender', this));
 
       return this;
-    },
+    }
 
-    setupHelpers: function() {
+    setupHelpers() {
       Handlebars.registerHelper('a11y_aria_label', function(text) {
         return `<div class="aria-label">${text}</div>`;
       });
     }
 
-  });
+  };
 
   return NavigationView;
 
