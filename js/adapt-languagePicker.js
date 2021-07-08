@@ -22,10 +22,10 @@ class LanguagePicker {
     Adapt.on('router:menu router:page', this.setupNavigationView);
 
     if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
-      onOfflineStorageReady();
+      this.onOfflineStorageReady();
       return;
     }
-    Adapt.once('offlineStorage:ready', onOfflineStorageReady);
+    Adapt.once('offlineStorage:ready', this.onOfflineStorageReady);
   }
 
   /**
@@ -45,7 +45,7 @@ class LanguagePicker {
       return;
     }
 
-    showLanguagePickerView();
+    this.showLanguagePickerView();
   }
 
   showLanguagePickerView () {
