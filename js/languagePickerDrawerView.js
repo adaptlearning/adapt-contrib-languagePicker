@@ -1,7 +1,7 @@
 import Adapt from 'core/js/adapt';
 
 export default class LanguagePickerDrawerView extends Backbone.View {
-  
+
   get template() {
     return 'languagePickerDrawerView';
   }

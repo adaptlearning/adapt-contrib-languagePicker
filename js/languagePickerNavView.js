@@ -16,7 +16,7 @@ export default class LanguagePickerNavView extends Backbone.View {
 
   events() {
     return {
-      'click': 'onClick'
+      click: 'onClick'
     };
   }
 

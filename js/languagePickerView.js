@@ -56,7 +56,7 @@ export default class LanguagePickerView extends Backbone.View {
   remove() {
     $('html').removeClass('in-languagepicker');
 
-    Backbone.View.prototype.remove.apply(this, arguments);
+    super.remove();
   }
 
 }

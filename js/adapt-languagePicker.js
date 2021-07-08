@@ -15,11 +15,12 @@ Adapt.once('configModel:dataLoaded', onConfigLoaded);
  * - wait for offline storage to be ready so that we can check to see if there's a stored language choice or not
  */
 function onConfigLoaded() {
-  if (!Adapt.config.has('_languagePicker') || !Adapt.config.get('_languagePicker')._isEnabled) return;
+  const config = Adapt.config.has('_languagePicker');
+  if (!config?._isEnabled) return;
 
   Adapt.config.set('_canLoadData', false);
 
-  languagePickerModel = new LanguagePickerModel(Adapt.config.get('_languagePicker'));
+  languagePickerModel = new LanguagePickerModel(config);
 
   Adapt.on('router:menu router:page', setupNavigationView);
 

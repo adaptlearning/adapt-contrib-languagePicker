@@ -11,16 +11,12 @@ export default class LanguagePickerModel extends Backbone.Model {
     };
   }
 
-  trackedData() {
-    return {
-      components: [],
-      blocks: []
-    };
+  trackedData = {
+    components: [],
+    blocks: []
   }
 
-  locationId() {
-    return null;
-  }
+  locationId = null;
 
   initialize() {
     this.listenTo(Adapt.config, 'change:_activeLanguage', this.markLanguageAsSelected);
@@ -28,8 +24,7 @@ export default class LanguagePickerModel extends Backbone.Model {
   }
 
   getLanguageDetails(language) {
-    const _languages = this.get('_languages');
-    return _.find(_languages, item => item._language === language);
+    return this.get('_languages').find(({ _language }) => _language === language);
   }
 
   setLanguage(language) {
@@ -68,13 +63,8 @@ export default class LanguagePickerModel extends Backbone.Model {
 
     if (this.isTrackedDataEmpty()) return;
 
-    if (this.trackedData.components) {
-      this.trackedData.components.forEach(this.setTrackableState);
-    }
-
-    if (this.trackedData.blocks) {
-      this.trackedData.blocks.forEach(this.setTrackableState);
-    }
+    this.trackedData.components?.forEach(this.setTrackableState);
+    this.trackedData.blocks?.forEach(this.setTrackableState);
   }
 
   isTrackedDataEmpty() {
@@ -85,20 +75,14 @@ export default class LanguagePickerModel extends Backbone.Model {
   }
 
   getTrackableState() {
-    const components = _.compact(this.getState(Adapt.components.models));
-    const blocks = _.compact(this.getState(Adapt.blocks.models));
     return {
-      components,
-      blocks
+      components: _.compact(this.getState(Adapt.components.models)),
+      blocks: _.compact(this.getState(Adapt.blocks.models))
     };
   }
 
   getState(models) {
-    return models.map(model => {
-      if (model.get('_isComplete')) {
-        return model.getTrackableState();
-      }
-    });
+    return models.map(model => model.get('_isComplete') && model.getTrackableState());
   }
 
   setTrackedData() {
