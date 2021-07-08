@@ -3,7 +3,7 @@ import LanguagePickerView from './languagePickerView';
 import LanguagePickerNavView from './languagePickerNavView';
 import LanguagePickerModel from './languagePickerModel';
 
-class LangaugePicker {
+class LanguagePicker {
     /**
    * Once the Adapt config has loaded, check to see if the language picker is enabled. If it is:
    * - stop the rest of the .json from loading
@@ -79,4 +79,4 @@ class LangaugePicker {
 }
   
 Adapt.once('configModel:dataLoaded', new LanguagePicker().onConfigLoaded);
-export default LangaugePicker;
+export default LanguagePicker;
