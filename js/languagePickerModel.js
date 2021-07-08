@@ -1,6 +1,14 @@
 import Adapt from 'core/js/adapt';
 
 export default class LanguagePickerModel extends Backbone.Model {
+  preinitialize() {
+    this.trackedData = {
+      components: [],
+      blocks: []
+    }
+    
+    this.locationId = null;
+  }
 
   defaults() {
     return {
@@ -10,13 +18,6 @@ export default class LanguagePickerModel extends Backbone.Model {
       _languages: []
     };
   }
-
-  trackedData = {
-    components: [],
-    blocks: []
-  }
-
-  locationId = null;
 
   initialize() {
     this.listenTo(Adapt.config, 'change:_activeLanguage', this.markLanguageAsSelected);
@@ -76,8 +77,8 @@ export default class LanguagePickerModel extends Backbone.Model {
 
   getTrackableState() {
     return {
-      components: _.compact(this.getState(Adapt.components.models)),
-      blocks: _.compact(this.getState(Adapt.blocks.models))
+      components: this.getState(Adapt.components.models).filter(Boolean),
+      blocks: this.getState(Adapt.blocks.models).filter(Boolean)
     };
   }
 
