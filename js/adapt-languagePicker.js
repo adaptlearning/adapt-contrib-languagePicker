@@ -3,12 +3,14 @@ import LanguagePickerView from './languagePickerView';
 import LanguagePickerNavView from './languagePickerNavView';
 import LanguagePickerModel from './languagePickerModel';
 
-let languagePickerModel;
-
 class LanguagePicker extends Backbone.Controller {
   
   initialize() {
-    this.listenTo(Adapt, 'configModel:dataLoaded', this.onConfigLoaded);
+    this.listenTo(Adapt, {
+      'configModel:dataLoaded': this.onConfigLoaded,
+      'router:menu router:page': this.setupNavigationView,
+      'offlineStorage:ready': this.onOfflineStorageReady
+    });
   }
   
     /**
@@ -24,15 +26,12 @@ class LanguagePicker extends Backbone.Controller {
 
     Adapt.config.set('_canLoadData', false);
 
-    languagePickerModel = new LanguagePickerModel(config);
-
-    Adapt.on('router:menu router:page', this.setupNavigationView);
+    this.languagePickerModel = new LanguagePickerModel(config);
 
     if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
       this.onOfflineStorageReady();
       return;
     }
-    Adapt.once('offlineStorage:ready', this.onOfflineStorageReady);
   }
 
   /**
@@ -43,12 +42,12 @@ class LanguagePicker extends Backbone.Controller {
     const storedLanguage = Adapt.offlineStorage.get('lang');
 
     if (storedLanguage) {
-      languagePickerModel.setLanguage(storedLanguage);
+      this.languagePickerModel.setLanguage(storedLanguage);
       return;
     }
 
-    if (languagePickerModel.get('_showOnCourseLoad') === false) {
-      languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
+    if (this.languagePickerModel.get('_showOnCourseLoad') === false) {
+      this.languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
       return;
     }
 
@@ -57,7 +56,7 @@ class LanguagePicker extends Backbone.Controller {
 
   showLanguagePickerView() {
     const languagePickerView = new LanguagePickerView({
-      model: languagePickerModel
+      model: this.languagePickerModel
     });
 
     languagePickerView.$el.appendTo('#wrapper');
@@ -75,7 +74,7 @@ class LanguagePicker extends Backbone.Controller {
     }
 
     const languagePickerNavView = new LanguagePickerNavView({
-      model: languagePickerModel,
+      model: this.languagePickerModel,
       attributes: {
         'aria-label': navigationBarLabel
       }
