@@ -6,11 +6,7 @@ import LanguagePickerModel from './languagePickerModel';
 class LanguagePicker extends Backbone.Controller {
   
   initialize() {
-    this.listenTo(Adapt, {
-      'configModel:dataLoaded': this.onConfigLoaded,
-      'router:menu router:page': this.setupNavigationView,
-      'offlineStorage:ready': this.onOfflineStorageReady
-    });
+    this.listenTo(Adapt, 'configModel:dataLoaded', this.onConfigLoaded);
   }
   
     /**
@@ -28,10 +24,14 @@ class LanguagePicker extends Backbone.Controller {
 
     this.languagePickerModel = new LanguagePickerModel(config);
 
+    this.listenTo(Adapt, 'router:menu router:page', this.setupNavigationView);
+
     if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
       this.onOfflineStorageReady();
       return;
     }
+    
+    this.listenToOnce(Adapt, 'offlineStorage:ready', this.onOfflineStorageReady);
   }
 
   /**
