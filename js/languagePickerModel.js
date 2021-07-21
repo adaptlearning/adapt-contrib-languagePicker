@@ -1,123 +1,106 @@
-define([
-  'core/js/adapt'
-], function (Adapt) {
+import Adapt from 'core/js/adapt';
 
-  var LanguagePickerModel = Backbone.Model.extend({
+export default class LanguagePickerModel extends Backbone.Model {
+  preinitialize() {
+    this.trackedData = {
+      components: [],
+      blocks: []
+    }
+    
+    this.locationId = null;
+  }
 
-    defaults: {
+  defaults() {
+    return {
       _isEnabled: false,
       displayTitle: '',
       body: '',
       _languages: []
-    },
+    };
+  }
 
-    trackedData: {
+  initialize() {
+    this.listenTo(Adapt.config, 'change:_activeLanguage', this.markLanguageAsSelected);
+    this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
+  }
+
+  getLanguageDetails(language) {
+    return this.get('_languages').find(({ _language }) => _language === language);
+  }
+
+  setLanguage(language) {
+    Adapt.config.set({
+      _activeLanguage: language,
+      _defaultDirection: this.getLanguageDetails(language)._direction
+    });
+  }
+
+  markLanguageAsSelected(model, language) {
+    this.get('_languages').forEach(item => {
+      item._isSelected = (item._language === language);
+    });
+  }
+
+  onDataLoaded() {
+    if (!this.get('_restoreStateOnLanguageChange')) {
+      return;
+    }
+    _.defer(() => {
+      this.locationId = Adapt.offlineStorage.get('location') || null;
+      this.restoreState();
+    });
+  }
+
+  restoreLocation() {
+    if (!Adapt.findById(this.locationId)) return;
+
+    _.defer(() => Adapt.navigateToElement('.' + this.locationId));
+  }
+
+  /**
+   * Restore course progress on language change.
+   */
+  restoreState() {
+
+    if (this.isTrackedDataEmpty()) return;
+
+    this.trackedData.components?.forEach(this.setTrackableState);
+    this.trackedData.blocks?.forEach(this.setTrackableState);
+  }
+
+  isTrackedDataEmpty() {
+    return _.isEqual(this.trackedData, {
       components: [],
       blocks: []
-    },
+    });
+  }
 
-    locationId: null,
+  getTrackableState() {
+    return {
+      components: this.getState(Adapt.components.models).filter(Boolean),
+      blocks: this.getState(Adapt.blocks.models).filter(Boolean)
+    };
+  }
 
-    initialize: function () {
-      this.listenTo(Adapt.config, 'change:_activeLanguage', this.markLanguageAsSelected);
-      this.listenTo(Adapt, 'app:dataLoaded', this.onDataLoaded);
-    },
+  getState(models) {
+    return models.map(model => model.get('_isComplete') && model.getTrackableState());
+  }
 
-    getLanguageDetails: function (language) {
-      var _languages = this.get('_languages');
-      return _.find(_languages, item => item._language === language);
-    },
+  setTrackedData() {
+    if (!this.get('_restoreStateOnLanguageChange')) {
+      return;
+    }
+    this.listenToOnce(Adapt, 'contentObjectView:ready', this.restoreLocation);
+    this.trackedData = this.getTrackableState();
+  }
 
-    setLanguage: function (language) {
-      Adapt.config.set({
-        _activeLanguage: language,
-        _defaultDirection: this.getLanguageDetails(language)._direction
-      });
-    },
-
-    markLanguageAsSelected: function(model, language) {
-      this.get('_languages').forEach(item => {
-        item._isSelected = (item._language === language);
-      });
-    },
-
-    onDataLoaded: function() {
-      if (!this.get('_restoreStateOnLanguageChange')) {
-        return;
-      }
-      _.defer(() => {
-        this.locationId = Adapt.offlineStorage.get('location') || null;
-        this.restoreState();
-      });
-
-    },
-
-    restoreLocation: function() {
-      if (!Adapt.findById(this.locationId)) return;
-
-      _.defer(() => Adapt.navigateToElement('.' + this.locationId));
-    },
-
-    /**
-     * Restore course progress on language change.
-     */
-    restoreState: function() {
-
-      if (this.isTrackedDataEmpty()) return;
-
-      if (this.trackedData.components) {
-        this.trackedData.components.forEach(this.setTrackableState);
-      }
-
-      if (this.trackedData.blocks) {
-        this.trackedData.blocks.forEach(this.setTrackableState);
-      }
-    },
-
-    isTrackedDataEmpty: function() {
-      return _.isEqual(this.trackedData, {
-        components: [],
-        blocks: []
-      });
-    },
-
-    getTrackableState: function() {
-      var components = this.getState(Adapt.components.models);
-      var blocks = this.getState(Adapt.blocks.models);
-      return {
-        components: _.compact(components),
-        blocks: _.compact(blocks)
-      };
-    },
-
-    getState: function(models) {
-      return models.map(model => {
-        if (model.get('_isComplete')) {
-          return model.getTrackableState();
-        }
-      });
-    },
-
-    setTrackedData: function() {
-      if (!this.get('_restoreStateOnLanguageChange')) {
-        return;
-      }
-      this.listenToOnce(Adapt, 'contentObjectView:ready', this.restoreLocation);
-      this.trackedData = this.getTrackableState();
-    },
-
-    setTrackableState: function(stateObject) {
-      var restoreModel = Adapt.findById(stateObject._id);
-      if (!restoreModel) {
-        Adapt.log.warn('LanguagePicker unable to restore state for: ' + stateObject._id);
-        return;
-      }
-
-      restoreModel.setTrackableState(stateObject);
+  setTrackableState(stateObject) {
+    const restoreModel = Adapt.findById(stateObject._id);
+    if (!restoreModel) {
+      Adapt.log.warn('LanguagePicker unable to restore state for: ' + stateObject._id);
+      return;
     }
 
-  });
-
-  return LanguagePickerModel;
-
-});
+    restoreModel.setTrackableState(stateObject);
+  }
+}

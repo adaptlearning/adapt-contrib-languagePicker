@@ -1,62 +1,62 @@
-define([
-  'core/js/adapt',
-  './languagePickerNavigationView'
-], function(Adapt, NavigationView) {
+import Adapt from 'core/js/adapt';
+import NavigationView from './languagePickerNavigationView';
 
-  var LanguagePickerView = Backbone.View.extend({
+export default class LanguagePickerView extends Backbone.View {
 
-    events: {
+  get template() {
+    return 'languagePickerView';
+  }
+
+  events() {
+    return {
       'click .js-languagepicker-btn-click': 'onLanguageClick'
-    },
+    };
+  }
 
-    className: 'languagepicker',
+  className() {
+    return 'languagepicker';
+  }
 
-    initialize: function () {
-      this.initializeNavigation();
-      $('html').addClass('in-languagepicker');
-      this.listenTo(Adapt, 'remove', this.remove);
-      this.render();
-    },
+  initialize() {
+    this.initializeNavigation();
+    $('html').addClass('in-languagepicker');
+    this.listenTo(Adapt, 'remove', this.remove);
+    this.render();
+  }
 
-    render: function () {
-      var data = this.model.toJSON();
-      var template = Handlebars.templates[this.constructor.template];
-      this.$el.html(template(data));
-      this.$el.addClass(data._classes);
+  render() {
+    const data = this.model.toJSON();
+    const template = Handlebars.templates[this.template];
+    this.$el.html(template(data));
+    this.$el.addClass(data._classes);
 
-      document.title = this.model.get('title') || '';
+    document.title = this.model.get('title') || '';
 
-      _.defer(this.postRender.bind(this));
-    },
+    _.defer(this.postRender.bind(this));
+  }
 
-    postRender: function () {
-      $('.js-loading').hide();
-    },
+  postRender() {
+    $('.js-loading').hide();
+  }
 
-    onLanguageClick: function (event) {
-      this.destroyNavigation();
-      const lang = event.currentTarget.value;
-      this.model.setLanguage(lang);
-    },
+  onLanguageClick(event) {
+    this.destroyNavigation();
+    const lang = event.currentTarget.value;
+    this.model.setLanguage(lang);
+  }
 
-    initializeNavigation: function() {
-      this.navigationView = new NavigationView({ model: this.model });
-    },
+  initializeNavigation() {
+    this.navigationView = new NavigationView({ model: this.model });
+  }
 
-    destroyNavigation: function() {
-      this.navigationView.remove();
-    },
+  destroyNavigation() {
+    this.navigationView.remove();
+  }
 
-    remove: function() {
-      $('html').removeClass('in-languagepicker');
+  remove() {
+    $('html').removeClass('in-languagepicker');
 
-      Backbone.View.prototype.remove.apply(this, arguments);
-    }
+    super.remove();
+  }
 
-  }, {
-    template: 'languagePickerView'
-  });
-
-  return LanguagePickerView;
-
-});
+}
