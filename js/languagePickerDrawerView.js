@@ -68,8 +68,7 @@ define([
 
     onPopupOpened: function () {
       // move popup close focus to #focuser
-      Adapt.a11y._popup._focusStack.pop();
-      Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
+      Adapt.a11y.setPopupCloseTo($('#a11y-focuser'));
     },
 
     onDoChangeLanguage: function () {
