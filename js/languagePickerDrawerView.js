@@ -13,11 +13,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
   }
 
   initialize() {
-    this.listenTo(Adapt, {
-      remove: this.remove,
-      'languagepicker:changelanguage:yes': this.onDoChangeLanguage,
-      'languagepicker:changelanguage:no': this.onDontChangeLanguage
-    });
+    this.listenTo(Adapt, 'remove', this.remove);
     this.render();
   }
 
@@ -31,7 +27,6 @@ export default class LanguagePickerDrawerView extends Backbone.View {
     const newLanguage = $(event.currentTarget).attr('data-language');
     this.model.set('newLanguage', newLanguage);
     const data = this.model.getLanguageDetails(newLanguage);
-
     const promptObject = {
       _attributes: { lang: newLanguage },
       _classes: `is-lang-${newLanguage} ${data._direction === 'rtl' ? 'is-rtl' : 'is-ltr'}`,
@@ -49,26 +44,27 @@ export default class LanguagePickerDrawerView extends Backbone.View {
       ],
       _showIcon: true
     };
-
-    // keep active element incase the user cancels - usually navigation bar icon
-    // move drawer close focus to #focuser
-    this.$finishFocus = Adapt.a11y._popup._focusStack.pop();
-    Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
-
-    Adapt.once('drawer:closed', () => {
-      // wait for drawer to fully close
-      _.delay(() => {
-        Adapt.once('popup:opened', () => {
-          // move popup close focus to #focuser
-          Adapt.a11y._popup._focusStack.pop();
-          Adapt.a11y._popup._focusStack.push($('#a11y-focuser'));
-        });
-        // show yes/no popup
-        Adapt.notify.prompt(promptObject);
-      }, 250);
-    });
-
+    this.listenToOnce(Adapt, 'drawer:closed', this.onDrawerClosed);
     Adapt.trigger('drawer:closeDrawer');
+  }
+  
+  onDrawerClosed() {
+    // wait for drawer to fully close
+    _.delay(() => {
+      this.listenToOnce(Adapt, {
+        'popup:opened': this.onPopupOpened,
+        'languagepicker:changelanguage:yes': this.onDoChangeLanguage,
+        'languagepicker:changelanguage:no': this.onDontChangeLanguage
+      });
+      // show yes/no popup
+      Adapt.notify.prompt(promptObject);
+    }, 250);
+  }
+
+  onPopupOpened() {
+    // move popup close focus to #focuser
+    // keep active element incase the user cancels - usually navigation bar icon
+    this.$finishFocus = Adapt.a11y.setPopupCloseTo($('#a11y-focuser'));
   }
 
   onDoChangeLanguage() {
@@ -85,9 +81,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
    */
   onDontChangeLanguage() {
     this.remove();
-
     _.delay(() => Adapt.a11y.focusFirst(this.$finishFocus), 500);
-
   }
 
 }
