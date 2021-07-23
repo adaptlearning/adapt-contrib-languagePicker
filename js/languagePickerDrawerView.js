@@ -13,9 +13,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
   }
 
   initialize() {
-    this.listenTo(Adapt, {
-      remove: this.remove
-    });
+    this.listenTo(Adapt, 'remove', this.remove);
     this.render();
   }
 
