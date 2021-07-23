@@ -13,7 +13,9 @@ export default class LanguagePickerDrawerView extends Backbone.View {
   }
 
   initialize() {
-    this.listenTo(Adapt, 'remove', this.remove);
+    this.listenTo(Adapt, {
+      remove: this.remove
+    });
     this.render();
   }
 
@@ -24,26 +26,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
   }
 
   onButtonClick(event) {
-    const newLanguage = $(event.currentTarget).attr('data-language');
-    this.model.set('newLanguage', newLanguage);
-    const data = this.model.getLanguageDetails(newLanguage);
-    const promptObject = {
-      _attributes: { lang: newLanguage },
-      _classes: `is-lang-${newLanguage} ${data._direction === 'rtl' ? 'is-rtl' : 'is-ltr'}`,
-      title: data.warningTitle,
-      body: data.warningMessage,
-      _prompts: [
-        {
-          promptText: data._buttons.yes,
-          _callbackEvent: 'languagepicker:changelanguage:yes'
-        },
-        {
-          promptText: data._buttons.no,
-          _callbackEvent: 'languagepicker:changelanguage:no'
-        }
-      ],
-      _showIcon: true
-    };
+    this.promptObject = this.getPromptObject(event);
     this.listenToOnce(Adapt, 'drawer:closed', this.onDrawerClosed);
     Adapt.trigger('drawer:closeDrawer');
   }
@@ -57,7 +40,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
         'languagepicker:changelanguage:no': this.onDontChangeLanguage
       });
       // show yes/no popup
-      Adapt.notify.prompt(promptObject);
+      Adapt.notify.prompt(this.promptObject);
     }, 250);
   }
 
@@ -82,6 +65,29 @@ export default class LanguagePickerDrawerView extends Backbone.View {
   onDontChangeLanguage() {
     this.remove();
     _.delay(() => Adapt.a11y.focusFirst(this.$finishFocus), 500);
+  }
+  
+  getPromptObject(event) {
+    const newLanguage = $(event.currentTarget).attr('data-language');
+    this.model.set('newLanguage', newLanguage);
+    const data = this.model.getLanguageDetails(newLanguage);
+    return {
+      _attributes: { lang: newLanguage },
+      _classes: `is-lang-${newLanguage} ${data._direction === 'rtl' ? 'is-rtl' : 'is-ltr'}`,
+      title: data.warningTitle,
+      body: data.warningMessage,
+      _prompts: [
+        {
+          promptText: data._buttons.yes,
+          _callbackEvent: 'languagepicker:changelanguage:yes'
+        },
+        {
+          promptText: data._buttons.no,
+          _callbackEvent: 'languagepicker:changelanguage:no'
+        }
+      ],
+      _showIcon: true
+    };
   }
 
 }
