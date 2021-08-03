@@ -1,0 +1,42 @@
+{
+  "$anchor": "languagePicker-course",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "course"
+    },
+    "with": {
+      "properties": {
+        "_globals": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "_languagePicker": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "navigationBarLabel": {
+                  "type": "string",
+                  "title": "Navigation bar label",
+                  "default": "Select course language",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "languageSelector": {
+                  "type": "string",
+                  "title": "Language selector",
+                  "default": "Language selector",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
