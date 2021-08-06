@@ -45,6 +45,11 @@ define([
       return;
     }
 
+    if (Adapt.config.get('_activeLanguage')) {
+      languagePickerModel.setLanguage(Adapt.config.get('_activeLanguage'));
+      return;
+    }
+
     if (languagePickerModel.get('_showOnCourseLoad') === false) {
       languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
       return;
