@@ -20,6 +20,9 @@ define([
     if (!Adapt.config.has('_languagePicker')) return;
     if (!Adapt.config.get('_languagePicker')._isEnabled) return;
 
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('lang')) return;
+
     Adapt.config.set('_canLoadData', false);
 
     languagePickerModel = new LanguagePickerModel(Adapt.config.get('_languagePicker'));
