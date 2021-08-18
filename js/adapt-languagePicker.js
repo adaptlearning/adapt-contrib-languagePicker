@@ -27,7 +27,7 @@ define([
     Adapt.on('router:menu router:page', setupNavigationView);
 
     const params = new URLSearchParams(window.location.search);
-    const paramLang = params.get('lang')
+    const paramLang = params.get('lang');
     if (paramLang && Adapt.build.get('availableLanguageNames').includes(paramLang)) {
       languagePickerModel.setLanguage(paramLang);
       return;
