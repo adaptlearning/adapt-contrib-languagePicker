@@ -26,6 +26,13 @@ define([
 
     Adapt.on('router:menu router:page', setupNavigationView);
 
+    const params = new URLSearchParams(window.location.search);
+    const paramLang = params.get('lang')
+    if (paramLang && Adapt.build.get('availableLanguageNames').includes(paramLang)) {
+      languagePickerModel.setLanguage(paramLang);
+      return;
+    }
+
     if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
       onOfflineStorageReady();
       return;
