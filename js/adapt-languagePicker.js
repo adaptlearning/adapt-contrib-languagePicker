@@ -20,18 +20,16 @@ define([
     if (!Adapt.config.has('_languagePicker')) return;
     if (!Adapt.config.get('_languagePicker')._isEnabled) return;
 
-    Adapt.config.set('_canLoadData', false);
-
     languagePickerModel = new LanguagePickerModel(Adapt.config.get('_languagePicker'));
 
     Adapt.on('router:menu router:page', setupNavigationView);
 
     const params = new URLSearchParams(window.location.search);
     const paramLang = params.get('lang');
-    if (paramLang && Adapt.build.get('availableLanguageNames').includes(paramLang)) {
-      languagePickerModel.setLanguage(paramLang);
-      return;
-    }
+
+    if (paramLang && Adapt.build.get('availableLanguageNames').includes(paramLang)) return;
+
+    Adapt.config.set('_canLoadData', false);
 
     if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
       onOfflineStorageReady();
