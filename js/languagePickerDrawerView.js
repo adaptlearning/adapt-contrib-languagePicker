@@ -24,7 +24,9 @@ export default class LanguagePickerDrawerView extends Backbone.View {
   }
 
   onButtonClick(event) {
-    this.promptObject = this.getPromptObject(event);
+    const newLanguage = this.$(event.currentTarget).attr('data-language');
+    this.model.set('newLanguage', newLanguage);
+    this.promptObject = this.getPromptObject(newLanguage);
     this.listenToOnce(Adapt, 'drawer:closed', this.onDrawerClosed);
     Adapt.trigger('drawer:closeDrawer');
   }
@@ -65,9 +67,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
     _.delay(() => Adapt.a11y.focusFirst(this.$finishFocus), 500);
   }
   
-  getPromptObject(event) {
-    const newLanguage = $(event.currentTarget).attr('data-language');
-    this.model.set('newLanguage', newLanguage);
+  getPromptObject(newLanguage) {
     const data = this.model.getLanguageDetails(newLanguage);
     return {
       _attributes: { lang: newLanguage },
