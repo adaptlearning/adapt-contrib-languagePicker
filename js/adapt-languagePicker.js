@@ -20,11 +20,16 @@ class LanguagePicker extends Backbone.Controller {
     const config = Adapt.config.get('_languagePicker');
     if (!config?._isEnabled) return;
 
-    Adapt.config.set('_canLoadData', false);
-
     this.languagePickerModel = new LanguagePickerModel(config);
 
     this.listenTo(Adapt, 'router:menu router:page', this.setupNavigationView);
+
+    const params = new URLSearchParams(window.location.search);
+    const paramLang = params.get('lang');
+
+    if (paramLang && Adapt.build.get('availableLanguageNames').includes(paramLang)) return;
+
+    Adapt.config.set('_canLoadData', false);
 
     if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
       this.onOfflineStorageReady();

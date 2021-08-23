@@ -1,0 +1,140 @@
+{
+  "$anchor": "languagePicker-config",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "config"
+    },
+    "with": {
+      "properties": {
+        "_languagePicker": {
+          "type": "object",
+          "title": "Language Picker",
+          "default": {},
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Enable Language Picker",
+              "description": "Controls whether the Language Picker extension is enabled or disabled",
+              "default": false
+            },
+            "title": {
+              "type": "string",
+              "title": "Browser window title",
+              "description": "Text to be shown in the browser's title bar when the language picker is displayed",
+              "default": ""
+            },
+            "displayTitle": {
+              "type": "string",
+              "title": "Language Picker title",
+              "description": "Header text for the Language Picker",
+              "default": ""
+            },
+            "body": {
+              "type": "string",
+              "title": "Language Picker body",
+              "description": "Introductory or explanatory text for the Language Picker",
+              "default": ""
+            },
+            "_showOnCourseLoad": {
+              "type": "boolean",
+              "title": "Show on course load",
+              "description": "Controls whether the Language Picker should be displayed on course load or not",
+              "default": true
+            },
+            "_languagePickerIconClass": {
+              "type": "string",
+              "title": "Icon class",
+              "description": "Your default options here are: icon-globe, icon-language-1, icon-language-2",
+              "default": "icon-language-2"
+            },
+            "_restoreStateOnLanguageChange": {
+              "type": "boolean",
+              "title": "Restore course state on language change",
+              "description": "Determines whether or not the language picker will try to restore the 'state' of the course when the user changes language. It is advised that you only enable this setting if all course languages have exactly the same structure; if they do not, some loss of tracking data will occur. If this setting is disabled, tracking data will be cleared when the user switches language - the 'Confirm Message' should be used to warn the user of this",
+              "default": false
+            },
+            "_classes": {
+              "type": "string",
+              "title": "Custom classes",
+              "description": "",
+              "default": ""
+            },
+            "_languages": {
+              "type": "array",
+              "title": "Languages",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_language": {
+                    "type": "string",
+                    "title": "Language code",
+                    "description": "This text must match the name of the language-specific folder located in the course root, e.g. en, fr, es",
+                    "default": ""
+                  },
+                  "_direction": {
+                    "type": "string",
+                    "title": "Text direction",
+                    "description": "",
+                    "default": "ltr",
+                    "enum": [
+                      "ltr",
+                      "rtl"
+                    ],
+                    "_backboneForms": "Select"
+                  },
+                  "_isDisabled": {
+                    "type": "boolean",
+                    "title": "Disable selection of this language",
+                    "description": "Allows you to disable selection of this language. This can be useful in situations where localisation into a particular language has not yet been completed",
+                    "default": false
+                  },
+                  "displayName": {
+                    "type": "string",
+                    "title": "Language name",
+                    "description": "A user friendly name for the language, e.g. English, Français, Español",
+                    "default": ""
+                  },
+                  "warningTitle": {
+                    "type": "string",
+                    "title": "Confirm Title",
+                    "description": "This text appears as the header of the dialog confirming the learner's intent to change languages",
+                    "default": ""
+                  },
+                  "warningMessage": {
+                    "type": "string",
+                    "title": "Confirm body",
+                    "description": "This text appears as the body of the dialog confirming the learner's intent to change languages.  Note: the warning message should indicate that any progress will be lost when the language is switched",
+                    "default": ""
+                  },
+                  "_buttons": {
+                    "type": "object",
+                    "title": "Prompt buttons",
+                    "default": {},
+                    "required": [
+                      "yes",
+                      "no"
+                    ],
+                    "properties": {
+                      "yes": {
+                        "type": "string",
+                        "title": "Confirm button text",
+                        "default": "Yes"
+                      },
+                      "no": {
+                        "type": "string",
+                        "title": "Cancel button text",
+                        "default": "No"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
