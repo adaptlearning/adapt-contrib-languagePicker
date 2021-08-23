@@ -1,28 +1,28 @@
-define([
-  'core/js/adapt',
-  './languagePickerView',
-  './languagePickerNavView',
-  './languagePickerModel'
-], function(Adapt, LanguagePickerView, LanguagePickerNavView, LanguagePickerModel) {
+import Adapt from 'core/js/adapt';
+import LanguagePickerView from './languagePickerView';
+import LanguagePickerNavView from './languagePickerNavView';
+import LanguagePickerModel from './languagePickerModel';
 
-  var languagePickerModel;
-
-  Adapt.once('configModel:dataLoaded', onConfigLoaded);
-
-  /**
+class LanguagePicker extends Backbone.Controller {
+  
+  initialize() {
+    this.listenTo(Adapt, 'configModel:dataLoaded', this.onConfigLoaded);
+  }
+  
+    /**
    * Once the Adapt config has loaded, check to see if the language picker is enabled. If it is:
    * - stop the rest of the .json from loading
    * - set up the language picker model
    * - register for events to allow us to display the language picker icon in the navbar on pages and menus
    * - wait for offline storage to be ready so that we can check to see if there's a stored language choice or not
    */
-  function onConfigLoaded() {
-    if (!Adapt.config.has('_languagePicker')) return;
-    if (!Adapt.config.get('_languagePicker')._isEnabled) return;
+  onConfigLoaded() {
+    const config = Adapt.config.get('_languagePicker');
+    if (!config?._isEnabled) return;
 
-    languagePickerModel = new LanguagePickerModel(Adapt.config.get('_languagePicker'));
+    this.languagePickerModel = new LanguagePickerModel(config);
 
-    Adapt.on('router:menu router:page', setupNavigationView);
+    this.listenTo(Adapt, 'router:menu router:page', this.setupNavigationView);
 
     const params = new URLSearchParams(window.location.search);
     const paramLang = params.get('lang');
@@ -32,53 +32,54 @@ define([
     Adapt.config.set('_canLoadData', false);
 
     if (Adapt.offlineStorage.ready) { // on the offchance that it may already be ready...
-      onOfflineStorageReady();
+      this.onOfflineStorageReady();
       return;
     }
-    Adapt.once('offlineStorage:ready', onOfflineStorageReady);
+    
+    this.listenToOnce(Adapt, 'offlineStorage:ready', this.onOfflineStorageReady);
   }
 
   /**
    * Once offline storage is ready, check to see if a language was previously selected by the user
    * If it was, load it. If it wasn't, show the language picker
    */
-  function onOfflineStorageReady() {
-    var storedLanguage = Adapt.offlineStorage.get('lang');
+  onOfflineStorageReady() {
+    const storedLanguage = Adapt.offlineStorage.get('lang');
 
     if (storedLanguage) {
-      languagePickerModel.setLanguage(storedLanguage);
+      this.languagePickerModel.setLanguage(storedLanguage);
       return;
     }
 
-    if (languagePickerModel.get('_showOnCourseLoad') === false) {
-      languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
+    if (this.languagePickerModel.get('_showOnCourseLoad') === false) {
+      this.languagePickerModel.setLanguage(Adapt.config.get('_defaultLanguage'));
       return;
     }
 
-    showLanguagePickerView();
+    this.showLanguagePickerView();
   }
 
-  function showLanguagePickerView () {
-    var languagePickerView = new LanguagePickerView({
-      model: languagePickerModel
+  showLanguagePickerView() {
+    const languagePickerView = new LanguagePickerView({
+      model: this.languagePickerModel
     });
 
     languagePickerView.$el.appendTo('#wrapper');
   }
 
-  function setupNavigationView () {
+  setupNavigationView() {
     /*
-     * On the framework this isn't an issue, but courses built in the authoring tool before the ARIA label
-     * was added will break unless the extension is removed then added again.
-     */
-    var courseGlobals = Adapt.course.get('_globals')._extensions;
-    var navigationBarLabel = '';
+      * On the framework this isn't an issue, but courses built in the authoring tool before the ARIA label
+      * was added will break unless the extension is removed then added again.
+      */
+    const courseGlobals = Adapt.course.get('_globals')._extensions;
+    let navigationBarLabel = '';
     if (courseGlobals._languagePicker) {
       navigationBarLabel = courseGlobals._languagePicker.navigationBarLabel;
     }
 
-    var languagePickerNavView = new LanguagePickerNavView({
-      model: languagePickerModel,
+    const languagePickerNavView = new LanguagePickerNavView({
+      model: this.languagePickerModel,
       attributes: {
         'aria-label': navigationBarLabel
       }
@@ -86,5 +87,6 @@ define([
 
     languagePickerNavView.$el.appendTo('.nav__inner');
   }
+}
 
-});
+export default new LanguagePicker();

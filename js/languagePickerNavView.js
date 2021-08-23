@@ -1,33 +1,31 @@
-define([
-  'core/js/adapt',
-  './languagePickerDrawerView'
-], function(Adapt, LanguagePickerDrawerView) {
+import Adapt from 'core/js/adapt';
+import LanguagePickerDrawerView from './languagePickerDrawerView';
 
-  var LanguagePickerNavView = Backbone.View.extend({
+export default class LanguagePickerNavView extends Backbone.View {
 
-    tagName: 'button',
+  tagName() {
+    return 'button';
+  }
 
-    className: function () {
-      var classNames = 'btn-icon nav__btn nav__languagepicker-btn js-languagepicker-nav-btn icon';
-      var customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
+  className() {
+    const classNames = 'btn-icon nav__btn nav__languagepicker-btn js-languagepicker-nav-btn icon';
+    const customClass = this.model.get('_languagePickerIconClass') || 'icon-language-2';
 
-      return classNames + ' ' + customClass;
-    },
+    return `${classNames} ${customClass}`;
+  }
 
-    events: {
-      'click': 'onClick'
-    },
+  events() {
+    return {
+      click: 'onClick'
+    };
+  }
 
-    initialize: function () {
-      this.listenTo(Adapt, 'remove', this.remove);
-    },
+  initialize() {
+    this.listenTo(Adapt, 'remove', this.remove);
+  }
 
-    onClick: function (event) {
-      Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({ model: this.model }).$el, false);
-    }
+  onClick(event) {
+    Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({ model: this.model }).$el, false);
+  }
 
-  });
-
-  return LanguagePickerNavView;
-
-});
+}
