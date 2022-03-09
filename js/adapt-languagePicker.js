@@ -4,12 +4,12 @@ import LanguagePickerNavView from './languagePickerNavView';
 import LanguagePickerModel from './languagePickerModel';
 
 class LanguagePicker extends Backbone.Controller {
-  
+
   initialize() {
     this.listenTo(Adapt, 'configModel:dataLoaded', this.onConfigLoaded);
   }
-  
-    /**
+
+  /**
    * Once the Adapt config has loaded, check to see if the language picker is enabled. If it is:
    * - stop the rest of the .json from loading
    * - set up the language picker model
@@ -35,7 +35,7 @@ class LanguagePicker extends Backbone.Controller {
       this.onOfflineStorageReady();
       return;
     }
-    
+
     this.listenToOnce(Adapt, 'offlineStorage:ready', this.onOfflineStorageReady);
   }
 
