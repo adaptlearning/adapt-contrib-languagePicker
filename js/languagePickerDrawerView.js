@@ -1,4 +1,6 @@
 import Adapt from 'core/js/adapt';
+import a11y from 'core/js/a11y';
+import notify from 'core/js/notify';
 
 export default class LanguagePickerDrawerView extends Backbone.View {
 
@@ -30,7 +32,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
     this.listenToOnce(Adapt, 'drawer:closed', this.onDrawerClosed);
     Adapt.trigger('drawer:closeDrawer');
   }
-  
+
   onDrawerClosed() {
     // wait for drawer to fully close
     _.delay(() => {
@@ -40,14 +42,14 @@ export default class LanguagePickerDrawerView extends Backbone.View {
         'languagepicker:changelanguage:no': this.onDontChangeLanguage
       });
       // show yes/no popup
-      Adapt.notify.prompt(this.promptObject);
+      notify.prompt(this.promptObject);
     }, 250);
   }
 
   onPopupOpened() {
     // move popup close focus to #focuser
     // keep active element incase the user cancels - usually navigation bar icon
-    this.$finishFocus = Adapt.a11y.setPopupCloseTo($('#a11y-focuser'));
+    this.$finishFocus = a11y.setPopupCloseTo($('#a11y-focuser'));
   }
 
   onDoChangeLanguage() {
@@ -64,9 +66,9 @@ export default class LanguagePickerDrawerView extends Backbone.View {
    */
   onDontChangeLanguage() {
     this.remove();
-    _.delay(() => Adapt.a11y.focusFirst(this.$finishFocus), 500);
+    _.delay(() => a11y.focusFirst(this.$finishFocus), 500);
   }
-  
+
   getPromptObject(newLanguage) {
     const data = this.model.getLanguageDetails(newLanguage);
     return {
