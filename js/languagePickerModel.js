@@ -5,8 +5,8 @@ export default class LanguagePickerModel extends Backbone.Model {
     this.trackedData = {
       components: [],
       blocks: []
-    }
-    
+    };
+
     this.locationId = null;
   }
 
