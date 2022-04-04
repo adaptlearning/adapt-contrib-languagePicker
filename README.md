@@ -1,14 +1,14 @@
-# adapt-contrib-languagePicker  
+# adapt-contrib-languagePicker
 
-**Language Picker** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework). It is not yet compatible with the Adapt Authoring Tool.   
+**Language Picker** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework). It is not yet compatible with the Adapt Authoring Tool.
 
-**Language Picker** is intended to be used with courses that provide content in more than one language. Prior to entering the course, the learner is presented with a group of buttons. Each button is labelled with a language. Clicking a language button loads content in the chosen language.  
+**Language Picker** is intended to be used with courses that provide content in more than one language. Prior to entering the course, the learner is presented with a group of buttons. Each button is labelled with a language. Clicking a language button loads content in the chosen language.
 
 **Language Picker** allows the learner to switch languages while the course is in progress. Clicking the icon in the navigation bar reveals the Language Picker in the [Drawer](https://github.com/adaptlearning/adapt_framework/wiki/Core-modules#drawer).
 
 [Visit the **Course Localisation** wiki](https://github.com/adaptlearning/adapt_framework/wiki/Course-Localisation) for more information about how to localise Adapt courses.
 
-<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/language-picker.gif" alt="" align="center">  
+<img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/language-picker.gif" alt="" align="center">
 
 ## Installation
 
@@ -105,9 +105,9 @@ Label for the button that cancels the switch languages dialog.
 If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is enabled and the course is being run from an <abbr title='Learning Management System'>LMS</abbr> that has support for the `cmi.student_preference.language` data model element, the spoor extension will record the learner's choice of language to that data model element. Note that this is for reporting purposes only: as support for that data model element is not mandatory in SCORM 1.2 it cannot be relied upon for saving/restoring the learner's choice of language - the `cmi.suspend_data` data model element will be used for that, even when `cmi.student_preference.language` is available.
 
 ----------------------------
-**Version number:**  4.4  <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>  
-**Framework versions:**  5.15.5+  
-**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-bookmarking/graphs/contributors)  
-**Accessibility support:** WAI AA  
-**RTL support:** Yes  
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 14 for macOS/iOS/iPadOS, Opera  
+**Version number:**  4.5  <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>
+**Framework versions:**  5.15.5+
+**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-bookmarking/graphs/contributors)
+**Accessibility support:** WAI AA
+**RTL support:** Yes
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 14 for macOS/iOS/iPadOS, Opera
