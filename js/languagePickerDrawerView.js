@@ -1,5 +1,6 @@
 import Adapt from 'core/js/adapt';
 import a11y from 'core/js/a11y';
+import notify from 'core/js/notify';
 
 export default class LanguagePickerDrawerView extends Backbone.View {
 
@@ -41,7 +42,7 @@ export default class LanguagePickerDrawerView extends Backbone.View {
         'languagepicker:changelanguage:no': this.onDontChangeLanguage
       });
       // show yes/no popup
-      Adapt.notify.prompt(this.promptObject);
+      notify.prompt(this.promptObject);
     }, 250);
   }
 

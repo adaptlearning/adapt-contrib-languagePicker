@@ -1,4 +1,5 @@
 import Adapt from 'core/js/adapt';
+import drawer from 'core/js/drawer';
 import LanguagePickerDrawerView from './languagePickerDrawerView';
 
 export default class LanguagePickerNavView extends Backbone.View {
@@ -25,7 +26,7 @@ export default class LanguagePickerNavView extends Backbone.View {
   }
 
   onClick(event) {
-    Adapt.drawer.triggerCustomView(new LanguagePickerDrawerView({ model: this.model }).$el, false);
+    drawer.triggerCustomView(new LanguagePickerDrawerView({ model: this.model }).$el, false);
   }
 
 }

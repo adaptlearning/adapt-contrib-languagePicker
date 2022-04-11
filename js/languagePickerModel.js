@@ -1,4 +1,8 @@
 import Adapt from 'core/js/adapt';
+import offlineStorage from 'core/js/offlineStorage';
+import data from 'core/js/data';
+import logging from 'core/js/logging';
+import router from 'core/js/router';
 
 export default class LanguagePickerModel extends Backbone.Model {
   preinitialize() {
@@ -46,15 +50,15 @@ export default class LanguagePickerModel extends Backbone.Model {
       return;
     }
     _.defer(() => {
-      this.locationId = Adapt.offlineStorage.get('location') || null;
+      this.locationId = offlineStorage.get('location') || null;
       this.restoreState();
     });
   }
 
   restoreLocation() {
-    if (!Adapt.findById(this.locationId)) return;
+    if (!data.findById(this.locationId)) return;
 
-    _.defer(() => Adapt.navigateToElement('.' + this.locationId));
+    _.defer(() => router.navigateToElement('.' + this.locationId));
   }
 
   /**
@@ -95,9 +99,9 @@ export default class LanguagePickerModel extends Backbone.Model {
   }
 
   setTrackableState(stateObject) {
-    const restoreModel = Adapt.findById(stateObject._id);
+    const restoreModel = data.findById(stateObject._id);
     if (!restoreModel) {
-      Adapt.log.warn('LanguagePicker unable to restore state for: ' + stateObject._id);
+      logging.warn('LanguagePicker unable to restore state for: ' + stateObject._id);
       return;
     }
 
