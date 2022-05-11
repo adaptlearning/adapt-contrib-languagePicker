@@ -45,6 +45,7 @@ class LanguagePicker extends Backbone.Controller {
    * If it was, load it. If it wasn't, show the language picker
    */
   onOfflineStorageReady() {
+    await Adapt.wait.queue();
     const storedLanguage = offlineStorage.get('lang');
 
     if (storedLanguage) {
