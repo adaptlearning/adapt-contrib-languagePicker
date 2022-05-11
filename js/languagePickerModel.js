@@ -87,7 +87,7 @@ export default class LanguagePickerModel extends Backbone.Model {
   }
 
   getState(models) {
-    return models.map(model => model.get('_isComplete') && model.getTrackableState());
+    return models.map(model => model.getTrackableState());
   }
 
   setTrackedData() {
