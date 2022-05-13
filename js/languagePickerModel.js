@@ -6,11 +6,16 @@ import router from 'core/js/router';
 
 export default class LanguagePickerModel extends Backbone.Model {
   preinitialize() {
+    /**
+     * @deprecated
+     */
     this.trackedData = {
       components: [],
       blocks: []
     };
-
+    /**
+     * @deprecated
+     */
     this.locationId = null;
   }
 
@@ -32,11 +37,20 @@ export default class LanguagePickerModel extends Backbone.Model {
     return this.get('_languages').find(({ _language }) => _language === language);
   }
 
-  setLanguage(language) {
+  setLanguage(language, { canReset = true } = {}) {
     Adapt.config.set({
       _activeLanguage: language,
       _defaultDirection: this.getLanguageDetails(language)._direction
     });
+    if (canReset) this.checkResetOnLanguageChange();
+  }
+
+  checkResetOnLanguageChange() {
+    const shouldReset = !this.get('_restoreStateOnLanguageChange');
+    const hasOfflineStorageClear = Boolean(offlineStorage.clear);
+    if (!shouldReset || !hasOfflineStorageClear) return;
+    // New reset functionality
+    offlineStorage.clear();
   }
 
   markLanguageAsSelected(model, language) {
@@ -45,24 +59,32 @@ export default class LanguagePickerModel extends Backbone.Model {
     });
   }
 
+  /**
+   * @deprecated
+   */
   onDataLoaded() {
-    if (!this.get('_restoreStateOnLanguageChange')) {
-      return;
-    }
+    const shouldReset = !this.get('_restoreStateOnLanguageChange');
+    const hasOfflineStorageClear = Boolean(Adapt.offlineStorage.clear);
+    if (hasOfflineStorageClear || shouldReset) return;
+    // Deprecated legacy restoration mechanism
+    // Not compatible with branching / trickle
     _.defer(() => {
-      this.locationId = offlineStorage.get('location') || null;
+      this.locationId = Adapt.offlineStorage.get('location') || null;
       this.restoreState();
     });
   }
 
+  /**
+   * @deprecated
+   */
   restoreLocation() {
     if (!data.findById(this.locationId)) return;
-
     _.defer(() => router.navigateToElement('.' + this.locationId));
   }
 
   /**
    * Restore course progress on language change.
+   * @deprecated
    */
   restoreState() {
 
@@ -72,6 +94,9 @@ export default class LanguagePickerModel extends Backbone.Model {
     this.trackedData.blocks?.forEach(this.setTrackableState);
   }
 
+  /**
+   * @deprecated
+   */
   isTrackedDataEmpty() {
     return _.isEqual(this.trackedData, {
       components: [],
@@ -79,6 +104,9 @@ export default class LanguagePickerModel extends Backbone.Model {
     });
   }
 
+  /**
+   * @deprecated
+   */
   getTrackableState() {
     return {
       components: this.getState(Adapt.components.models).filter(Boolean),
@@ -86,10 +114,16 @@ export default class LanguagePickerModel extends Backbone.Model {
     };
   }
 
+  /**
+   * @deprecated
+   */
   getState(models) {
     return models.map(model => model.get('_isComplete') && model.getTrackableState());
   }
 
+  /**
+   * @deprecated
+   */
   setTrackedData() {
     if (!this.get('_restoreStateOnLanguageChange')) {
       return;
@@ -98,6 +132,9 @@ export default class LanguagePickerModel extends Backbone.Model {
     this.trackedData = this.getTrackableState();
   }
 
+  /**
+   * @deprecated
+   */
   setTrackableState(stateObject) {
     const restoreModel = data.findById(stateObject._id);
     if (!restoreModel) {
