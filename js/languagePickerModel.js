@@ -69,7 +69,7 @@ export default class LanguagePickerModel extends Backbone.Model {
     // Deprecated legacy restoration mechanism
     // Not compatible with branching / trickle
     _.defer(() => {
-      this.locationId = Adapt.offlineStorage.get('location') || null;
+      this.locationId = offlineStorage.get('location') || null;
       this.restoreState();
     });
   }
