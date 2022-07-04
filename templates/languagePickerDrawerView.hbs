@@ -10,11 +10,11 @@
     <div class="languagepicker-drawer__item drawer__item is-{{_language}}{{#if _isSelected}} is-selected{{/if}}{{#equals _direction "ltr"}} is-ltr{{/equals}}{{#equals _direction "rtl"}} is-rtl{{/equals}}" role="listitem">
 
         <button class="languagepicker-drawer__item-btn drawer__item-btn js-languagepicker-item-btn{{#any _isSelected _isDisabled}} is-disabled{{/any}}" data-language="{{_language}}"{{#any _isSelected _isDisabled}} aria-disabled="true" tabindex="-1"{{/any}}{{#if _isSelected}} aria-current='true'{{/if}} lang="{{_language}}">
-          <div class="languagepicker-drawer__title drawer__item-title">
-            <div class="languagepicker-drawer__title-inner drawer__item-title-inner">
+          <span class="languagepicker-drawer__title drawer__item-title">
+            <span class="languagepicker-drawer__title-inner drawer__item-title-inner">
               {{{compile displayName}}}
-            </div>
-          </div>
+            </span>
+          </span>
         </button>
 
     </div>
