@@ -12,24 +12,31 @@
           "type": "object",
           "default": {},
           "properties": {
-            "_languagePicker": {
+            "_extensions": {
               "type": "object",
               "default": {},
               "properties": {
-                "navigationBarLabel": {
-                  "type": "string",
-                  "title": "Navigation bar label",
-                  "default": "Select course language",
-                  "_adapt": {
-                    "translatable": true
-                  }
-                },
-                "languageSelector": {
-                  "type": "string",
-                  "title": "Language selector",
-                  "default": "Language selector",
-                  "_adapt": {
-                    "translatable": true
+                "_languagePicker": {
+                  "type": "object",
+                  "title": "Language Picker",
+                  "default": {},
+                  "properties": {
+                    "navigationBarLabel": {
+                      "type": "string",
+                      "title": "Navigation bar label",
+                      "default": "Select course language",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "languageSelector": {
+                      "type": "string",
+                      "title": "Language selector",
+                      "default": "Language selector",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    }
                   }
                 }
               }
