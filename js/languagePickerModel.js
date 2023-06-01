@@ -52,6 +52,7 @@ export default class LanguagePickerModel extends Backbone.Model {
     if (!shouldReset || !hasOfflineStorageClear) return;
     // New reset functionality
     offlineStorage.clear();
+    this.locationId = null;
   }
 
   markLanguageAsSelected(model, language) {
