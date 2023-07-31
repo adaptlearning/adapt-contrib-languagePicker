@@ -4,14 +4,6 @@
   "id": "http://jsonschema.net",
   "required": false,
   "globals": {
-    "navigationBarLabel": {
-      "type": "string",
-      "required": true,
-      "default": "Select course language",
-      "inputType": "Text",
-      "validators": [],
-      "translatable": true
-    },
     "languageSelector": {
       "type": "string",
       "required": true,
@@ -19,6 +11,71 @@
       "inputType": "Text",
       "validators": [],
       "translatable": true
+    },
+    "_navOrder": {
+      "type": "number",
+      "required": true,
+      "title": "Navigation bar order",
+      "help": "Determines the order in which the button is displayed in the navigation bar. Negative numbers (e.g. -100) are left-aligned. Positive numbers (e.g. 100) are right-aligned.",
+      "default": 0,
+      "inputType": "Text",
+      "validators": []
+    },
+    "_navTooltip": {
+      "type": "object",
+      "title": "Navigation tooltip",
+      "properties": {
+        "_isEnabled": {
+          "type": "boolean",
+          "default": true,
+          "title": "Enable tooltip for navigation button",
+          "inputType": "Checkbox",
+          "validators": []
+        },
+        "text": {
+          "type": "string",
+          "title": "",
+          "default": "Select course language",
+          "help": "The tooltip text to display on hover.",
+          "inputType": "Text",
+          "validators": [],
+          "translatable": true
+        }
+      }
+    },
+    "_showLabel": {
+      "type": "boolean",
+      "required": true,
+      "default": true,
+      "title": "Enable navigation button label",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Determines whether a label is shown on the navigation bar button."
+    },
+    "navLabel": {
+      "type": "string",
+      "required": true,
+      "default": "Select course language",
+      "title": "Navigation bar button label",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "_drawerPosition": {
+      "type": "string",
+      "required": true,
+      "default": "auto",
+      "title": "Drawer position",
+      "help": "Determines the starting position of the drawer to open.",
+      "inputType": {
+        "type": "Select",
+        "options": [
+          "auto",
+          "left",
+          "right"
+        ]
+      },
+      "validators": []
     }
   },
   "properties": {
