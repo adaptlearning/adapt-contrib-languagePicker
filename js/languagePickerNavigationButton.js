@@ -7,14 +7,10 @@ import LanguagePickerDrawerView from './languagePickerDrawerView';
 export default class LanguagePickerNavigationButton extends NavigationButtonView {
 
   attributes() {
-    const attributes = super.attributes();
-    return Object.assign(attributes, {
-      'data-tooltip-id': 'languagepicker'
-    });
-  }
-
-  static get template() {
-    return 'languagePickerNavigationButton.jsx';
+    return {
+      ...super.attributes(),
+      'data-tooltip-id': this.model.get('_id')
+    };
   }
 
   events() {
@@ -28,7 +24,7 @@ export default class LanguagePickerNavigationButton extends NavigationButtonView
     this.drawerModel = options.drawerModel;
     this.setupEventListeners();
     tooltips.register({
-      _id: 'languagepicker',
+      _id: this.model.get('_id'),
       ...this.model.get('_navTooltip')
     });
   }
@@ -37,6 +33,10 @@ export default class LanguagePickerNavigationButton extends NavigationButtonView
     this.listenTo(Adapt, {
       remove: this.remove
     });
+  }
+
+  static get template() {
+    return 'languagePickerNavigationButton.jsx';
   }
 
   onClick(event) {

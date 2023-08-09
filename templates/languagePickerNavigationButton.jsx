@@ -7,7 +7,7 @@ export default function LanguagePickerNavigationButton(props) {
     _iconClasses
   } = props;
   return (
-    <React.Fragment>
+    <>
       <span
         className={classes([
           'icon',
@@ -20,6 +20,6 @@ export default function LanguagePickerNavigationButton(props) {
         aria-hidden="true"
         dangerouslySetInnerHTML={{ __html: compile(text, props) }}
       />
-    </React.Fragment>
+    </>
   );
 }
