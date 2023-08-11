@@ -83,7 +83,8 @@ class LanguagePicker extends Backbone.Controller {
     const languagePickerNavView = new LanguagePickerNavView({
       model: this.languagePickerModel,
       attributes: {
-        'aria-label': navigationBarLabel
+        'aria-label': navigationBarLabel,
+        'aria-expanded': false
       }
     });
 

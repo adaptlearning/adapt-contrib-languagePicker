@@ -22,10 +22,18 @@ export default class LanguagePickerNavView extends Backbone.View {
   }
 
   initialize() {
-    this.listenTo(Adapt, 'remove', this.remove);
+    this.listenTo(Adapt, {
+      remove: this.remove,
+      'drawer:closed': this.onClose
+    });
+  }
+
+  onClose() {
+    this.$el.attr('aria-expanded', false);
   }
 
   onClick(event) {
+    this.$el.attr('aria-expanded', true);
     drawer.triggerCustomView(new LanguagePickerDrawerView({ model: this.model }).$el, false);
   }
 
