@@ -84,7 +84,8 @@ class LanguagePicker extends Backbone.Controller {
       model: this.languagePickerModel,
       attributes: {
         'aria-label': navigationBarLabel,
-        'aria-expanded': false
+        'aria-expanded': false,
+        'data-tooltip-id': 'languagePicker'
       }
     });
 

@@ -1,6 +1,7 @@
 import Adapt from 'core/js/adapt';
 import drawer from 'core/js/drawer';
 import LanguagePickerDrawerView from './languagePickerDrawerView';
+import tooltips from 'core/js/tooltips';
 
 export default class LanguagePickerNavView extends Backbone.View {
 
@@ -25,6 +26,11 @@ export default class LanguagePickerNavView extends Backbone.View {
     this.listenTo(Adapt, {
       remove: this.remove,
       'drawer:closed': this.onClose
+    });
+
+    tooltips.register({
+      _id: 'languagePicker',
+      ...Adapt.course.get('_globals')?._extensions?._languagePicker?._navTooltip || {}
     });
   }
 

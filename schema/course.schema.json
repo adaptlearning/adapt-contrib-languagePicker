@@ -24,7 +24,7 @@
                     "navigationBarLabel": {
                       "type": "string",
                       "title": "Navigation bar label",
-                      "default": "Select course language",
+                      "default": "Language picker",
                       "_adapt": {
                         "translatable": true
                       }
@@ -35,6 +35,25 @@
                       "default": "Language selector",
                       "_adapt": {
                         "translatable": true
+                      }
+                    },
+                    "_navTooltip": {
+                      "type": "object",
+                      "title": "Navigation tooltip",
+                      "properties": {
+                        "_isEnabled": {
+                          "type": "boolean",
+                          "title": "Enable tooltip for language picker button",
+                          "default": true
+                        },
+                        "text": {
+                          "type": "string",
+                          "title": "Tooltip text",
+                          "default": "Language picker",
+                          "_adapt": {
+                            "translatable": true
+                          }
+                        }
                       }
                     }
                   }
