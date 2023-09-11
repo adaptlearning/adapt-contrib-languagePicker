@@ -1,5 +1,6 @@
 import Adapt from 'core/js/adapt';
 import NavigationView from './languagePickerNavigationView';
+import router from 'core/js/router';
 
 export default class LanguagePickerView extends Backbone.View {
 
@@ -36,7 +37,7 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
   postRender() {
-    $('.js-loading').hide();
+    router.hideLoading();
   }
 
   onLanguageClick(event) {
