@@ -29,10 +29,10 @@
                         "translatable": true
                       }
                     },
-                    "languageSelector": {
+                    "drawerLabel": {
                       "type": "string",
-                      "title": "Language selector",
-                      "default": "Language selector",
+                      "title": "Drawer Label",
+                      "default": "Language Picker",
                       "_adapt": {
                         "translatable": true
                       }

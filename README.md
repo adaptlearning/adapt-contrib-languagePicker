@@ -101,13 +101,13 @@ Label for the button that cancels the switch languages dialog.
 Add to _course.json_ under _\_globals.\_extensions_.
 
 ### \_languagePicker (object):
-The languagePicker object that contains values for `navigationBarLabel`, `languageSelector` and `_navTooltip` that contains `_isEnabled`, `text`.
+The languagePicker object that contains values for `navigationBarLabel`, `drawerLabel` and `_navTooltip` that contains `_isEnabled`, `text`.
 
 #### \navigationBarLabel (string):
 Label shown next to the language picker button when navigation bar labels are enabled. Defaults to Language picker.
 
-#### \languageSelector (string):
-Aria label that appears at the top of the drawer displayed when language picker button is clicked. Defaults to Language selector.
+#### \drawerLabel (string):
+Aria label that appears at the top of the drawer displayed when language picker button is clicked. Defaults to language picker.
 
 #### \_navTooltip (object):
 The _navTooltip object that contains values for `_isEnabled` and `text`.

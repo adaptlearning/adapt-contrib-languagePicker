@@ -12,10 +12,10 @@
       "validators": [],
       "translatable": true
     },
-    "languageSelector": {
+    "drawerLabel": {
       "type": "string",
       "required": true,
-      "default": "Language selector",
+      "default": "Language Picker",
       "inputType": "Text",
       "validators": [],
       "translatable": true
