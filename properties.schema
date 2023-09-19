@@ -52,7 +52,7 @@
       "validators": [],
       "help": "Determines whether a label is shown on the navigation bar button."
     },
-    "navLabel": {
+    "navigationBarLabel": {
       "type": "string",
       "required": true,
       "default": "Select course language",
@@ -76,6 +76,27 @@
         ]
       },
       "validators": []
+    },
+    "_navTooltip": {
+      "type": "object",
+      "title": "Navigation tooltip",
+      "properties": {
+        "_isEnabled": {
+          "type": " boolean",
+          "title": "Enable tooltip for Language selector button",
+          "default": true,
+          "inputType": "Checkbox",
+          "validators": [],
+          "required": true
+        },
+        "text": {
+          "type": "string",
+          "title": "Tooltip text",
+          "default": "Language selector",
+          "inputType": "Text",
+          "required": true
+        }
+      }
     }
   },
   "properties": {

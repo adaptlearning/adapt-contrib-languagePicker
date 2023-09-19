@@ -80,7 +80,7 @@ class LanguagePicker extends Backbone.Controller {
     const {
       _navOrder = 0,
       _showLabel = true,
-      navLabel = '',
+      navigationBarLabel = '',
       _drawerPosition = 'auto',
       _navTooltip = {}
     } = globalsConfig ?? {};
@@ -91,8 +91,8 @@ class LanguagePicker extends Backbone.Controller {
       _classes: 'nav__languagepicker-btn languagepicker__nav-btn',
       _iconClasses: this.languagePickerModel.get('_languagePickerIconClass') || 'icon-language-2',
       _role: 'button',
-      ariaLabel: navLabel,
-      text: navLabel,
+      ariaLabel: navigationBarLabel,
+      text: navigationBarLabel,
       _drawerPosition,
       _navTooltip
     });

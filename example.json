@@ -51,10 +51,10 @@
         "languageSelector": "Language selector",
         "_navOrder": 0,
         "_navTooltip": {
-          "_isEnabled": true,
-          "text": "Select course language"
+            "_isEnabled": true,
+            "text": "Language selector"
         },
         "_showLabel": true,
-        "navLabel": "Select course language",
+        "navigationBarLabel" : "Select course language",
         "_drawerPosition": "auto"
     }

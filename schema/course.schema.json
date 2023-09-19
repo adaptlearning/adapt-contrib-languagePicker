@@ -60,7 +60,7 @@
                       "description": "Determines whether a label is shown on the navigation bar button.",
                       "default": true
                     },
-                    "navLabel": {
+                    "navigationBarLabel": {
                       "type": "string",
                       "title": "Navigation button label",
                       "description": "The tooltip text to display on hover.",
@@ -79,6 +79,25 @@
                         "left",
                         "right"
                       ]
+                    },
+                    "_navTooltip": {
+                      "type": "object",
+                      "title": "Navigation tooltip",
+                      "properties": {
+                        "_isEnabled": {
+                          "type": "boolean",
+                          "title": "Enable tooltip for language picker button",
+                          "default": true
+                        },
+                        "text": {
+                          "type": "string",
+                          "title": "Tooltip text",
+                          "default": "Language selector",
+                          "_adapt": {
+                            "translatable": true
+                          }
+                        }
+                      }
                     }
                   }
                 }
