@@ -7,7 +7,7 @@
     "navigationBarLabel": {
       "type": "string",
       "required": true,
-      "default": "Language selector",
+      "default": "Select course language",
       "inputType": "Text",
       "validators": [],
       "translatable": true

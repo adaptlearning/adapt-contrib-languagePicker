@@ -24,7 +24,7 @@
                     "navigationBarLabel": {
                       "type": "string",
                       "title": "Navigation bar label",
-                      "default": "Language selector",
+                      "default": "Select course language",
                       "_adapt": {
                         "translatable": true
                       }
