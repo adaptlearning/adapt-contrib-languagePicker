@@ -7,15 +7,15 @@
     "navigationBarLabel": {
       "type": "string",
       "required": true,
-      "default": "Language picker",
+      "default": "Language selector",
       "inputType": "Text",
       "validators": [],
       "translatable": true
     },
-    "drawerLabel": {
+    "languageSelector": {
       "type": "string",
       "required": true,
-      "default": "Language Picker",
+      "default": "Language selector",
       "inputType": "Text",
       "validators": [],
       "translatable": true
@@ -26,7 +26,7 @@
       "properties": {
         "_isEnabled": {
           "type": " boolean",
-          "title": "Enable tooltip for language picker button",
+          "title": "Enable tooltip for Language selector button",
           "default": true,
           "inputType": "Checkbox",
           "validators": [],
@@ -35,7 +35,7 @@
         "text": {
           "type": "string",
           "title": "Tooltip text",
-          "default": "Language picker",
+          "default": "Language selector",
           "inputType": "Text",
           "required": true
         }

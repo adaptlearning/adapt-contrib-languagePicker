@@ -52,6 +52,6 @@
         "languageSelector": "Language selector",
         "_navTooltip": {
             "_isEnabled": true,
-            "text": "Language Picker"
+            "text": "Language selector"
         }
     }

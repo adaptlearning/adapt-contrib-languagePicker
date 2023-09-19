@@ -101,13 +101,13 @@ Label for the button that cancels the switch languages dialog.
 Add to _course.json_ under _\_globals.\_extensions_.
 
 ### \_languagePicker (object):
-The languagePicker object that contains values for `navigationBarLabel`, `drawerLabel` and `_navTooltip` that contains `_isEnabled`, `text`.
+The languagePicker object that contains values for `navigationBarLabel`, `languageSelector` and `_navTooltip` that contains `_isEnabled`, `text`.
 
 #### \navigationBarLabel (string):
 Label shown next to the language picker button when navigation bar labels are enabled. Defaults to Language picker.
 
-#### \drawerLabel (string):
-Aria label that appears at the top of the drawer displayed when language picker button is clicked. Defaults to language picker.
+#### \languageSelector (string):
+Aria label that appears at the top of the drawer displayed when language picker button is clicked. Defaults to Language selector.
 
 #### \_navTooltip (object):
 The _navTooltip object that contains values for `_isEnabled` and `text`.
@@ -116,7 +116,7 @@ The _navTooltip object that contains values for `_isEnabled` and `text`.
 Enables/disables tooltips for the language picker button in the navigation bar. The default value is `true`.
 
 #### \text (string):
-Text to be displayed in the tooltip when the user hovers over the language picker button in the navigation bar. Defaults to 'Language Picker'
+Text to be displayed in the tooltip when the user hovers over the language picker button in the navigation bar. Defaults to 'Language selector'
 
 ## Limitations
 - If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is disabled (or not installed), **Language Picker** will not remember the learner's language choice from the previous session.

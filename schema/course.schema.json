@@ -24,15 +24,15 @@
                     "navigationBarLabel": {
                       "type": "string",
                       "title": "Navigation bar label",
-                      "default": "Language picker",
+                      "default": "Language selector",
                       "_adapt": {
                         "translatable": true
                       }
                     },
-                    "drawerLabel": {
+                    "languageSelector": {
                       "type": "string",
-                      "title": "Drawer Label",
-                      "default": "Language Picker",
+                      "title": "Language selector",
+                      "default": "Language selector",
                       "_adapt": {
                         "translatable": true
                       }
@@ -49,7 +49,7 @@
                         "text": {
                           "type": "string",
                           "title": "Tooltip text",
-                          "default": "Language picker",
+                          "default": "Language selector",
                           "_adapt": {
                             "translatable": true
                           }
