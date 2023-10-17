@@ -48,5 +48,13 @@
 
     // to be added to the _extensions object in course.json
     "_languagePicker": {
-        "navigationBarLabel" : "Select course language"
+        "languageSelector": "Language selector",
+        "_navOrder": 0,
+        "_navTooltip": {
+            "_isEnabled": true,
+            "text": "Language selector"
+        },
+        "_showLabel": true,
+        "navigationBarLabel" : "Select course language",
+        "_drawerPosition": "auto"
     }

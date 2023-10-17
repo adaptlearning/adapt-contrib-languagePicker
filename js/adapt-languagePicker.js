@@ -1,7 +1,9 @@
 import Adapt from 'core/js/adapt';
 import offlineStorage from 'core/js/offlineStorage';
+import navigation from 'core/js/navigation';
+import NavigationButtonModel from 'core/js/models/NavigationButtonModel';
 import LanguagePickerView from './languagePickerView';
-import LanguagePickerNavView from './languagePickerNavView';
+import LanguagePickerNavigationButton from './languagePickerNavigationButton';
 import LanguagePickerModel from './languagePickerModel';
 
 class LanguagePicker extends Backbone.Controller {
@@ -71,24 +73,33 @@ class LanguagePicker extends Backbone.Controller {
 
   setupNavigationView() {
     /*
-      * On the framework this isn't an issue, but courses built in the authoring tool before the ARIA label
-      * was added will break unless the extension is removed then added again.
-      */
-    const courseGlobals = Adapt.course.get('_globals')._extensions;
-    let navigationBarLabel = '';
-    if (courseGlobals._languagePicker) {
-      navigationBarLabel = courseGlobals._languagePicker.navigationBarLabel;
-    }
-
-    const languagePickerNavView = new LanguagePickerNavView({
-      model: this.languagePickerModel,
-      attributes: {
-        'aria-label': navigationBarLabel,
-        'aria-expanded': false
-      }
+    * On the framework this isn't an issue, but courses built in the authoring tool before the ARIA label
+    * was added will break unless the extension is removed then added again.
+    */
+    const globalsConfig = Adapt.course.get('_globals')?._extensions?._languagePicker;
+    const {
+      _navOrder = 0,
+      _showLabel = true,
+      navigationBarLabel = '',
+      _drawerPosition = 'auto',
+      _navTooltip = {}
+    } = globalsConfig ?? {};
+    const model = new NavigationButtonModel({
+      _id: 'languagepicker',
+      _order: _navOrder,
+      _showLabel,
+      _classes: 'nav__languagepicker-btn languagepicker__nav-btn',
+      _iconClasses: this.languagePickerModel.get('_languagePickerIconClass') || 'icon-language-2',
+      _role: 'button',
+      ariaLabel: navigationBarLabel,
+      text: navigationBarLabel,
+      _drawerPosition,
+      _navTooltip
     });
-
-    languagePickerNavView.$el.appendTo('.nav__inner');
+    navigation.addButton(new LanguagePickerNavigationButton({
+      model: model,
+      drawerModel: this.languagePickerModel
+    }));
   }
 }
 
