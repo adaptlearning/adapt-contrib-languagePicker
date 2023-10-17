@@ -21,14 +21,6 @@
                   "title": "Language Picker",
                   "default": {},
                   "properties": {
-                    "navigationBarLabel": {
-                      "type": "string",
-                      "title": "Navigation bar label",
-                      "default": "Select course language",
-                      "_adapt": {
-                        "translatable": true
-                      }
-                    },
                     "languageSelector": {
                       "type": "string",
                       "title": "Language selector",
@@ -36,6 +28,57 @@
                       "_adapt": {
                         "translatable": true
                       }
+                    },
+                    "_navOrder": {
+                      "type": "number",
+                      "title": "Navigation bar order",
+                      "description": "Determines the order in which the button is displayed in the navigation bar. Negative numbers (e.g. -100) are left-aligned. Positive numbers (e.g. 100) are right-aligned.",
+                      "default": 0
+                    },
+                    "_navTooltip": {
+                      "type": "object",
+                      "title": "Navigation tooltip",
+                      "properties": {
+                        "_isEnabled": {
+                          "type": "boolean",
+                          "title": "Enable tooltip for navigation button",
+                          "default": true
+                        },
+                        "text": {
+                          "type": "string",
+                          "title": "",
+                          "default": "Select course language",
+                          "_adapt": {
+                            "translatable": true
+                          }
+                        }
+                      }
+                    },
+                    "_showLabel": {
+                      "type": "boolean",
+                      "title": "Enable navigation button label",
+                      "description": "Determines whether a label is shown on the navigation bar button.",
+                      "default": true
+                    },
+                    "navigationBarLabel": {
+                      "type": "string",
+                      "title": "Navigation button label",
+                      "description": "The tooltip text to display on hover.",
+                      "default": "Select course language",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "_drawerPosition": {
+                      "type": "string",
+                      "default": "auto",
+                      "title": "Drawer position",
+                      "description": "Determines the starting position of the drawer to open.",
+                      "enum": [
+                        "auto",
+                        "left",
+                        "right"
+                      ]
                     },
                     "_navTooltip": {
                       "type": "object",
