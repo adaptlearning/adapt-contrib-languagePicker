@@ -66,7 +66,7 @@ export default class LanguagePickerModel extends Backbone.Model {
    */
   onDataLoaded() {
     const shouldReset = !this.get('_restoreStateOnLanguageChange');
-    const hasOfflineStorageClear = Boolean(Adapt.offlineStorage.clear);
+    const hasOfflineStorageClear = Boolean(offlineStorage.clear);
     if (hasOfflineStorageClear || shouldReset) return;
     // Deprecated legacy restoration mechanism
     // Not compatible with branching / trickle
