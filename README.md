@@ -36,7 +36,7 @@ With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run 
 
 This extension is configured in *config.json* with the attributes that follow. The attributes are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-languagePicker/blob/master/example.json).
 
-## Attributes
+## Attributes (config.json)
 
 The following attributes are set within *config.json*.
 
@@ -96,17 +96,17 @@ Label for the button that cancels the switch languages dialog.
 
 <div float align=right><a href="#top">Back to Top</a></div>
 
-### Attributes
+## Attributes (course.json)
 
-Add to _course.json_ under _\_globals.\_extensions_.
+The following attributes should be added to _course.json_ under _\_globals.\_extensions_.
 
 ### \_languagePicker (object):
 The languagePicker object that contains values for `navigationBarLabel`, `languageSelector` and `_navTooltip` that contains `_isEnabled`, `text`.
 
-#### \navigationBarLabel (string):
+#### navigationBarLabel (string):
 Label shown next to the language picker button when navigation bar labels are enabled. Defaults to Language picker.
 
-#### \languageSelector (string):
+#### languageSelector (string):
 Aria label that appears at the top of the drawer displayed when language picker button is clicked. Defaults to Language selector.
 
 #### \_navTooltip (object):
@@ -115,20 +115,23 @@ The _navTooltip object that contains values for `_isEnabled` and `text`.
 #### \_isEnabled (boolean):
 Enables/disables tooltips for the language picker button in the navigation bar. The default value is `true`.
 
-#### \text (string):
+#### text (string):
 Text to be displayed in the tooltip when the user hovers over the language picker button in the navigation bar. Defaults to 'Language selector'
 
 ## Limitations
+
 - If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is disabled (or not installed), **Language Picker** will not remember the learner's language choice from the previous session.
 - Switching languages during an [**Assessment**](https://github.com/adaptlearning/adapt-contrib-assessment) will reset assessment attempts.
 - Language Picker is not yet compatible with the Adapt Authoring Tool.
 
 ## Notes
+
 If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is enabled and the course is being run from an <abbr title='Learning Management System'>LMS</abbr> that has support for the `cmi.student_preference.language` data model element, the spoor extension will record the learner's choice of language to that data model element. Note that this is for reporting purposes only: as support for that data model element is not mandatory in SCORM 1.2 it cannot be relied upon for saving/restoring the learner's choice of language - the `cmi.suspend_data` data model element will be used for that, even when `cmi.student_preference.language` is available.
 
 ----------------------------
+
 <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>
-**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-bookmarking/graphs/contributors)
-**Accessibility support:** WAI AA
-**RTL support:** Yes
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, Safari 14 for macOS/iOS/iPadOS, Opera
+**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-bookmarking/graphs/contributors)<br>
+**Accessibility support:** WAI AA<br>
+**RTL support:** Yes<br>
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, Safari for macOS/iOS/iPadOS, Opera<br>
