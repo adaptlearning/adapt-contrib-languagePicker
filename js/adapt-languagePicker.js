@@ -97,7 +97,7 @@ class LanguagePicker extends Backbone.Controller {
       _navTooltip
     });
     navigation.addButton(new LanguagePickerNavigationButton({
-      model: model,
+      model,
       drawerModel: this.languagePickerModel
     }));
   }
