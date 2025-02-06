@@ -23,7 +23,9 @@ describe('Language Picker - v1.0.8 to v2.0.0', async () => {
   });
 
   checkContent('Language Picker - check attribute _classes', async (content) => {
-    return getConfig(content)._languagePicker._accessibility._ariaLabels === ariaLabels;
+    const isValid = _.isEqual(getConfig(content)._languagePicker._accessibility._ariaLabels, ariaLabels);
+    if (!isValid) throw new Error('Language Picker - config attribute _ariaLabels');
+    return true;
   });
 
   updatePlugin('Language Picker - update to v2.0.0', { name: 'adapt-contrib-languagePicker', version: '2.0.0', framework: '">=3' });

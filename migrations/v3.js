@@ -2,7 +2,7 @@ import { describe, getConfig, whereContent, whereFromPlugin, mutateContent, chec
 import _ from 'lodash';
 
 const getCourse = content => {
-  const [course] = content.filter(({ _type }) => _type === 'course');
+  const course = content.find(({ _type }) => _type === 'course');
   return course;
 };
 
@@ -45,15 +45,21 @@ describe('Language Picker - v2.0.0 to v3.0.0', async () => {
   });
 
   checkContent('Language Picker - check new globals', async (content) => {
-    return getGlobals(content).languageSelector === 'Language selector';
+    const isValid = getGlobals(content).languageSelector === 'Language selector';
+    if (!isValid) throw new Error('Language Picker - global attribute languageSelector');
+    return true;
   });
 
   checkContent('Language Picker - check attribute _restoreStateOnLanguageChange', async (content) => {
-    return getConfig(content)._languagePicker._restoreStateOnLanguageChange === false;
+    const isValid = getConfig(content)._languagePicker._restoreStateOnLanguageChange === false;
+    if (!isValid) throw new Error('Language Picker - config attribute _restoreStateOnLanguageChange');
+    return true;
   });
 
   checkContent('Language Picker - check attribute _accessibility', async (content) => {
-    return !_.has(getConfig(content)._languagePicker, '_accessibility');
+    const isValid = !_.has(getConfig(content)._languagePicker, '_accessibility');
+    if (!isValid) throw new Error('Language Picker - config attribute _accessibility');
+    return true;
   });
 
   updatePlugin('Language Picker - update to v3.0.0', { name: 'adapt-contrib-languagePicker', version: '3.0.0', framework: '">=4' });

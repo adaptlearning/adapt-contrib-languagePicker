@@ -2,7 +2,7 @@ import { describe, getConfig, whereContent, whereFromPlugin, mutateContent, chec
 import _ from 'lodash';
 
 const getCourse = content => {
-  const [course] = content.filter(({ _type }) => _type === 'course');
+  const course = content.find(({ _type }) => _type === 'course');
   return course;
 };
 
@@ -50,19 +50,27 @@ describe('Language Picker - v5.3.0 to v5.4.0', async () => {
   });
 
   checkContent('Language Picker - check attribute _navOrder', async (content) => {
-    return courseLanguagePickerGlobals._navOrder === 0;
+    const isValid = courseLanguagePickerGlobals._navOrder === 0;
+    if (!isValid) throw new Error('Language Picker - global attribute _navOrder');
+    return true;
   });
 
   checkContent('Language Picker - check attribute _navTooltip', async (content) => {
-    return courseLanguagePickerGlobals._navTooltip === navTooltip;
+    const isValid = _.isEqual(courseLanguagePickerGlobals._navTooltip, navTooltip);
+    if (!isValid) throw new Error('Language Picker - global attribute _navTooltip');
+    return true;
   });
 
   checkContent('Language Picker - check attribute _showLabel', async (content) => {
-    return courseLanguagePickerGlobals._showLabel === true;
+    const isValid = courseLanguagePickerGlobals._showLabel === true;
+    if (!isValid) throw new Error('Language Picker - global attribute _showLabel');
+    return true;
   });
 
   checkContent('Language Picker - check attribute _drawerPosition', async (content) => {
-    return courseLanguagePickerGlobals._drawerPosition === 'auto';
+    const isValid = courseLanguagePickerGlobals._drawerPosition === 'auto';
+    if (!isValid) throw new Error('Language Picker - global attribute _drawerPosition');
+    return true;
   });
 
   updatePlugin('Language Picker - update to v5.4.0', { name: 'adapt-contrib-languagePicker', version: '5.4.0', framework: '">=5.30.2' });

@@ -2,7 +2,7 @@ import { describe, getConfig, whereContent, whereFromPlugin, mutateContent, chec
 import _ from 'lodash';
 
 const getCourse = content => {
-  const [course] = content.filter(({ _type }) => _type === 'course');
+  const course = content.find(({ _type }) => _type === 'course');
   return course;
 };
 
@@ -40,11 +40,15 @@ describe('Language Picker - v1.0.0 to v1.0.3', async () => {
   });
 
   checkContent('Language Picker - check new globals', async (content) => {
-    return getGlobals(content).navigationBarLabel === 'Select course language';
+    const isValid = getGlobals(content).navigationBarLabel === 'Select course language';
+    if (!isValid) throw new Error('Language Picker - global attribute navigationBarLabel');
+    return true;
   });
 
   checkContent('Language Picker - check attribute _classes', async (content) => {
-    return getConfig(content)._languagePicker._classes === '';
+    const isValid = getConfig(content)._languagePicker._classes === '';
+    if (!isValid) throw new Error('Language Picker - config attribute _classes');
+    return true;
   });
 
   updatePlugin('Language Picker - update to v1.0.3', { name: 'adapt-contrib-languagePicker', version: '1.0.3', framework: '">=2.0.14' });
