@@ -1,10 +1,5 @@
-import { describe, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 import _ from 'lodash';
-
-const getCourse = content => {
-  const course = content.find(({ _type }) => _type === 'course');
-  return course;
-};
 
 describe('Language Picker - v5.3.0 to v5.4.0', async () => {
   // https://github.com/adaptlearning/adapt-contrib-languagePicker/compare/v5.3.0..v5.4.0
@@ -18,12 +13,12 @@ describe('Language Picker - v5.3.0 to v5.4.0', async () => {
   whereFromPlugin('Language Picker - from v5.3.0', { name: 'adapt-contrib-languagePicker', version: '<5.4.0' });
 
   whereContent('Language Picker is configured', content => {
-    config = getConfig(content);
+    config = getConfig();
     return config._languagePicker;
   });
 
   mutateContent('Language Picker - add globals if missing', async (content) => {
-    course = getCourse(content);
+    course = getCourse();
     if (!_.has(course, '_globals._extensions._languagePicker')) _.set(course, '_globals._extensions._languagePicker', {});
     courseLanguagePickerGlobals = course._globals._extensions._languagePicker;
     return true;

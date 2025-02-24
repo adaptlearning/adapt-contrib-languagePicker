@@ -1,14 +1,5 @@
-import { describe, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 import _ from 'lodash';
-
-const getCourse = content => {
-  const course = content.find(({ _type }) => _type === 'course');
-  return course;
-};
-
-const getGlobals = content => {
-  return getCourse(content)?._globals?._extensions?._languagePicker;
-};
 
 describe('Language Picker - v1.0.0 to v1.0.3', async () => {
   // https://github.com/adaptlearning/adapt-contrib-languagePicker/compare/v1.0.0..v1.0.3
@@ -18,12 +9,12 @@ describe('Language Picker - v1.0.0 to v1.0.3', async () => {
   whereFromPlugin('Language Picker - from v1.0.0', { name: 'adapt-contrib-languagePicker', version: '<1.0.3' });
 
   whereContent('Language Picker is configured', content => {
-    config = getConfig(content);
+    config = getConfig();
     return config._languagePicker;
   });
 
   mutateContent('Language Picker - add globals if missing', async (content) => {
-    course = getCourse(content);
+    course = getCourse();
     if (!_.has(course, '_globals._extensions._languagePicker')) _.set(course, '_globals._extensions._languagePicker', {});
     courseLanguagePickerGlobals = course._globals._extensions._languagePicker;
     return true;
@@ -40,7 +31,7 @@ describe('Language Picker - v1.0.0 to v1.0.3', async () => {
   });
 
   checkContent('Language Picker - check new globals', async (content) => {
-    const isValid = getGlobals(content).navigationBarLabel === 'Select course language';
+    const isValid = courseLanguagePickerGlobals.navigationBarLabel === 'Select course language';
     if (!isValid) throw new Error('Language Picker - global attribute navigationBarLabel');
     return true;
   });

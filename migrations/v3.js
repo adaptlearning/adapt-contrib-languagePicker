@@ -1,14 +1,5 @@
-import { describe, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
 import _ from 'lodash';
-
-const getCourse = content => {
-  const course = content.find(({ _type }) => _type === 'course');
-  return course;
-};
-
-const getGlobals = content => {
-  return getCourse(content)?._globals?._extensions?._languagePicker;
-};
 
 describe('Language Picker - v2.0.0 to v3.0.0', async () => {
   // https://github.com/adaptlearning/adapt-contrib-languagePicker/compare/v2.0.0..v3.0.0
@@ -18,12 +9,12 @@ describe('Language Picker - v2.0.0 to v3.0.0', async () => {
   whereFromPlugin('Language Picker - from v2.0.0', { name: 'adapt-contrib-languagePicker', version: '<3.0.0' });
 
   whereContent('Language Picker is configured', content => {
-    config = getConfig(content);
+    config = getConfig();
     return config._languagePicker;
   });
 
   mutateContent('Language Picker - add globals if missing', async (content) => {
-    course = getCourse(content);
+    course = getCourse();
     if (!_.has(course, '_globals._extensions._languagePicker')) _.set(course, '_globals._extensions._languagePicker', {});
     courseLanguagePickerGlobals = course._globals._extensions._languagePicker;
     return true;
@@ -45,19 +36,19 @@ describe('Language Picker - v2.0.0 to v3.0.0', async () => {
   });
 
   checkContent('Language Picker - check new globals', async (content) => {
-    const isValid = getGlobals(content).languageSelector === 'Language selector';
+    const isValid = courseLanguagePickerGlobals.languageSelector === 'Language selector';
     if (!isValid) throw new Error('Language Picker - global attribute languageSelector');
     return true;
   });
 
   checkContent('Language Picker - check attribute _restoreStateOnLanguageChange', async (content) => {
-    const isValid = getConfig(content)._languagePicker._restoreStateOnLanguageChange === false;
+    const isValid = getConfig()._languagePicker._restoreStateOnLanguageChange === false;
     if (!isValid) throw new Error('Language Picker - config attribute _restoreStateOnLanguageChange');
     return true;
   });
 
   checkContent('Language Picker - check attribute _accessibility', async (content) => {
-    const isValid = !_.has(getConfig(content)._languagePicker, '_accessibility');
+    const isValid = !_.has(getConfig()._languagePicker, '_accessibility');
     if (!isValid) throw new Error('Language Picker - config attribute _accessibility');
     return true;
   });

@@ -8,7 +8,7 @@ describe('Language Picker - v4.1.2 to v4.2.0', async () => {
   whereFromPlugin('Language Picker - from v4.1.2', { name: 'adapt-contrib-languagePicker', version: '<4.2.0' });
 
   whereContent('Language Picker is configured', content => {
-    config = getConfig(content);
+    config = getConfig();
     return config._languagePicker?._languages?.length;
   });
 
