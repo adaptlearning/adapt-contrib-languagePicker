@@ -1,4 +1,4 @@
-import { describe, getCourse, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin } from 'adapt-migrations';
+import { describe, getCourse, getConfig, whereContent, whereFromPlugin, mutateContent, checkContent, updatePlugin, testStopWhere, testSuccessWhere } from 'adapt-migrations';
 import _ from 'lodash';
 
 describe('Language Picker - v1.0.0 to v1.0.3', async () => {
@@ -43,4 +43,39 @@ describe('Language Picker - v1.0.0 to v1.0.3', async () => {
   });
 
   updatePlugin('Language Picker - update to v1.0.3', { name: 'adapt-contrib-languagePicker', version: '1.0.3', framework: '">=2.0.14' });
+
+  testSuccessWhere('languagePicker with empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '1.0.0' }],
+    content: [
+      { _type: 'config', _languagePicker: {} },
+      { _type: 'course' }
+    ]
+  });
+
+  testSuccessWhere('languagePicker with no _type and empty course', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '1.0.0' }],
+    content: [
+      { __path__: 'src/course/config.json', _languagePicker: {} },
+      { _type: 'course' }
+    ]
+  });
+
+  testStopWhere('languagePicker with course globals', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '1.0.0' }],
+    content: [
+      { _type: 'config', _languagePicker: {} },
+      { _type: 'course', _languagePicker: {}, _globals: { _extensions: { _languagePicker: {} } } }
+    ]
+  });
+
+  testStopWhere('languagePicker with empty config', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '1.0.0' }],
+    content: [
+      { _type: 'config' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '1.0.3' }]
+  });
 });
