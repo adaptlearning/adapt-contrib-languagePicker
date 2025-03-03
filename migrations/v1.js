@@ -37,7 +37,7 @@ describe('Language Picker - v1.0.0 to v1.0.3', async () => {
   });
 
   checkContent('Language Picker - check attribute _classes', async (content) => {
-    const isValid = getConfig(content)._languagePicker._classes === '';
+    const isValid = getConfig()._languagePicker._classes === '';
     if (!isValid) throw new Error('Language Picker - config attribute _classes');
     return true;
   });
