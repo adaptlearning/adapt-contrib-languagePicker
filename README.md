@@ -128,6 +128,8 @@ Text to be displayed in the tooltip when the user hovers over the language picke
 
 If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is enabled and the course is being run from an <abbr title='Learning Management System'>LMS</abbr> that has support for the `cmi.student_preference.language` data model element, the spoor extension will record the learner's choice of language to that data model element. Note that this is for reporting purposes only: as support for that data model element is not mandatory in SCORM 1.2 it cannot be relied upon for saving/restoring the learner's choice of language - the `cmi.suspend_data` data model element will be used for that, even when `cmi.student_preference.language` is available.
 
+Requires [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) v5.1.0 or later for correct restore of state on language change.
+
 ----------------------------
 
 <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a>
