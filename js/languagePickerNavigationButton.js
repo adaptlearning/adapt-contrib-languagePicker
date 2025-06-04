@@ -9,7 +9,8 @@ export default class LanguagePickerNavigationButton extends NavigationButtonView
   attributes() {
     return {
       ...super.attributes(),
-      'data-tooltip-id': this.model.get('_id')
+      'data-tooltip-id': this.model.get('_id'),
+      'aria-haspopup': 'dialog'
     };
   }
 
