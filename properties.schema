@@ -128,7 +128,7 @@
                   "title": "Browser Window Title",
                   "inputType": "Text",
                   "validators": [],
-                  "help": "Text to be shown in the browser's title bar when the language picker is displayed."
+                  "help": "Text to be shown in the browser's title bar when the Language Picker is displayed. Also used to label the Language Picker dialog element for screen readers should the Drawer title not be used."
                 },
                 "displayTitle": {
                   "type": "string",
@@ -147,6 +147,24 @@
                   "inputType": "Text",
                   "validators": [],
                   "help": "Introductory or explanatory text for the Language Picker"
+                },
+                "drawerTitle": {
+                  "type": "string",
+                  "required": false,
+                  "default": "Language selection",
+                  "title": "Language Picker Drawer Title",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The display title text which will appear in the Language Picker header section within the Drawer. Used to label the Language Picker dialog element for screen readers."
+                },
+                "drawerBody": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Language Picker Drawer Body text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The body title text which will appear alongside the Drawer title in the Language Picker header section within the Drawer."
                 },
                 "_showOnCourseLoad": {
                   "type": "boolean",

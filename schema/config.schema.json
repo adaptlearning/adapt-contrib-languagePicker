@@ -22,7 +22,7 @@
             "title": {
               "type": "string",
               "title": "Browser window title",
-              "description": "Text to be shown in the browser's title bar when the language picker is displayed",
+              "description": "Text to be shown in the browser's title bar when the language picker is displayed. Also used to label the Language Picker dialog element for screen readers should the Drawer title not be used.",
               "default": ""
             },
             "displayTitle": {
@@ -35,6 +35,18 @@
               "type": "string",
               "title": "Language Picker body",
               "description": "Introductory or explanatory text for the Language Picker",
+              "default": ""
+            },
+            "drawerTitle": {
+              "type": "string",
+              "title": "Language Picker Drawer title",
+              "description": "The display title text which will appear in the Language Picker header section within the Drawer. Used to label the Language Picker dialog element for screen readers.",
+              "default": ""
+            },
+            "drawerBody": {
+              "type": "string",
+              "title": "Language Picker Drawer body",
+              "description": "The body title text which will appear alongside the Drawer title in the Language Picker header section within the Drawer.",
               "default": ""
             },
             "_showOnCourseLoad": {

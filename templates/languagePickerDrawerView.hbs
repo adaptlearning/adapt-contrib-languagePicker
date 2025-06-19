@@ -2,7 +2,33 @@
 {{import_globals}}
 
 <div class="languagepicker-drawer">
-  {{{a11y_aria_label _globals._extensions._languagePicker.languageSelector}}}
+
+  <div class='languagepicker-drawer__header'>
+    <div class='languagepicker-drawer__header-inner'>
+
+      <div
+        id='drawer-heading'
+        class='languagepicker-drawer__title{{#unless drawerTitle}} aria-label{{/unless}}'
+        role='heading'
+        aria-level="{{a11y_aria_level _id 'drawer' _ariaLevel}}"
+      >
+        <div class='languagepicker-drawer__title-inner'>
+          {{#if drawerTitle}}{{{drawerTitle}}}{{else}}{{title}}{{/if}}
+        </div>
+      </div>
+
+      {{{a11y_aria_label _globals._extensions._languagePicker.languageSelector}}}
+
+      {{#if drawerBody}}
+      <div class='languagepicker-drawer__body'>
+        <div class='languagepicker-drawer__body-inner'>
+          {{{drawerBody}}}
+        </div>
+      </div>
+      {{/if}}
+
+    </div>
+  </div>
 
   <div class="languagepicker-drawer__inner" role="list">
 
