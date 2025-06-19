@@ -164,7 +164,7 @@
                   "title": "Language Picker Drawer Body text",
                   "inputType": "Text",
                   "validators": [],
-                  "help": "The body title text which will appear alongside the Drawer title in the Language Picker header section within the Drawer."
+                  "help": "The body text which will appear alongside the Drawer title in the Language Picker header section within the Drawer."
                 },
                 "_showOnCourseLoad": {
                   "type": "boolean",

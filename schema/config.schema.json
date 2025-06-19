@@ -46,7 +46,7 @@
             "drawerBody": {
               "type": "string",
               "title": "Language Picker Drawer body",
-              "description": "The body title text which will appear alongside the Drawer title in the Language Picker header section within the Drawer.",
+              "description": "The body text which will appear alongside the Drawer title in the Language Picker header section within the Drawer.",
               "default": ""
             },
             "_showOnCourseLoad": {
