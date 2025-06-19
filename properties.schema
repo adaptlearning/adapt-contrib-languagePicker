@@ -7,7 +7,7 @@
     "languageSelector": {
       "type": "string",
       "required": true,
-      "default": "Language selector",
+      "default": "List of available languages the course is provided in. Select a button to change the course to the chosen language.",
       "inputType": "Text",
       "validators": [],
       "translatable": true

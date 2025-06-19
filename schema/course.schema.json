@@ -24,7 +24,7 @@
                     "languageSelector": {
                       "type": "string",
                       "title": "Language selector",
-                      "default": "Language selector",
+                      "default": "List of available languages the course is provided in. Select a button to change the course to the chosen language.",
                       "_adapt": {
                         "translatable": true
                       }
