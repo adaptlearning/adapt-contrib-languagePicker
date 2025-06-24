@@ -19,7 +19,6 @@
                 "_languagePicker": {
                   "type": "object",
                   "title": "Language Picker",
-                  "default": {},
                   "properties": {
                     "languageSelector": {
                       "type": "string",

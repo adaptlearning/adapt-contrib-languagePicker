@@ -37,17 +37,29 @@
               "description": "Introductory or explanatory text for the Language Picker",
               "default": ""
             },
-            "drawerTitle": {
-              "type": "string",
-              "title": "Language Picker Drawer title",
-              "description": "The display title text which will appear in the Language Picker header section within the Drawer. Used to label the Language Picker dialog element for screen readers.",
-              "default": ""
-            },
-            "drawerBody": {
-              "type": "string",
-              "title": "Language Picker Drawer body",
-              "description": "The body text which will appear alongside the Drawer title in the Language Picker header section within the Drawer.",
-              "default": ""
+            "_drawer": {
+              "type": "object",
+              "title": "Language Picker Drawer header",
+              "properties": {
+                "displayTitle": {
+                  "type": "string",
+                  "title": "Display title",
+                  "default": "",
+                  "description": "The display title text which will appear in the Language Picker header section within the Drawer. Used to label the Language Picker dialog element for screen readers.",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "body": {
+                  "type": "string",
+                  "title": "Body text",
+                  "default": "",
+                  "description": "The body text which will appear alongside the display title in the Language Picker header section within the Drawer.",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
             },
             "_showOnCourseLoad": {
               "type": "boolean",

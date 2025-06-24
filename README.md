@@ -55,11 +55,14 @@ Header text. For example, "Please select a language."
 #### body (string):
 Introductory or explanatory text. For example, "Welcome to ACME Learning. This course is available in several languages. Please make a selection."
 
-#### drawerTitle (string):
+#### \_drawer (object):
+This object contains values for `displayTitle` and `body`.
+
+##### displayTitle (string):
 The display title text which will appear in the Language Picker header section within the Drawer. Used to label the Language Picker dialog element for screen readers.
 
-#### drawerBody (string):
-The body title text which will appear alongside the Drawer title in the Language Picker header section within the Drawer.
+##### body (string):
+The body title text which will appear alongside the display title in the Language Picker header section within the Drawer.
 
 #### \_showOnCourseLoad (boolean):
 Determines whether the language picker will be displayed on course load. If set to `false`, the course will load with the default language selected and the user will need to use the icon in the navigation bar to change languages. The default value is `true`.

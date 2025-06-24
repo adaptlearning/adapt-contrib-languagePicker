@@ -3,29 +3,29 @@
 
 <div class="languagepicker-drawer">
 
-  <div class='languagepicker-drawer__header'>
-    <div class='languagepicker-drawer__header-inner'>
+  <div class='drawer__header languagepicker-drawer__header{{#unless _drawer.displayTitle}} aria-label{{/unless}}'>
+    <div class='drawer__header-inner languagepicker-drawer__header-inner'>
 
       <div
         id='drawer-heading'
-        class='languagepicker-drawer__title{{#unless drawerTitle}} aria-label{{/unless}}'
+        class='drawer__title languagepicker-drawer__title'
         role='heading'
         aria-level="{{a11y_aria_level _id 'drawer' _ariaLevel}}"
       >
-        <div class='languagepicker-drawer__title-inner'>
-          {{#if drawerTitle}}{{{drawerTitle}}}{{else}}{{title}}{{/if}}
+        <div class='drawer__title-inner languagepicker-drawer__title-inner'>
+          {{#if _drawer.displayTitle}}{{{_drawer.displayTitle}}}{{else}}{{title}}{{/if}}
         </div>
       </div>
 
       {{{a11y_aria_label _globals._extensions._languagePicker.languageSelector}}}
 
-      {{#if drawerBody}}
-      <div class='languagepicker-drawer__body'>
-        <div class='languagepicker-drawer__body-inner'>
-          {{{drawerBody}}}
+      {{#all _drawer.displayTitle _drawer.body}}
+      <div class='drawer__body languagepicker-drawer__body'>
+        <div class='drawer__body-inner languagepicker-drawer__body-inner'>
+          {{{_drawer.body}}}
         </div>
       </div>
-      {{/if}}
+      {{/all}}
 
     </div>
   </div>
