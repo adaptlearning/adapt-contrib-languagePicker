@@ -55,6 +55,16 @@ Header text. For example, "Please select a language."
 #### body (string):
 Introductory or explanatory text. For example, "Welcome to ACME Learning. This course is available in several languages. Please make a selection."
 
+#### graphic (object):
+
+The graphic object that contains values for **\_src** and **alt**. Typically used to display a logo image
+
+##### _src (string):
+File name (including path) of the image
+
+##### alt (string):
+A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank
+
 #### \_showOnCourseLoad (boolean):
 Determines whether the language picker will be displayed on course load. If set to `false`, the course will load with the default language selected and the user will need to use the icon in the navigation bar to change languages. The default value is `true`.
 
