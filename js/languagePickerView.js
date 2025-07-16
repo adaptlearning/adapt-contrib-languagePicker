@@ -1,5 +1,6 @@
 import Adapt from 'core/js/adapt';
 import NavigationView from './languagePickerNavigationView';
+import device from 'core/js/device';
 import router from 'core/js/router';
 
 export default class LanguagePickerView extends Backbone.View {
@@ -15,13 +16,24 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
   className() {
-    return 'languagepicker';
+    const backgroundImages = this.model.get('_backgroundImage');
+    const backgroundImage = backgroundImages?.[`_${device.screenSize}`] ?? backgroundImages?._small;
+
+    return [
+      'languagepicker',
+      backgroundImage && 'has-bg-image'
+    ].filter(Boolean).join(' ');
   }
 
   initialize() {
+    _.bindAll(this, 'onScreenSizeChanged');
     this.initializeNavigation();
     $('html').addClass('in-languagepicker');
-    this.listenTo(Adapt, 'remove', this.remove);
+    this.listenTo(Adapt, {
+      remove: this.remove,
+      'device:resize': this.onScreenSizeChanged
+    });
+    this.setBackgroundImage();
     this.render();
   }
 
@@ -52,6 +64,19 @@ export default class LanguagePickerView extends Backbone.View {
 
   destroyNavigation() {
     this.navigationView.remove();
+  }
+
+  onScreenSizeChanged() {
+    this.setBackgroundImage();
+    _.defer(this.render.bind(this));
+  }
+
+  setBackgroundImage() {
+    if (!this.model.get('_backgroundImage')) return;
+
+    const backgroundImages = this.model.get('_backgroundImage');
+    const backgroundImage = backgroundImages?.[`_${device.screenSize}`] ?? backgroundImages?._small;
+    this.model.set('backgroundImage', backgroundImage);
   }
 
   remove() {

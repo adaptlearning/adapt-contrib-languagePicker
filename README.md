@@ -40,68 +40,108 @@ This extension is configured in *config.json* with the attributes that follow. T
 
 The following attributes are set within *config.json*.
 
-### \_languagePicker (object):
+### \_languagePicker (object)
+
 The languagePicker object that contains values for `_isEnabled`, `title`, `displayTitle`, `body`, `_showOnCourseLoad`, `_languagePickerIconClass` and `_restoreStateOnLanguageChange` settings and the `_languages` array.
 
-#### \_isEnabled (boolean):
+#### \_isEnabled (boolean)
+
 Enables/disables this extension. The default value is `false`. Set this to `true` to enable this extension.
 
-#### title (string):
+#### title (string)
+
 Browser window title text. For example, "Language selection".
 
-#### displayTitle (string):
+#### displayTitle (string)
+
 Header text. For example, "Please select a language."
 
-#### body (string):
+#### body (string)
+
 Introductory or explanatory text. For example, "Welcome to ACME Learning. This course is available in several languages. Please make a selection."
 
-#### graphic (object):
+#### graphic (object)
 
 The graphic object that contains values for **\_src** and **alt**. Typically used to display a logo image
 
-##### _src (string):
+##### _src (string)
+
 File name (including path) of the image
 
-##### alt (string):
+##### alt (string)
+
 A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank
 
-#### \_showOnCourseLoad (boolean):
+#### \_backgroundImage (object)
+
+The backgroundImage object that contains values for `_xlarge`, `_large`, `_medium`, and `_small`.
+
+##### \_xlarge (string)
+
+File name (including path) of the image used with xlarge device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+##### \_large (string)
+
+File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+##### \_medium (string)
+
+File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+##### \_small (string)
+
+File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+
+#### \_showOnCourseLoad (boolean)
+
 Determines whether the language picker will be displayed on course load. If set to `false`, the course will load with the default language selected and the user will need to use the icon in the navigation bar to change languages. The default value is `true`.
 
-#### \_languagePickerIconClass (string):
+#### \_languagePickerIconClass (string)
+
 Defines which icon will be displayed in the navigation bar. The [vanilla theme](https://github.com/adaptlearning/adapt-contrib-vanilla) supports the following icon styles: `"icon-globe"`, `"icon-language-1"`, `"icon-language-2"`. The default value for this setting is `"icon-language-2"`.
 
-#### \_restoreStateOnLanguageChange (boolean):
+#### \_restoreStateOnLanguageChange (boolean)
+
 Determines whether or not the language picker will try to restore the 'state' of the course when the user changes language. It is advised that you only set this to `true` if all course languages have exactly the same structure; if they do not, some loss of tracking data will occur. If set to `false`, all tracking data will be cleared when the user switches language - the warningMessage (see below) should be used to warn the user of this. The default value is `false`.
 
-#### \_languages (array):
+#### \_languages (array)
+
 The languages array contains the list of the available languages and the various settings associated with each. Each entry in the array should be an object, containing the following settings:
 
-##### \_language (string):
+##### \_language (string)
+
 This text must match the name of the language-specific folder located in the course root, for example, `"en"` from *course/en*. It is used as the value for the HTML `lang` attribute. It is highly recommended that codes for web languages be used. Reference a source such as the [IANA Language Subtag Registry](http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
 
-##### \_direction (string):
+##### \_direction (string)
+
 Specifies the value of the HTML `dir` attribute and, consequently, the base direction of text. Acceptable values are `"rtl"` (right-to-left) and `"ltr"` (left-to-right). The default value is `"ltr"`.
 
-##### \_isDisabled (boolean):
+##### \_isDisabled (boolean)
+
 Setting this to `true` allows the language to be shown in the list but in a 'disabled' state (so it cannot be selected). This can be useful in situations where localisation into a particular language has not yet been completed. The default value is `false`.
 
-##### displayName (string):
+##### displayName (string)
+
 The display name of the language. This value is used as the button label.
 
-##### warningTitle (string):
+##### warningTitle (string)
+
 This text appears as the header of the dialog confirming the learner's intent to change languages, for example, "Change language?".
 
-##### warningMessage (string):
+##### warningMessage (string)
+
 This text appears as the body of the dialog confirming the learner's intent to change languages, for example, "Changing the language will reset course progress.&lt;br&gt;&lt;br&gt;Would you like to proceed?".
 
-##### \_buttons (object):
+##### \_buttons (object)
+
 The buttons object contains the following settings:
 
-###### yes (string):
+###### yes (string)
+
 Label for the button that confirms the learner's intent to switch languages.
 
-###### no (string):
+###### no (string)
+
 Label for the button that cancels the switch languages dialog.
 
 <div float align=right><a href="#top">Back to Top</a></div>
@@ -110,22 +150,28 @@ Label for the button that cancels the switch languages dialog.
 
 The following attributes should be added to _course.json_ under _\_globals.\_extensions_.
 
-### \_languagePicker (object):
+### \_languagePicker (object)
+
 The languagePicker object that contains values for `navigationBarLabel`, `languageSelector` and `_navTooltip` that contains `_isEnabled`, `text`.
 
-#### navigationBarLabel (string):
+#### navigationBarLabel (string)
+
 Label shown next to the language picker button when navigation bar labels are enabled. Defaults to Language picker.
 
-#### languageSelector (string):
+#### languageSelector (string)
+
 Aria label that appears at the top of the drawer displayed when language picker button is clicked. Defaults to Language selector.
 
-#### \_navTooltip (object):
+#### \_navTooltip (object)
+
 The _navTooltip object that contains values for `_isEnabled` and `text`.
 
-#### \_isEnabled (boolean):
+#### \_isEnabled (boolean)
+
 Enables/disables tooltips for the language picker button in the navigation bar. The default value is `true`.
 
-#### text (string):
+#### text (string)
+
 Text to be displayed in the tooltip when the user hovers over the language picker button in the navigation bar. Defaults to 'Language selector'
 
 ## Limitations
