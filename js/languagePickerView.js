@@ -34,6 +34,7 @@ export default class LanguagePickerView extends Backbone.View {
       'device:resize': this.onScreenSizeChanged
     });
     this.setBackgroundImage();
+    this.setBackgroundStyles();
     this.render();
   }
 
@@ -72,11 +73,25 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
   setBackgroundImage() {
-    if (!this.model.get('_backgroundImage')) return;
-
     const backgroundImages = this.model.get('_backgroundImage');
+    if (!backgroundImages) return;
+
     const backgroundImage = backgroundImages?.[`_${device.screenSize}`] ?? backgroundImages?._small;
     this.model.set('backgroundImage', backgroundImage);
+  }
+
+  setBackgroundStyles() {
+    const styles = this.model.get('_backgroundStyles');
+    if (!styles || !this.model.get('backgroundImage')) return;
+
+    const backgroundStyles = Object.entries({
+      'background-repeat': styles._backgroundRepeat,
+      'background-size': styles._backgroundSize,
+      'background-position': styles._backgroundPosition
+    }).map(([style, value]) => `${style}: ${value}`)
+      .join('; ');
+
+    this.model.set('backgroundStyles', backgroundStyles);
   }
 
   remove() {
