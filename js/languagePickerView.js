@@ -16,12 +16,9 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
   className() {
-    const backgroundImages = this.model.get('_backgroundImage');
-    const backgroundImage = backgroundImages?.[`_${device.screenSize}`] ?? backgroundImages?._small;
-
     return [
       'languagepicker',
-      backgroundImage && 'has-bg-image'
+      this.setBackgroundImage() && 'has-bg-image'
     ].filter(Boolean).join(' ');
   }
 
@@ -82,6 +79,8 @@ export default class LanguagePickerView extends Backbone.View {
 
     const backgroundImage = backgroundImages?.[`_${device.screenSize}`] ?? backgroundImages?._small;
     this.model.set('backgroundImage', backgroundImage);
+
+    return backgroundImage;
   }
 
   setBackgroundStyles() {
