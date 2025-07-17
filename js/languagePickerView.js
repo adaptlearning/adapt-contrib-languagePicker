@@ -26,16 +26,20 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
   initialize() {
-    _.bindAll(this, 'onScreenSizeChanged');
     this.initializeNavigation();
     $('html').addClass('in-languagepicker');
+    this.addEventListeners();
+    this.setBackgroundImage();
+    this.setBackgroundStyles();
+    this.render();
+  }
+
+  addEventListeners() {
+    this.onScreenSizeChanged = _.debounce(this.onScreenSizeChanged.bind(this), 300);
     this.listenTo(Adapt, {
       remove: this.remove,
       'device:resize': this.onScreenSizeChanged
     });
-    this.setBackgroundImage();
-    this.setBackgroundStyles();
-    this.render();
   }
 
   render() {
@@ -69,7 +73,7 @@ export default class LanguagePickerView extends Backbone.View {
 
   onScreenSizeChanged() {
     this.setBackgroundImage();
-    _.defer(this.render.bind(this));
+    this.render();
   }
 
   setBackgroundImage() {
