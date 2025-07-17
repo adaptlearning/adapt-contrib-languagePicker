@@ -78,19 +78,57 @@ The backgroundImage object that contains values for `_xlarge`, `_large`, `_mediu
 
 ##### \_xlarge (string)
 
-File name (including path) of the image used with xlarge device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+File name (including path) of the image used with xlarge device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
 
 ##### \_large (string)
 
-File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
 
 ##### \_medium (string)
 
-File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
 
 ##### \_small (string)
 
-File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/origami-menu-one.jpg*).
+File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
+
+#### \_backgroundStyles (object)
+
+Additional attributes to customise how background images are displayed. The `_backgroundStyles` object can include the following properties:
+
+##### \_backgroundRepeat (string)
+
+Defines how the background image repeats. Options include:
+
+* `repeat`: The background image is repeated both vertically and horizontally.
+* `repeat-x`: The background image is repeated only horizontally.
+* `repeat-y`: The background image is repeated only vertically.
+* `no-repeat`: The background image is not repeated.
+
+##### \_backgroundSize (string)
+
+Defines the size of the background image. Options include:
+
+* `auto`: The background image is displayed in its original size.
+* `cover`: Resize the background image to cover the entire container, even if it has to stretch or crop the image.
+* `contain`: Resize the background image to make sure the image is fully visible.
+* `100% 100%`: Resize the background image to match the dimensions of the container.
+
+##### \_backgroundPosition (string)
+
+Sets the position of the background image. Options include:
+
+* `left top`
+* `left center`
+* `left bottom`
+* `center top`
+* `center center`
+* `center bottom`
+* `right top`
+* `right center`
+* `right bottom`
+
+The first value is the horizontal position and the second value is the vertical position.
 
 #### \_showOnCourseLoad (boolean)
 
@@ -148,7 +186,7 @@ Label for the button that cancels the switch languages dialog.
 
 ## Attributes (course.json)
 
-The following attributes should be added to _course.json_ under _\_globals.\_extensions_.
+The following attributes should be added to *course.json* under *\_globals.\_extensions*.
 
 ### \_languagePicker (object)
 
@@ -176,9 +214,9 @@ Text to be displayed in the tooltip when the user hovers over the language picke
 
 ## Limitations
 
-- If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is disabled (or not installed), **Language Picker** will not remember the learner's language choice from the previous session.
-- Switching languages during an [**Assessment**](https://github.com/adaptlearning/adapt-contrib-assessment) will reset assessment attempts.
-- Language Picker is not yet compatible with the Adapt Authoring Tool.
+* If the [**Spoor**](https://github.com/adaptlearning/adapt-contrib-spoor) extension is disabled (or not installed), **Language Picker** will not remember the learner's language choice from the previous session.
+* Switching languages during an [**Assessment**](https://github.com/adaptlearning/adapt-contrib-assessment) will reset assessment attempts.
+* Language Picker is not yet compatible with the Adapt Authoring Tool.
 
 ## Notes
 
