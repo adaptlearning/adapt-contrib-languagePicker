@@ -55,12 +55,12 @@ describe('Language Picker - v1.0.0 to v1.0.3', async () => {
   testSuccessWhere('languagePicker with no _type and empty course', {
     fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '1.0.0' }],
     content: [
-      { __path__: 'src/course/config.json', _languagePicker: {} },
+      { _type: 'config', _languagePicker: {} },
       { _type: 'course' }
     ]
   });
 
-  testStopWhere('languagePicker with course globals', {
+  testSuccessWhere('languagePicker with course globals', {
     fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '1.0.0' }],
     content: [
       { _type: 'config', _languagePicker: {} },

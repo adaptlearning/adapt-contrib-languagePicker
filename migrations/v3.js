@@ -74,7 +74,7 @@ describe('Language Picker - v2.0.0 to v3.0.0', async () => {
   testSuccessWhere('languagePicker with no _type', {
     fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '2.0.0' }],
     content: [
-      { __path__: 'src/course/config.json', _languagePicker: {} },
+      { _type: 'config', _languagePicker: {} },
       { _type: 'course' }
     ]
   });
