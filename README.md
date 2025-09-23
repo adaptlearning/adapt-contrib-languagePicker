@@ -66,7 +66,7 @@ The graphic object that contains values for **\_src** and **alt**. Typically use
 
 ##### _src (string)
 
-File name (including path) of the image
+File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
 
 ##### alt (string)
 
@@ -78,19 +78,19 @@ The backgroundImage object that contains values for `_xlarge`, `_large`, `_mediu
 
 ##### \_xlarge (string)
 
-File name (including path) of the image used with xlarge device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
+File name (including path) of the image used with xlarge device width. Path should be relative to the *src* folder (e.g., *course/en/images/background.jpg*).
 
 ##### \_large (string)
 
-File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
+File name (including path) of the image used with large device width. Path should be relative to the *src* folder (e.g., *course/en/images/background.jpg*).
 
 ##### \_medium (string)
 
-File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
+File name (including path) of the image used with medium device width. Path should be relative to the *src* folder (e.g., *course/en/images/background.jpg*).
 
 ##### \_small (string)
 
-File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
+File name (including path) of the image used with small device width. Path should be relative to the *src* folder (e.g., *course/en/images/background.jpg*).
 
 #### \_backgroundStyles (object)
 
