@@ -1,4 +1,15 @@
+{{#if backgroundImage}}
+<div class="background" aria-hidden="true" style="background-image: url('{{backgroundImage}}');{{#if backgroundStyles}} {{backgroundStyles}}{{/if}}">
+</div>
+{{/if}}
+
 <div class="languagepicker__inner">
+
+  {{#if _graphic.src}}
+  <div class="languagepicker__image-container">
+    <img class="languagepicker__image" src={{_graphic.src}}{{#if _graphic.alt}} alt={{_graphic.alt}}{{else}} aria-hidden="true"{{/if}}  loading="eager" />
+  </div>
+  {{/if}}
 
   {{#if displayTitle}}
   <div class="languagepicker__title">
