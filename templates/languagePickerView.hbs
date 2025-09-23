@@ -6,8 +6,8 @@
 <div class="languagepicker__inner">
 
   {{#if _graphic.src}}
-  <div class="languagepicker__image-container"{{#unless _graphic.alt}} aria-hidden="true"{{/unless}}>
-    <img class="languagepicker__image" src={{_graphic.src}} alt={{_graphic.alt}} />
+  <div class="languagepicker__image-container">
+    <img class="languagepicker__image" src={{_graphic.src}}{{#if _graphic.alt}} alt={{_graphic.alt}}{{else}} aria-hidden="true"{{/if}} />
   </div>
   {{/if}}
 
