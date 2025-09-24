@@ -1,16 +1,28 @@
 // Language Picker standalone page
 // --------------------------------------------------
 .languagepicker {
+  position: relative;
+  min-height: 100vh;
+
+  &.has-bg-image > .background {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+  }
+
   &__inner {
+    position: relative;
     .l-container-responsive(@max-content-width);
   }
-}
 
-// Language Picker drawer
-// --------------------------------------------------
-.languagepicker-drawer {
-  &__item.is-rtl {
-    direction: rtl;
+  &__image-container {
+    margin-bottom: @item-padding;
+  }
+
+  &__image {
+    min-width: auto;
   }
 }
 
