@@ -61,6 +61,117 @@
               "description": "",
               "default": ""
             },
+            "_graphic": {
+              "type": "object",
+              "title": "Graphic",
+              "description": "Typically used to display a logo image",
+              "default": {},
+              "properties": {
+                "src": {
+                  "type": "string",
+                  "title": "Source",
+                  "description": "File name (including path) of the image. Path should be relative to the src folder (e.g., course/en/images/logo.png)",
+                  "default": "",
+                  "_backboneForms": "Asset"
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Alternative text",
+                  "description": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank",
+                  "default": "",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            },
+            "_backgroundImage": {
+              "type": "object",
+              "title": "Background Image",
+              "default": {},
+              "properties": {
+                "_xlarge": {
+                  "type": "string",
+                  "title": "Extra Large",
+                  "description": "File name (including path) of the image used with xlarge device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "default": "",
+                  "_backboneForms": "Asset"
+                },
+                "_large": {
+                  "type": "string",
+                  "title": "Large",
+                  "description": "File name (including path) of the image used with large device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "default": "",
+                  "_backboneForms": "Asset"
+                },
+                "_medium": {
+                  "type": "string",
+                  "title": "Medium",
+                  "description": "File name (including path) of the image used with medium device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "default": "",
+                  "_backboneForms": "Asset"
+                },
+                "_small": {
+                  "type": "string",
+                  "title": "Small",
+                  "description": "File name (including path) of the image used with small device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "default": "",
+                  "_backboneForms": "Asset"
+                }
+              }
+            },
+            "_backgroundStyles": {
+              "type": "object",
+              "title": "Background Styles",
+              "description": "Additional attributes to customise how background images are displayed",
+              "default": {},
+              "properties": {
+                "_backgroundRepeat": {
+                  "type": "string",
+                  "title": "Background repeat",
+                  "description": "Defines how the background image repeats. Options include: repeat (repeated both vertically and horizontally), repeat-x (repeated only horizontally), repeat-y (repeated only vertically), no-repeat (not repeated)",
+                  "default": "no-repeat",
+                  "enum": [
+                    "repeat",
+                    "repeat-x",
+                    "repeat-y",
+                    "no-repeat"
+                  ],
+                  "_backboneForms": "Select"
+                },
+                "_backgroundSize": {
+                  "type": "string",
+                  "title": "Background size",
+                  "description": "Defines the size of the background image. Options include: auto (displayed in its original size), cover (resize to cover the entire container), contain (resize to make sure the image is fully visible), 100% 100% (resize to match the dimensions of the container)",
+                  "default": "cover",
+                  "enum": [
+                    "auto",
+                    "cover",
+                    "contain",
+                    "100% 100%"
+                  ],
+                  "_backboneForms": "Select"
+                },
+                "_backgroundPosition": {
+                  "type": "string",
+                  "title": "Background position",
+                  "description": "Sets the position of the background image. The first value is the horizontal position and the second value is the vertical position",
+                  "default": "center center",
+                  "enum": [
+                    "left top",
+                    "left center",
+                    "left bottom",
+                    "center top",
+                    "center center",
+                    "center bottom",
+                    "right top",
+                    "right center",
+                    "right bottom"
+                  ],
+                  "_backboneForms": "Select"
+                }
+              }
+            },
             "_languages": {
               "type": "array",
               "title": "Languages",

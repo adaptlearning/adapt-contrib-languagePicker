@@ -184,6 +184,132 @@
                   "validators": [],
                   "help": ""
                 },
+                "_graphic": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Graphic",
+                  "properties": {
+                    "src": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "File name (including path) of the image. Path should be relative to the src folder (e.g., course/en/images/logo.png)."
+                    },
+                    "alt": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "A description of the image; required when it has meaning that must be conveyed to the learner. For 'decorative' images, leave this blank.",
+                      "translatable": true
+                    }
+                  }
+                },
+                "_backgroundImage": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Background Image",
+                  "properties": {
+                    "_xlarge": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "File name (including path) of the image used with xlarge device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                    },
+                    "_large": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "File name (including path) of the image used with large device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                    },
+                    "_medium": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "File name (including path) of the image used with medium device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                    },
+                    "_small": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "File name (including path) of the image used with small device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                    }
+                  }
+                },
+                "_backgroundStyles": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Background Styles",
+                  "properties": {
+                    "_backgroundRepeat": {
+                      "type": "string",
+                      "required": false,
+                      "default": "no-repeat",
+                      "title": "Background Repeat",
+                      "inputType": {
+                        "type": "Select",
+                        "options": [
+                          "no-repeat",
+                          "repeat",
+                          "repeat-x",
+                          "repeat-y"
+                        ]
+                      },
+                      "validators": [],
+                      "help": "Defines how the background image repeats. Options include: repeat (repeated both vertically and horizontally), repeat-x (repeated only horizontally), repeat-y (repeated only vertically), no-repeat (not repeated)."
+                    },
+                    "_backgroundSize": {
+                      "type": "string",
+                      "required": false,
+                      "default": "cover",
+                      "title": "Background Size",
+                      "inputType": {
+                        "type": "Select",
+                        "options": [
+                          "auto",
+                          "cover",
+                          "contain",
+                          "100% 100%"
+                        ]
+                      },
+                      "validators": [],
+                      "help": "Defines the size of the background image. Options include: auto (displayed in its original size), cover (resize to cover the entire container), contain (resize to make sure the image is fully visible), 100% 100% (resize to match the dimensions of the container)."
+                    },
+                    "_backgroundPosition": {
+                      "type": "string",
+                      "required": false,
+                      "default": "center center",
+                      "title": "Background Position",
+                      "inputType": {
+                        "type": "Select",
+                        "options": [
+                          "left top",
+                          "left center",
+                          "left bottom",
+                          "center top",
+                          "center center",
+                          "center bottom",
+                          "right top",
+                          "right center",
+                          "right bottom"
+                        ]
+                      },
+                      "validators": [],
+                      "help": "Sets the position of the background image. The first value is the horizontal position and the second value is the vertical position."
+                    }
+                  }
+                },
                 "_languages": {
                   "type": "array",
                   "required": true,

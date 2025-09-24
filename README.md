@@ -60,11 +60,11 @@ Header text. For example, "Please select a language."
 
 Introductory or explanatory text. For example, "Welcome to ACME Learning. This course is available in several languages. Please make a selection."
 
-#### graphic (object)
+#### _graphic (object)
 
-The graphic object that contains values for **\_src** and **alt**. Typically used to display a logo image
+The graphic object that contains values for **\src** and **alt**. Typically used to display a logo image
 
-##### _src (string)
+##### src (string)
 
 File name (including path) of the image. Path should be relative to the *src* folder (e.g., *course/en/images/logo.png*).
 
