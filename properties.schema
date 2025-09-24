@@ -188,6 +188,7 @@
                   "type": "object",
                   "required": false,
                   "title": "Graphic",
+                  "help": "A graphic that can be displayed above the title. Typically used for a logo image.",
                   "properties": {
                     "src": {
                       "type": "string",
@@ -195,7 +196,7 @@
                       "default": "",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "File name (including path) of the image. Path should be relative to the src folder (e.g., course/en/images/logo.png)."
+                      "help": "The image."
                     },
                     "alt": {
                       "type": "string",
@@ -219,7 +220,7 @@
                       "default": "",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "File name (including path) of the image used with xlarge device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                      "help": "The image used with xlarge device width."
                     },
                     "_large": {
                       "type": "string",
@@ -227,7 +228,7 @@
                       "default": "",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "File name (including path) of the image used with large device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                      "help": "The image used with large device width."
                     },
                     "_medium": {
                       "type": "string",
@@ -235,7 +236,7 @@
                       "default": "",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "File name (including path) of the image used with medium device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                      "help": "The image used with medium device width."
                     },
                     "_small": {
                       "type": "string",
@@ -243,7 +244,7 @@
                       "default": "",
                       "inputType": "Asset:image",
                       "validators": [],
-                      "help": "File name (including path) of the image used with small device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)."
+                      "help": "The image used with small device width."
                     }
                   }
                 },

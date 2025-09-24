@@ -64,13 +64,13 @@
             "_graphic": {
               "type": "object",
               "title": "Graphic",
-              "description": "Typically used to display a logo image",
+              "description": "A graphic that can be displayed above the title. Typically used for a logo image.",
               "default": {},
               "properties": {
                 "src": {
                   "type": "string",
                   "title": "Source",
-                  "description": "File name (including path) of the image. Path should be relative to the src folder (e.g., course/en/images/logo.png)",
+                  "description": "The image. Path should be relative to the src folder (e.g., course/en/images/logo.png)",
                   "default": "",
                   "_backboneForms": "Asset"
                 },
@@ -93,28 +93,28 @@
                 "_xlarge": {
                   "type": "string",
                   "title": "Extra Large",
-                  "description": "File name (including path) of the image used with xlarge device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "description": "The image used with xlarge device width.",
                   "default": "",
                   "_backboneForms": "Asset"
                 },
                 "_large": {
                   "type": "string",
                   "title": "Large",
-                  "description": "File name (including path) of the image used with large device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "description": "The image used with large device width.",
                   "default": "",
                   "_backboneForms": "Asset"
                 },
                 "_medium": {
                   "type": "string",
                   "title": "Medium",
-                  "description": "File name (including path) of the image used with medium device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "description": "The image used with medium device width.",
                   "default": "",
                   "_backboneForms": "Asset"
                 },
                 "_small": {
                   "type": "string",
                   "title": "Small",
-                  "description": "File name (including path) of the image used with small device width. Path should be relative to the src folder (e.g., course/en/images/background.jpg)",
+                  "description": "The image used with small device width.",
                   "default": "",
                   "_backboneForms": "Asset"
                 }
