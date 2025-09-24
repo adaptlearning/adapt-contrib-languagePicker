@@ -195,8 +195,7 @@
                       "required": false,
                       "default": "",
                       "inputType": "Asset:image",
-                      "validators": [],
-                      "help": "The image."
+                      "validators": []
                     },
                     "alt": {
                       "type": "string",

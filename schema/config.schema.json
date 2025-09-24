@@ -70,7 +70,6 @@
                 "src": {
                   "type": "string",
                   "title": "Source",
-                  "description": "The image. Path should be relative to the src folder (e.g., course/en/images/logo.png)",
                   "default": "",
                   "_backboneForms": "Asset"
                 },
