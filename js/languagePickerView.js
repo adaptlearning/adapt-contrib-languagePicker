@@ -56,8 +56,8 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
   onLanguageClick(event) {
-    const $buttons = this.$('.js-languagepicker-btn-click');
-    a11y.toggleEnabled($buttons, false);
+  if (this._isLanguageChanging) return;
+  this._isLanguageChanging = true;
     this.destroyNavigation();
     const lang = event.currentTarget.value;
     this.model.setLanguage(lang);
