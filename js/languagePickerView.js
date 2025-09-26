@@ -1,5 +1,4 @@
 import Adapt from 'core/js/adapt';
-import a11y from 'core/js/a11y';
 import NavigationView from './languagePickerNavigationView';
 import device from 'core/js/device';
 import router from 'core/js/router';
