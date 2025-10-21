@@ -38,12 +38,12 @@ export default class LanguagePickerModel extends Backbone.Model {
   }
 
   setLanguage(language, { canReset = true } = {}) {
+    if (canReset) this.checkResetOnLanguageChange();
     this.locationId = offlineStorage.get('location') || null;
     Adapt.config.set({
       _activeLanguage: language,
       _defaultDirection: this.getLanguageDetails(language)._direction
     });
-    if (canReset) this.checkResetOnLanguageChange();
   }
 
   checkResetOnLanguageChange() {
