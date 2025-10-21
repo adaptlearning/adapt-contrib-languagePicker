@@ -110,10 +110,10 @@ describe('Language Picker - v5.3.0 to v5.4.0', async () => {
   });
 });
 
-describe('adapt-contrib-languagePicker - @@CURRENT_VERSION to @@RELEASE_VERSION', async () => {
+describe('adapt-contrib-languagePicker - 5.6.0 to 5.7.0', async () => {
   let config, backgroundStyles;
 
-  whereFromPlugin('adapt-contrib-languagePicker - from @@CURRENT_VERSION', { name: 'adapt-contrib-languagePicker', version: '<@@RELEASE_VERSION' });
+  whereFromPlugin('adapt-contrib-languagePicker - from 5.6.0', { name: 'adapt-contrib-languagePicker', version: '<5.7.0' });
 
   whereContent('Language Picker is configured', content => {
     config = getConfig();
@@ -277,10 +277,10 @@ describe('adapt-contrib-languagePicker - @@CURRENT_VERSION to @@RELEASE_VERSION'
     return true;
   });
 
-  updatePlugin('Language Picker - update to @@RELEASE_VERSION', { name: 'adapt-contrib-languagePicker', version: '@@RELEASE_VERSION', framework: '>=5.30.2' });
+  updatePlugin('Language Picker - update to 5.7.0', { name: 'adapt-contrib-languagePicker', version: '5.7.0', framework: '>=5.30.2' });
 
   testSuccessWhere('languagePicker with existing config', {
-    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '5.6.0' }],
     content: [
       { _type: 'config', _languagePicker: { _isEnabled: true, title: 'Language selection' } },
       { _type: 'course' }
@@ -288,7 +288,7 @@ describe('adapt-contrib-languagePicker - @@CURRENT_VERSION to @@RELEASE_VERSION'
   });
 
   testSuccessWhere('languagePicker with minimal config', {
-    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '5.6.0' }],
     content: [
       { _type: 'config', _languagePicker: {} },
       { _type: 'course' }
@@ -296,14 +296,14 @@ describe('adapt-contrib-languagePicker - @@CURRENT_VERSION to @@RELEASE_VERSION'
   });
 
   testStopWhere('languagePicker with empty config', {
-    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@CURRENT_VERSION' }],
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '5.6.0' }],
     content: [
       { _type: 'config' }
     ]
   });
 
   testStopWhere('incorrect version', {
-    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@RELEASE_VERSION' }],
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '5.7.0' }],
     content: [
       { _type: 'config' }
     ]
