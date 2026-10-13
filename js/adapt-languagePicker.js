@@ -82,6 +82,8 @@ class LanguagePicker extends Backbone.Controller {
       _showLabel = true,
       navigationBarLabel = '',
       _drawerPosition = 'auto',
+      _isTitleVisible = false,
+      languageSelector = '',
       _navTooltip = {}
     } = globalsConfig ?? {};
     const model = new NavigationButtonModel({
@@ -94,6 +96,8 @@ class LanguagePicker extends Backbone.Controller {
       ariaLabel: navigationBarLabel,
       text: navigationBarLabel,
       _drawerPosition,
+      _isTitleVisible,
+      drawerTitle: languageSelector,
       _navTooltip
     });
     navigation.addButton(new LanguagePickerNavigationButton({

@@ -309,3 +309,64 @@ describe('adapt-contrib-languagePicker - 5.6.0 to 5.7.0', async () => {
     ]
   });
 });
+
+describe('Language Picker - v@@CURRENT_VERSION to v@@RELEASE_VERSION', async () => {
+  // https://github.com/adaptlearning/adapt-contrib-languagePicker/compare/v@@CURRENT_VERSION..v@@RELEASE_VERSION
+
+  let course, config, courseLanguagePickerGlobals;
+
+  whereFromPlugin('Language Picker - from v@@CURRENT_VERSION', { name: 'adapt-contrib-languagePicker', version: '<@@RELEASE_VERSION' });
+
+  whereContent('Language Picker is configured', content => {
+    config = getConfig();
+    return config._languagePicker;
+  });
+
+  mutateContent('Language Picker - add globals if missing', async (content) => {
+    course = getCourse();
+    if (!_.has(course, '_globals._extensions._languagePicker')) _.set(course, '_globals._extensions._languagePicker', {});
+    courseLanguagePickerGlobals = course._globals._extensions._languagePicker;
+    return true;
+  });
+
+  mutateContent('Language Picker - add attribute _isTitleVisible', async (content) => {
+    courseLanguagePickerGlobals._isTitleVisible = false;
+    return true;
+  });
+
+  checkContent('Language Picker - check attribute _isTitleVisible', async (content) => {
+    const isValid = courseLanguagePickerGlobals._isTitleVisible === false;
+    if (!isValid) throw new Error('Language Picker - global attribute _isTitleVisible');
+    return true;
+  });
+
+  updatePlugin('Language Picker - update to v@@RELEASE_VERSION', { name: 'adapt-contrib-languagePicker', version: '@@RELEASE_VERSION', framework: '>=5.30.2' });
+
+  testSuccessWhere('languagePicker configured, no globals', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@CURRENT_VERSION' }],
+    content: [
+      { _type: 'config', _languagePicker: {} },
+      { _type: 'course' }
+    ]
+  });
+
+  testSuccessWhere('languagePicker configured, empty globals', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@CURRENT_VERSION' }],
+    content: [
+      { _type: 'config', _languagePicker: {} },
+      { _type: 'course', _globals: { _extensions: { _languagePicker: {} } } }
+    ]
+  });
+
+  testStopWhere('languagePicker not configured', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@CURRENT_VERSION' }],
+    content: [
+      { _type: 'config' },
+      { _type: 'course' }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-contrib-languagePicker', version: '@@RELEASE_VERSION' }]
+  });
+});

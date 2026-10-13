@@ -72,5 +72,6 @@
         },
         "_showLabel": true,
         "navigationBarLabel" : "Select course language",
-        "_drawerPosition": "auto"
+        "_drawerPosition": "auto",
+        "_isTitleVisible": false
     }

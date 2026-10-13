@@ -198,7 +198,11 @@ Label shown next to the language picker button when navigation bar labels are en
 
 #### languageSelector (string)
 
-Aria label that appears at the top of the drawer displayed when language picker button is clicked. Defaults to Language selector.
+Heading at the top of the drawer displayed when the language picker button is clicked. It is used as the accessible name of the drawer. Defaults to Language selector.
+
+#### \_isTitleVisible (boolean)
+
+If set to `true`, the `languageSelector` heading is displayed at the top of the drawer. Otherwise it is only read by screen readers. Defaults to `false`.
 
 #### \_navTooltip (object)
 
