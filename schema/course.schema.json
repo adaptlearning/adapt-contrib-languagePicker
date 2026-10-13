@@ -80,6 +80,12 @@
                         "right"
                       ]
                     },
+                    "_isTitleVisible": {
+                      "type": "boolean",
+                      "default": false,
+                      "title": "Display drawer title",
+                      "description": "If enabled, the language selector text is displayed as a heading at the top of the drawer. Otherwise it is only read by screen readers"
+                    },
                     "_navTooltip": {
                       "type": "object",
                       "title": "Navigation tooltip",

@@ -41,7 +41,10 @@ export default class LanguagePickerNavigationButton extends NavigationButtonView
   }
 
   onClick(event) {
-    drawer.openCustomView(new LanguagePickerDrawerView({ model: this.drawerModel }).$el, false, this.model.get('_drawerPosition'));
+    drawer.openCustomView(new LanguagePickerDrawerView({ model: this.drawerModel }).$el, false, this.model.get('_drawerPosition'), {
+      title: this.model.get('drawerTitle'),
+      isTitleVisible: this.model.get('_isTitleVisible')
+    });
   }
 
 }
