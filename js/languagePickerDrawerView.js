@@ -1,28 +1,29 @@
 import Adapt from 'core/js/adapt';
 import a11y from 'core/js/a11y';
 import notify from 'core/js/notify';
+import { templates } from 'core/js/reactHelpers';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class LanguagePickerDrawerView extends Backbone.View {
 
   get template() {
-    return 'languagePickerDrawerView';
-  }
-
-  events() {
-    return {
-      'click .js-languagepicker-item-btn': 'onButtonClick'
-    };
+    return 'languagePickerDrawerView.jsx';
   }
 
   initialize() {
+    _.bindAll(this, 'onButtonClick');
     this.listenTo(Adapt, 'remove', this.remove);
     this.render();
   }
 
   render() {
-    const data = this.model.toJSON();
-    const template = Handlebars.templates[this.template];
-    this.$el.html(template(data));
+    const props = {
+      ...this.model.toJSON(),
+      onButtonClick: this.onButtonClick
+    };
+    const Template = templates[this.template.replace('.jsx', '')];
+    ReactDOM.render(<Template {...props} />, this.el);
   }
 
   onButtonClick(event) {
@@ -67,6 +68,11 @@ export default class LanguagePickerDrawerView extends Backbone.View {
   onDontChangeLanguage() {
     this.remove();
     _.delay(() => a11y.focusFirst(this.$finishFocus), 500);
+  }
+
+  remove() {
+    ReactDOM.unmountComponentAtNode(this.el);
+    super.remove();
   }
 
   getPromptObject(newLanguage) {

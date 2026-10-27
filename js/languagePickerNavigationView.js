@@ -1,4 +1,7 @@
 import Adapt from 'core/js/adapt';
+import { templates } from 'core/js/reactHelpers';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class NavigationView extends Backbone.View {
 
@@ -13,8 +16,7 @@ export default class NavigationView extends Backbone.View {
   }
 
   initialize() {
-    this.template = 'languagePickerNavigation';
-    this.setupHelpers();
+    this.template = 'languagePickerNavigation.jsx';
     this.preRender();
   }
 
@@ -24,21 +26,18 @@ export default class NavigationView extends Backbone.View {
   }
 
   render() {
-    const template = Handlebars.templates[this.template];
-    this.$el.html(template({
-      _config: this.model.get('_accessibility'),
-      _accessibility: Adapt.config.get('_accessibility')
-    })).insertBefore('#app');
+    const Template = templates[this.template.replace('.jsx', '')];
+    ReactDOM.render(<Template />, this.el);
+    this.$el.insertBefore('#app');
 
     _.defer(() => Adapt.trigger('navigationView:postRender', this));
 
     return this;
   }
 
-  setupHelpers() {
-    Handlebars.registerHelper('a11y_aria_label', text => {
-      return `<div class="aria-label">${text}</div>`;
-    });
+  remove() {
+    ReactDOM.unmountComponentAtNode(this.el);
+    super.remove();
   }
 
 }

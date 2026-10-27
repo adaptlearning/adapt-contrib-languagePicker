@@ -2,17 +2,14 @@ import Adapt from 'core/js/adapt';
 import NavigationView from './languagePickerNavigationView';
 import device from 'core/js/device';
 import router from 'core/js/router';
+import { templates } from 'core/js/reactHelpers';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class LanguagePickerView extends Backbone.View {
 
   get template() {
-    return 'languagePickerView';
-  }
-
-  events() {
-    return {
-      'click .js-languagepicker-btn-click': 'onLanguageClick'
-    };
+    return 'languagePickerView.jsx';
   }
 
   className() {
@@ -23,6 +20,7 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
   initialize() {
+    _.bindAll(this, 'onLanguageClick');
     this.initializeNavigation();
     $('html').addClass('in-languagepicker');
     this.addEventListeners();
@@ -41,8 +39,12 @@ export default class LanguagePickerView extends Backbone.View {
 
   render() {
     const data = this.model.toJSON();
-    const template = Handlebars.templates[this.template];
-    this.$el.html(template(data));
+    const props = {
+      ...data,
+      onLanguageClick: this.onLanguageClick
+    };
+    const Template = templates[this.template.replace('.jsx', '')];
+    ReactDOM.render(<Template {...props} />, this.el);
     this.$el.addClass(data._classes);
 
     document.title = this.model.get('title') || '';
@@ -101,6 +103,7 @@ export default class LanguagePickerView extends Backbone.View {
 
   remove() {
     $('html').removeClass('in-languagepicker');
+    ReactDOM.unmountComponentAtNode(this.el);
 
     super.remove();
   }
