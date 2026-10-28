@@ -6,11 +6,7 @@ import { templates } from 'core/js/reactHelpers';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class LanguagePickerView extends Backbone.View {
-
-  get template() {
-    return 'languagePickerView.jsx';
-  }
+class LanguagePickerView extends Backbone.View {
 
   className() {
     return [
@@ -43,7 +39,7 @@ export default class LanguagePickerView extends Backbone.View {
       ...data,
       onLanguageClick: this.onLanguageClick
     };
-    const Template = templates[this.template.replace('.jsx', '')];
+    const Template = templates[this.constructor.template.replace('.jsx', '')];
     ReactDOM.render(<Template {...props} />, this.el);
     this.$el.addClass(data._classes);
 
@@ -109,3 +105,7 @@ export default class LanguagePickerView extends Backbone.View {
   }
 
 }
+
+LanguagePickerView.template = 'languagePickerView.jsx';
+
+export default LanguagePickerView;

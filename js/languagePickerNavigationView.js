@@ -3,7 +3,7 @@ import { templates } from 'core/js/reactHelpers';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class NavigationView extends Backbone.View {
+class NavigationView extends Backbone.View {
 
   className() {
     return 'nav';
@@ -16,7 +16,6 @@ export default class NavigationView extends Backbone.View {
   }
 
   initialize() {
-    this.template = 'languagePickerNavigation.jsx';
     this.preRender();
   }
 
@@ -26,7 +25,7 @@ export default class NavigationView extends Backbone.View {
   }
 
   render() {
-    const Template = templates[this.template.replace('.jsx', '')];
+    const Template = templates[this.constructor.template.replace('.jsx', '')];
     ReactDOM.render(<Template />, this.el);
     this.$el.insertBefore('#app');
 
@@ -41,3 +40,7 @@ export default class NavigationView extends Backbone.View {
   }
 
 }
+
+NavigationView.template = 'languagePickerNavigation.jsx';
+
+export default NavigationView;
